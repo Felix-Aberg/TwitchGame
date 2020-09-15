@@ -4,32 +4,56 @@ using UnityEngine;
 
 public class BallManager : MonoBehaviour
 {
-    List<GameObject> balls;
+    //I am really not sure if I should exclusively be using a dictionary
+    public Dictionary<string, GameObject> ballDictionary;
+
+
     GameObject ballPrefab;
+    Transform parent;
 
     private void Start()
     {
+        ballDictionary = new Dictionary<string, GameObject>();
+
+        parent = Instantiate(new GameObject()).transform;
+        parent.name = "Balls";
         ballPrefab = Resources.Load("Prefabs/Ball") as GameObject;
     }
 
     public void AddBall(string name)
     {
-        balls[balls.Count] = Instantiate(ballPrefab);
-        balls[balls.Count - 1].name = name;
-        //Initialize unique values here? Return ball to be changed elsewhere? TBD
+        if (!ballDictionary.ContainsKey(name))
+        {
+            //Create ball
+            GameObject ball = Instantiate(ballPrefab);
 
+            ball.transform.parent = parent;
+            ball.name = name;
+
+            //Add to dictionary
+            ballDictionary.Add(name, ball);
+
+            //TODO: Initialize unique values here? Return ball to be changed elsewhere?
+        }
+    }
+
+    public void RemoveBall(string name)
+    {
+        ballDictionary.Remove(name);
     }
 
     public void RemoveBall(GameObject obj)
     {
-        balls.Remove(obj);
+        ballDictionary.Remove(obj.name);
     }
 
     private void Update()
     {
+        //Press spacebar to create a ball with a unique ID
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AddBall(((int)Random.Range(0.0f, 100000.0f)).ToString());
+            //TEMP rng ball spawn
+            AddBall(ballDictionary.Count.ToString());
         }
     }
 }

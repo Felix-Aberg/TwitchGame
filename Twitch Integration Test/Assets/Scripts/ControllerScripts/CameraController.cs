@@ -47,19 +47,22 @@ public class CameraController : MonoBehaviour
 
     void Rotate()
     {
-        eulerRotation.y +=  Input.GetAxis("MOUSEX") * mouseSensitivityX;
-        eulerRotation.x += -Input.GetAxis("MOUSEY") * mouseSensitivityY;
-        
-        if (eulerRotation.x > mouseClampY)
+        if (Input.GetButton("FIRE2"))
         {
-            eulerRotation.x = mouseClampY;
+            eulerRotation.y += Input.GetAxis("MOUSEX") * mouseSensitivityX;
+            eulerRotation.x += -Input.GetAxis("MOUSEY") * mouseSensitivityY;
+
+            if (eulerRotation.x > mouseClampY)
+            {
+                eulerRotation.x = mouseClampY;
+            }
+            else if (eulerRotation.x < -mouseClampY)
+            {
+                eulerRotation.x = -mouseClampY;
+            }
+            //*/
+            //deltaRotation = transform.rotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(eulerRotation);
         }
-        else if (eulerRotation.x < -mouseClampY)
-        {
-            eulerRotation.x = -mouseClampY;
-        }
-        //*/
-        //deltaRotation = transform.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(eulerRotation);
     }
 }
