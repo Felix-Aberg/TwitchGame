@@ -20,12 +20,6 @@ public class BallCollision : MonoBehaviour
             //Placeholder collision, push each other away by
             Vector3 push = transform.position - collision.transform.position;
             push = push.normalized * pushForce;
-
-            Debug.Log("Start");
-            Debug.Log(transform.position);
-            Debug.Log(collision.transform.position);
-            Debug.Log(push);
-            Debug.Log("End");
             rigidbody.AddForce(push);
             collision.rigidbody.AddForce(-push);
         }
