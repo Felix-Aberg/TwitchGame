@@ -13,13 +13,16 @@ public class TempTwitchChat : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
 
-    string[] userdata; //Get the password from https://twitchapps.com/tmi
+    public string[] userdata; //Get the password from https://twitchapps.com/tmi
 
     public Text chatBox;
     private BallManager ballManager;
 
+    //Move these into GetUserdata() later
+
     void Start()
     {
+        userdata = GetUserdata();
         ballManager = GetComponent<BallManager>();
         Connect();
     }
@@ -36,19 +39,22 @@ public class TempTwitchChat : MonoBehaviour
 
     //Store your password in /Assets/Resources/Userdata.txt
     //If the file does not exist, create it. It is not included in the git repository.
-    private string[] FetchPassword()
+    private string[] GetUserdata()
     {
-        TextAsset textAsset = Resources.Load("userdata.txt") as TextAsset;
-        String text = textAsset.ToString();
-        String[] lines = text.Split('\n');
+        string[] lines = System.IO.File.ReadAllLines("Assets/Resources/userdata.txt");
 
-        if (textAsset == null)
+        if (lines == null)
         {
-            Debug.LogError("Error! userdata.txt file could not be found! Please include a Password.txt fine in /Assets/Resources/");
+            Debug.LogError("Error! userdata.txt file could not be found! Please see the userdata.txt file in /Assets/Resources/");
+        }
+
+        Debug.Log(lines.Length);
+        for (int i = 0; i < lines.Length; i++)
+        {
+            lines[i] = lines[i].Remove(0, 12);
         }
         
-
-        return;
+        return lines;
     }
 
     private void Connect()
