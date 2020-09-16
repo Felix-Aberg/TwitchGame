@@ -13,7 +13,8 @@ public class TempTwitchChat : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
 
-    public string[] userdata; //Get the password from https://twitchapps.com/tmi
+    //DO NOT MAKE THIS VARIABLE PUBLIC
+    private string[] userdata; //Get the password from https://twitchapps.com/tmi
 
     public Text chatBox;
     private BallManager ballManager;
@@ -47,8 +48,7 @@ public class TempTwitchChat : MonoBehaviour
         {
             Debug.LogError("Error! userdata.txt file could not be found! Please see the userdata.txt file in /Assets/Resources/");
         }
-
-        Debug.Log(lines.Length);
+        
         for (int i = 0; i < lines.Length; i++)
         {
             lines[i] = lines[i].Remove(0, 12);
@@ -63,8 +63,8 @@ public class TempTwitchChat : MonoBehaviour
         reader = new StreamReader(twitchClient.GetStream());
         writer = new StreamWriter(twitchClient.GetStream());
 
-        writer.WriteLine("PASS " + userdata[1]);
-        writer.WriteLine("NICK " + userdata[2]);
+        writer.WriteLine("PASS " + userdata[2]);
+        writer.WriteLine("NICK " + userdata[1]);
         writer.WriteLine("USER " + userdata[1] + " 8 * :" + userdata[1]);
         writer.WriteLine("JOIN #" + userdata[0]);
         writer.Flush();
@@ -92,10 +92,6 @@ public class TempTwitchChat : MonoBehaviour
                 //Run the instructions to control the game!
                 GameInputs(message, chatName);
             }
-        }
-        else
-        {
-            Debug.LogWarning("Twitch chat client failed to access!");
         }
     }
 
