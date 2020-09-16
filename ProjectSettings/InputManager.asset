@@ -41,10 +41,10 @@ InputManager:
     m_Name: STACKED
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: right ctrl
-    positiveButton: right shift
-    altNegativeButton: z
-    altPositiveButton: q
+    negativeButton: left ctrl
+    positiveButton: space
+    altNegativeButton: q
+    altPositiveButton: e
     gravity: 3
     dead: 0.001
     sensitivity: 3
