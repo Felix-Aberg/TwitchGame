@@ -1,3 +1,0 @@
-channelname=channelgoeshere
-username   =usernamegoeshere
-password   =passwordgoeshere
