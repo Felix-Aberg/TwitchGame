@@ -34,6 +34,14 @@ public class BallManager : MonoBehaviour
             ballDictionary.Add(name, ball);
 
             //TODO: Initialize unique values here? Return ball to be changed elsewhere?
+            /*
+            Color newColor = Random.ColorHSV(0.0f, 1f);
+            
+            Material newMaterial =  
+            Debug.Log(newMaterial);
+            newMaterial.SetColor("newColor", newColor);
+            ball.GetComponent<MeshRenderer>().material = material;
+            */
         }
     }
 
