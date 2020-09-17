@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Net.Sockets;
 using System.IO;
 using UnityEngine.UI;
+using System.Linq;
 
 public class TempTwitchChat : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class TempTwitchChat : MonoBehaviour
             if (message.Contains("PRIVMSG"))
             {
                 //Get the users name by splitting it from the string
+                Debug.Log(message);
                 var splitPoint = message.IndexOf("!", 1);
                 var chatName = message.Substring(0, splitPoint);
                 chatName = chatName.Substring(1);
@@ -97,8 +99,36 @@ public class TempTwitchChat : MonoBehaviour
 
     private void GameInputs(string ChatInputs, string ChatName)
     {
-        if (ChatInputs.ToLower() == ("!play"))
+        ChatInputs = ChatInputs.ToLower();
+        if (ChatInputs.StartsWith("!play "))
         {
+            Debug.Log("Stage 1");
+            string secondWord = ChatInputs.Split(' ').Skip(1).FirstOrDefault();
+            if (ChatInputs.Contains(' '))
+            {
+                Debug.Log("Stage 2");
+                secondWord = secondWord.Remove(secondWord.IndexOf(' '));
+            }
+
+            Debug.Log("Stage 3");
+            if (Enum.TryParse(secondWord, out BallMaterial _))
+            {
+
+                Debug.Log("Stage 4");
+                Debug.Log("Player successfully specified a ballmaterial");
+                ballManager.AddBall(ChatName, (BallMaterial)Enum.Parse(typeof(BallMaterial), secondWord));
+            }
+            else
+            {
+
+                Debug.Log("Stage 5");
+                Debug.Log("Player failed to specify a ballmaterial");
+                ballManager.AddBall(ChatName);
+            }
+        }
+        else if (ChatInputs == "!play")
+        {
+            Debug.Log("Player didn't specify a ballmaterial");
             ballManager.AddBall(ChatName);
         }
     }
