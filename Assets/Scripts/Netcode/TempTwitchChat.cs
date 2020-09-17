@@ -107,6 +107,7 @@ public class TempTwitchChat : MonoBehaviour
             if (ChatInputs.Contains(' '))
             {
                 Debug.Log("Stage 2");
+                //Error here
                 secondWord = secondWord.Remove(secondWord.IndexOf(' '));
             }
 
