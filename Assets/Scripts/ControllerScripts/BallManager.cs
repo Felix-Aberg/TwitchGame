@@ -53,7 +53,7 @@ public class BallManager : MonoBehaviour
             ball.transform.position = spawnPointTransform.Find("SP" + ballDictionary.Count % spawnPointAmount).position;
             ballDictionary.Add(name, ball);
 
-            MeshRenderer meshRenderer = ball.GetComponent<MeshRenderer>();
+            MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
 
             //Set material
             switch (ballMaterial)
