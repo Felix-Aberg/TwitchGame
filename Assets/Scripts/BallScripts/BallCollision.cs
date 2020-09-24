@@ -7,11 +7,12 @@ public class BallCollision : MonoBehaviour
 {
     Rigidbody rigidbody;
     public float pushForce;
-
+    public ParticleSystem sparks;
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,6 +24,10 @@ public class BallCollision : MonoBehaviour
             push = push.normalized * pushForce;
             float RNGmultiplier = Random.Range(0.85f, 1.15f);
             collision.rigidbody.AddForce(-push * velocity * RNGmultiplier);
+
+            sparks.Play();
+
         }
     }
+    
 }
