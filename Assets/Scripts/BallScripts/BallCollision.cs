@@ -22,7 +22,7 @@ public class BallCollision : MonoBehaviour
             float velocity = rigidbody.velocity.magnitude;
             Vector3 push = transform.position - collision.transform.position;
             push = push.normalized * pushForce;
-            float RNGmultiplier = Random.Range(0.85f, 1.15f);
+            float RNGmultiplier = Random.Range(0.5f, 1.4f);
             collision.rigidbody.AddForce(-push * velocity * RNGmultiplier);
 
             sparks.Play();
