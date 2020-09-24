@@ -140,5 +140,5 @@ MonoBehaviour:
   extraGravityIsEnabled: 0
   gravityModifier: 0
   magnetismIsEnabled: 1
-  magnetModifier: 1
+  magnetModifier: 0
   maxDistance: 12
