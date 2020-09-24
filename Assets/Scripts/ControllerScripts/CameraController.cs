@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
             velocity *= boostSpeedModifier;
         }
 
-        velocity *= moveSpeed * Time.deltaTime;
+        velocity *= moveSpeed * Time.unscaledDeltaTime;
         transform.Translate(velocity, Space.Self);
     }
 

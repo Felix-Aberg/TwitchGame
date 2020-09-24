@@ -18,10 +18,11 @@ public class BallCollision : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             //Placeholder collision, push each other away by
+            float velocity = rigidbody.velocity.magnitude;
             Vector3 push = transform.position - collision.transform.position;
             push = push.normalized * pushForce;
-            rigidbody.AddForce(push);
-            collision.rigidbody.AddForce(-push);
+            float RNGmultiplier = Random.Range(0.85f, 1.15f);
+            collision.rigidbody.AddForce(-push * velocity * RNGmultiplier);
         }
     }
 }
