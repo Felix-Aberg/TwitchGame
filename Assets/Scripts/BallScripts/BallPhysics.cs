@@ -40,4 +40,8 @@ public class BallPhysics : MonoBehaviour
             rigidbody.AddForce(appliedForce);
         }
     }
+    void LateUpdate()
+    {
+        transform.rotation = Quaternion.identity; ;
+    }
 }
