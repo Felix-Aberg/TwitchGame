@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Move();
         Rotate();
@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
             velocity *= boostSpeedModifier;
         }
 
-        velocity *= moveSpeed * Time.fixedDeltaTime;
+        velocity *= moveSpeed * Time.unscaledDeltaTime;
         transform.Translate(velocity, Space.Self);
     }
 
