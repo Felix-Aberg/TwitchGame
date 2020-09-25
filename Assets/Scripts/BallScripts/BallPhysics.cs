@@ -5,24 +5,24 @@ using UnityEngine;
 public class BallPhysics : MonoBehaviour
 {
     Rigidbody rigidbody;
+    BallRPM ballRPM;
 
     public bool extraGravityIsEnabled;
     public float gravityModifier;
 
-    public bool magnetismIsEnabled;
-    public float magnetModifier;
-    public float maxDistance;
-    Transform magnetTransform;
+    Transform child;
+
+    Vector3 childPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        child = transform.GetChild(0);
         rigidbody = GetComponent<Rigidbody>();
-        magnetTransform = FindObjectOfType<GameController>().transform.Find("Magnet");
-        if (magnetTransform == null)
-        {
-            Debug.LogError("Magnet transform is missing!");
-        }
+        ballRPM = GetComponent<BallRPM>();
+
+        childPosition = child.localPosition;
+        rigidbody.centerOfMass = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -32,16 +32,15 @@ public class BallPhysics : MonoBehaviour
         {
             rigidbody.AddForce(Vector3.down * (gravityModifier - 1));
         }
-
-        if (magnetismIsEnabled && Vector3.Distance(transform.position, magnetTransform.position) < maxDistance)
-        {
-            Vector3 appliedForce;
-            appliedForce = (magnetTransform.position - transform.position) * magnetModifier;
-            rigidbody.AddForce(appliedForce);
-        }
     }
     void LateUpdate()
     {
-        transform.rotation = Quaternion.identity; ;
+        Vector3 deltaRotation = child.transform.rotation.eulerAngles;
+        deltaRotation.x = 0f;
+        deltaRotation.y += ballRPM.RPM * Time.deltaTime * 5;
+        deltaRotation.z = 0f;
+
+        child.transform.rotation = Quaternion.Euler(deltaRotation);
+        child.position = transform.position + childPosition;
     }
 }

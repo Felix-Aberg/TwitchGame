@@ -13,13 +13,13 @@ public class BallCollision : MonoBehaviour
     Vector3 finalForce;
 
     float magnitude;
-    float RNGmultiplier;
+    float RNG_multiplier;
 
-    public float RPMmultiplier;
+    public float RPM_multiplier;
     public float velocityMultiplier;
 
-    public float RNGminMultiplier;
-    public float RNGmaxMultiplier;
+    public float RNG_minMultiplier;
+    public float RNG_maxMultiplier;
 
 
     private void Start()
@@ -44,10 +44,10 @@ public class BallCollision : MonoBehaviour
             direction = collision.transform.position - transform.position;
             direction.Normalize();
 
-            RNGmultiplier = Random.Range(RNGminMultiplier, RNGmaxMultiplier);
+            RNG_multiplier = Random.Range(RNG_minMultiplier, RNG_maxMultiplier);
 
-            magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + ballRPM.RPM * RPMmultiplier) *
-                         RNGmultiplier /* * RollCrit()*/;
+            magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + ballRPM.RPM * RPM_multiplier) *
+                         RNG_multiplier /* * RollCrit()*/;
 
             finalForce = direction * magnitude;
 
