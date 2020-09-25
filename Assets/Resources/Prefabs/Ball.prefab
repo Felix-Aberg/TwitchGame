@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1780281590171312226}
   - component: {fileID: 3594217586637139975}
   - component: {fileID: 4894960371429570160}
+  - component: {fileID: -7788080451737306204}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
@@ -187,7 +188,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 0.33
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -220,10 +221,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraGravityIsEnabled: 1
-  gravityModifier: 3
+  gravityModifier: 5
   magnetismIsEnabled: 0
   magnetModifier: 0
   maxDistance: 12
+--- !u!114 &-7788080451737306204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590208579037662098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88acea2f83810b5429006a7a13eea7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3044212348968105801
 GameObject:
   m_ObjectHideFlags: 0

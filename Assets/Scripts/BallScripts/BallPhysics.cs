@@ -30,7 +30,7 @@ public class BallPhysics : MonoBehaviour
     {
         if (extraGravityIsEnabled)
         {
-            rigidbody.AddForce(Vector3.down * gravityModifier);
+            rigidbody.AddForce(Vector3.down * (gravityModifier - 1));
         }
 
         if (magnetismIsEnabled && Vector3.Distance(transform.position, magnetTransform.position) < maxDistance)
