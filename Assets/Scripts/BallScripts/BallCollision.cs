@@ -26,10 +26,9 @@ public class BallCollision : MonoBehaviour
     public float RPM_dagameOnHit;
     public float HP_dagameOnHit; //not yet used
 
-
-
     [Tooltip("Multiplies force by this on crit")]
     public float critMultiplier;
+    public float critMultiplierIncrement;
     [Tooltip("In percent from 0.0 to 1.0")]
     public float critChanceIncrement;
     public float critChance;
@@ -108,6 +107,7 @@ public class BallCollision : MonoBehaviour
         if (UnityEngine.Random.Range(0f, 1f) < critChance)
         {
             critChance = 0f;
+            critMultiplier += critMultiplierIncrement;
             return true;
         }
         return false;
