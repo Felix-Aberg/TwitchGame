@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 590208579037662096}
   - component: {fileID: 590208579037662099}
   - component: {fileID: 1780281590171312226}
+  - component: {fileID: 8622902382701585022}
   - component: {fileID: 3594217586637139975}
   - component: {fileID: 4894960371429570160}
   - component: {fileID: -7788080451737306204}
@@ -195,6 +196,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8622902382701585022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590208579037662098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1109903b8063f25488d8be144b3d41c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumRPM: 30
 --- !u!114 &3594217586637139975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +227,8 @@ MonoBehaviour:
   velocityMultiplier: 1
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
+  RPM_dagameOnHit: 100
+  HP_dagameOnHit: 0
   critMultiplier: 4
   critChanceIncrement: 0.05
   debugForceLimit: 1000
@@ -243,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 5000
-  variableDrag: 2
+  variableDrag: 1
   constantDrag: 5
 --- !u!1 &3044212348968105801
 GameObject:
