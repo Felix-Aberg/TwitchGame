@@ -18,6 +18,7 @@ public class TempTwitchChat : MonoBehaviour
     private string[] userdata; //Get the password from https://twitchapps.com/tmi
 
     public Text chatBox;
+    private GameController gameController;
     private BallManager ballManager;
 
     //Move these into GetUserdata() later
@@ -25,6 +26,7 @@ public class TempTwitchChat : MonoBehaviour
     void Start()
     {
         userdata = GetUserdata();
+        gameController = GetComponent<GameController>();
         ballManager = GetComponent<BallManager>();
         Connect();
     }
@@ -100,37 +102,40 @@ public class TempTwitchChat : MonoBehaviour
     private void GameInputs(string ChatInputs, string ChatName)
     {
         ChatInputs = ChatInputs.ToLower();
-        if (ChatInputs.StartsWith("!play "))
+        if (!gameController.gameStarted)
         {
-            Debug.Log("Stage 1");
-            string secondWord = ChatInputs.Split(' ').Skip(1).FirstOrDefault();
-            if (ChatInputs.Contains(' '))
+            if (ChatInputs.StartsWith("!play "))
             {
-                Debug.Log("Stage 2");
-                //Error here
-                secondWord = secondWord.Remove(secondWord.IndexOf(' '));
+                Debug.Log("Stage 1");
+                string secondWord = ChatInputs.Split(' ').Skip(1).FirstOrDefault();
+                if (ChatInputs.Contains(' '))
+                {
+                    Debug.Log("Stage 2");
+                    //Error here
+                    secondWord = secondWord.Remove(secondWord.IndexOf(' '));
+                }
+
+                Debug.Log("Stage 3");
+                if (Enum.TryParse(secondWord, out BallMaterial _))
+                {
+
+                    Debug.Log("Stage 4");
+                    Debug.Log("Player successfully specified a ballmaterial");
+                    ballManager.AddBall(ChatName, (BallMaterial)Enum.Parse(typeof(BallMaterial), secondWord));
+                }
+                else
+                {
+
+                    Debug.Log("Stage 5");
+                    Debug.Log("Player failed to specify a ballmaterial");
+                    ballManager.AddBall(ChatName);
+                }
             }
-
-            Debug.Log("Stage 3");
-            if (Enum.TryParse(secondWord, out BallMaterial _))
+            else if (ChatInputs == "!play")
             {
-
-                Debug.Log("Stage 4");
-                Debug.Log("Player successfully specified a ballmaterial");
-                ballManager.AddBall(ChatName, (BallMaterial)Enum.Parse(typeof(BallMaterial), secondWord));
-            }
-            else
-            {
-
-                Debug.Log("Stage 5");
-                Debug.Log("Player failed to specify a ballmaterial");
+                Debug.Log("Player didn't specify a ballmaterial");
                 ballManager.AddBall(ChatName);
             }
-        }
-        else if (ChatInputs == "!play")
-        {
-            Debug.Log("Player didn't specify a ballmaterial");
-            ballManager.AddBall(ChatName);
         }
     }
 }

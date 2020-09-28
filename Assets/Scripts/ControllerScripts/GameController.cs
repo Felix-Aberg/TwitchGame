@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     BallManager ballManager;
-    [SerializeField] bool gameStarted;
+    public bool gameStarted;
 
     // Start is called before the first frame update
     void Start()
