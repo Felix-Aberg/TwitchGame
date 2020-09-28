@@ -33,7 +33,7 @@ public class BallPhysics : MonoBehaviour
     {
         if (extraGravityIsEnabled)
         {
-            rigidbody.AddForce(Vector3.down * (gravityModifier - 1));
+            rigidbody.AddForce(Vector3.down * (gravityModifier - 1) * Time.deltaTime);
         }
     }
     void LateUpdate()
