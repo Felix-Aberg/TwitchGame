@@ -223,13 +223,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 543952108443042258}
   critSparks: {fileID: 3461791368108906330}
-  RPM_multiplier: 0.1
+  RPM_multiplier: 0.08
   velocityMultiplier: 1
-  RNG_minMultiplier: 0.75
+  RNG_minMultiplier: 0.5
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 30
   HP_dagameOnHit: 0
-  critMultiplier: 3
+  maxVelocity: 2000
+  critMultiplier: 5
   critChanceIncrement: 0.01
   critChance: 0.01
   debugForceLimit: 1000

@@ -591,6 +591,7 @@ MonoBehaviour:
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 0
   HP_dagameOnHit: 0
+  maxVelocity: 0
   critMultiplier: 0
   critMultiplierIncrement: 0
   critChanceIncrement: 0
@@ -1400,6 +1401,7 @@ MonoBehaviour:
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 0
   HP_dagameOnHit: 0
+  maxVelocity: 0
   critMultiplier: 0
   critMultiplierIncrement: 0
   critChanceIncrement: 0
@@ -2291,6 +2293,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8e742724745b71140b8d5bc585e45f02, type: 2}
+    - target: {fileID: 1797870696219132368, guid: c7b9208845fccd647a38c5ee33d400c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.127
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797870696219132368, guid: c7b9208845fccd647a38c5ee33d400c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.674
+      objectReference: {fileID: 0}
     - target: {fileID: 2074326354334587356, guid: c7b9208845fccd647a38c5ee33d400c2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2375,6 +2387,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5712543338841382095, guid: c7b9208845fccd647a38c5ee33d400c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.515
+      objectReference: {fileID: 0}
+    - target: {fileID: 5712543338841382095, guid: c7b9208845fccd647a38c5ee33d400c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.685
       objectReference: {fileID: 0}
     - target: {fileID: 5946372815793045781, guid: c7b9208845fccd647a38c5ee33d400c2,
         type: 3}
