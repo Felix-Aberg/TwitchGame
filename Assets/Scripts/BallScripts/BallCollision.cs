@@ -26,6 +26,8 @@ public class BallCollision : MonoBehaviour
     public float RPM_dagameOnHit;
     public float HP_dagameOnHit; //not yet used
 
+    public float maxVelocity;
+
 
 
     [Tooltip("Multiplies force by this on crit")]
@@ -68,7 +70,7 @@ public class BallCollision : MonoBehaviour
             magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + ballRPM.RPM * RPM_multiplier)
                 * RNG_multiplier;
 
-            
+            magnitude = Mathf.Clamp(magnitude, 0f, maxVelocity);
 
             if (doCrit)
             {
