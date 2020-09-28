@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ballManager = gameObject.AddComponent<BallManager>();
+        ballManager = gameObject.GetComponent<BallManager>();
     }
 
     // Update is called once per frame

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CameraController : MonoBehaviour
 {
     public float moveSpeed;
@@ -17,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        eulerRotation = transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -41,7 +40,7 @@ public class CameraController : MonoBehaviour
             velocity *= boostSpeedModifier;
         }
 
-        velocity *= moveSpeed * Time.deltaTime;
+        velocity *= moveSpeed * Time.unscaledDeltaTime;
         transform.Translate(velocity, Space.Self);
     }
 
