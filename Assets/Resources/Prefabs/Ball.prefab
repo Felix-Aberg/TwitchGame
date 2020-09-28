@@ -223,14 +223,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 543952108443042258}
   critSparks: {fileID: 3461791368108906330}
-  RPM_multiplier: 0.08
-  velocityMultiplier: 1
-  RNG_minMultiplier: 0.5
+  RPM_multiplier: 0.07
+  velocityMultiplier: 2
+  RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 30
   HP_dagameOnHit: 0
-  maxVelocity: 2000
-  critMultiplier: 5
+  maxVelocity: 1000
+  critMultiplier: 2
+  critMultiplierIncrement: 1
   critChanceIncrement: 0.01
   critChance: 0.01
   debugForceLimit: 1000
@@ -261,8 +262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 5000
-  variableDrag: 1
-  constantDrag: 5
+  variableDrag: 0.8
+  constantDrag: 10
 --- !u!1 &3044212348968105801
 GameObject:
   m_ObjectHideFlags: 0
