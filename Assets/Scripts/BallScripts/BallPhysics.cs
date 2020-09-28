@@ -10,6 +10,8 @@ public class BallPhysics : MonoBehaviour
     public bool extraGravityIsEnabled;
     public float gravityModifier;
 
+    
+
     Transform child;
 
     Vector3 childPosition;
@@ -23,6 +25,7 @@ public class BallPhysics : MonoBehaviour
 
         childPosition = child.localPosition;
         rigidbody.centerOfMass = Vector3.zero;
+        TurnClockwise(Vector3.zero);
     }
 
     // Update is called once per frame
@@ -42,5 +45,10 @@ public class BallPhysics : MonoBehaviour
 
         child.transform.rotation = Quaternion.Euler(deltaRotation);
         child.position = transform.position + childPosition;
+    }
+
+    void TurnClockwise(Vector3 center)
+    {
+
     }
 }
