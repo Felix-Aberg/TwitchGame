@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
     {
         Move();
         Rotate();
+        CheckControlInputs();
     }
 
     void Move()
@@ -62,6 +64,19 @@ public class CameraController : MonoBehaviour
             //*/
             //deltaRotation = transform.rotation.eulerAngles;
             transform.rotation = Quaternion.Euler(eulerRotation);
+        }
+    }
+
+    void CheckControlInputs()
+    {
+        if (Input.GetButtonDown("CANCEL"))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftControl))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

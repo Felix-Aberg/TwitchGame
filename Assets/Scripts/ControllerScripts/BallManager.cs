@@ -109,7 +109,13 @@ public class BallManager : MonoBehaviour
     private void Update()
     {
         //Press spacebar to create a ball with a unique ID
-        if (Input.GetButtonDown("FIRE1"))
+        if (Input.GetButtonDown("SPAWNBALL"))
+        {
+            //TEMP rng ball spawn
+            AddBall(nameGenerator.GetRandomName());
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetButton("SPAWNBALL"))
         {
             //TEMP rng ball spawn
             AddBall(nameGenerator.GetRandomName());
