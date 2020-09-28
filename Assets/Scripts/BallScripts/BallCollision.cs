@@ -9,6 +9,7 @@ public class BallCollision : MonoBehaviour
     Rigidbody rigidbody;
     BallRPM ballRPM;
     public ParticleSystem sparks;
+    public ParticleSystem critSparks;
 
     Vector3 direction;
     Vector3 finalForce;
@@ -63,8 +64,18 @@ public class BallCollision : MonoBehaviour
             magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + ballRPM.RPM * RPM_multiplier)
                 * RNG_multiplier;
 
+            
+
             if (doCrit)
+            {
                 magnitude *= critMultiplier;
+
+                critSparks.Play();
+            }
+            else
+            {
+                sparks.Play();
+            }
 
             if (magnitude > debugForceLimit)
             {
@@ -78,7 +89,7 @@ public class BallCollision : MonoBehaviour
 
             collision.rigidbody.AddForce(finalForce);
 
-            sparks.Play();
+            
 
             //Magnitude = (Velocity + RPM(?)) * RollCrit() * RNG_variety
         }
