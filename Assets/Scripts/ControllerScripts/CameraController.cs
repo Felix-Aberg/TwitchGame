@@ -31,9 +31,9 @@ public class CameraController : MonoBehaviour
         //Basic input camera controls
         //Input button names are in all caps, see "VirtualKeys" enum for button names
 
-        velocity.x = Input.GetAxis("HORIZONTAL");
-        velocity.y = Input.GetAxis("STACKED");
-        velocity.z = Input.GetAxis("VERTICAL");
+        velocity.x = Input.GetAxisRaw("HORIZONTAL");
+        velocity.y = Input.GetAxisRaw("STACKED");
+        velocity.z = Input.GetAxisRaw("VERTICAL");
 
         if (Input.GetButton("BOOST"))
         {
@@ -48,8 +48,8 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetButton("FIRE2"))
         {
-            eulerRotation.y += Input.GetAxis("MOUSEX") * mouseSensitivityX;
-            eulerRotation.x += -Input.GetAxis("MOUSEY") * mouseSensitivityY;
+            eulerRotation.y += Input.GetAxisRaw("MOUSEX") * mouseSensitivityX;
+            eulerRotation.x += -Input.GetAxisRaw("MOUSEY") * mouseSensitivityY;
 
             if (eulerRotation.x > mouseClampY)
             {

@@ -80,7 +80,9 @@ public class BallCollision : MonoBehaviour
             if (magnitude > debugForceLimit)
             {
                 Debug.Log("<b>Excessive force!</b> <i>click for more info</i>" + Environment.NewLine
-                + "<b>Crit:</b> " + doCrit + " <b>RPM push force:</b> " + ballRPM.RPM * RPM_multiplier + " <b>Velocity push force:</b> " + rigidbody.velocity.magnitude * velocityMultiplier);
+                +  "<b>Crit:</b> " + doCrit 
+                + " <b>RPM push force:</b> " + ballRPM.RPM * RPM_multiplier 
+                + " <b>Velocity push force:</b> " + rigidbody.velocity.magnitude * velocityMultiplier);
             }
 
             finalForce = direction * magnitude;
