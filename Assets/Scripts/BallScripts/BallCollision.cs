@@ -21,6 +21,9 @@ public class BallCollision : MonoBehaviour
     public float RNG_minMultiplier;
     public float RNG_maxMultiplier;
 
+    [Tooltip("Will debug a message to the log if a collision's push force exceeds this value")]
+    public float debugForceLimit;
+
 
     private void Start()
     {
@@ -48,6 +51,11 @@ public class BallCollision : MonoBehaviour
 
             magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + ballRPM.RPM * RPM_multiplier) *
                          RNG_multiplier /* * RollCrit()*/;
+
+            if (magnitude > debugForceLimit)
+            {
+                Debug.Log("Collision occured with a force exceeding " + debugForceLimit + ", with a power of : " + magnitude);
+            }
 
             finalForce = direction * magnitude;
 
