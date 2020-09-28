@@ -23,6 +23,10 @@ public class BallCollision : MonoBehaviour
     public float RNG_minMultiplier;
     public float RNG_maxMultiplier;
 
+    public float RPM_dagameOnHit;
+    public float HP_dagameOnHit; //not yet used
+
+
 
     [Tooltip("Multiplies force by this on crit")]
     public float critMultiplier;
@@ -89,9 +93,8 @@ public class BallCollision : MonoBehaviour
 
             collision.rigidbody.AddForce(finalForce);
 
-            
-
-            //Magnitude = (Velocity + RPM(?)) * RollCrit() * RNG_variety
+            ballRPM.RPM -= RPM_dagameOnHit;
+            //TODO: Reduce self HP;
         }
     }
 
