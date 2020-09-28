@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+[RequireComponent(typeof(NameGenerator))]
 public class BallManager : MonoBehaviour
 {
     //I am really not sure if I should exclusively be using a dictionary
     public Dictionary<string, GameObject> ballDictionary;
     public Dictionary<string, Material> materialDictionary;
 
+    NameGenerator nameGenerator;
 
     GameObject ballPrefab;
     Transform parent;
@@ -20,6 +22,7 @@ public class BallManager : MonoBehaviour
     {
         ballDictionary = new Dictionary<string, GameObject>();
         materialDictionary = new Dictionary<string, Material>();
+        nameGenerator = GetComponent<NameGenerator>();
 
         parent = Instantiate(new GameObject()).transform;
         parent.name = "Balls";
@@ -82,6 +85,10 @@ public class BallManager : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            Debug.LogWarning("Error! Attempted to create ball using a name that already exists");
+        }
     }
 
     public void AddBall(string name)
@@ -105,7 +112,7 @@ public class BallManager : MonoBehaviour
         if (Input.GetButtonDown("FIRE1"))
         {
             //TEMP rng ball spawn
-            AddBall(ballDictionary.Count.ToString());
+            AddBall(nameGenerator.GetRandomName());
         }
     }
 }
