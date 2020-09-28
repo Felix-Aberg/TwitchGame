@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NameTagDisplay : MonoBehaviour
 {
+    Canvas NameplateCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
