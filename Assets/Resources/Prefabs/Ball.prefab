@@ -208,9 +208,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 975270959758595283}
   RPM_multiplier: 0.1
-  velocityMultiplier: 50
+  velocityMultiplier: 1
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
+  critMultiplier: 4
+  critChanceIncrement: 0.05
+  critChance: 0
   debugForceLimit: 1000
 --- !u!114 &4894960371429570160
 MonoBehaviour:
