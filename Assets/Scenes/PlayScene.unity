@@ -591,7 +591,7 @@ MonoBehaviour:
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 0
   HP_dagameOnHit: 0
-  maxVelocity: 0
+  maxVelocity: 1000
   critMultiplier: 0
   critMultiplierIncrement: 0
   critChanceIncrement: 0
@@ -1401,7 +1401,7 @@ MonoBehaviour:
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 0
   HP_dagameOnHit: 0
-  maxVelocity: 0
+  maxVelocity: 1000
   critMultiplier: 0
   critMultiplierIncrement: 0
   critChanceIncrement: 0
