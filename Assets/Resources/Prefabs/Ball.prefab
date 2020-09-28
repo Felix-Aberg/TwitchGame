@@ -227,10 +227,11 @@ MonoBehaviour:
   velocityMultiplier: 1
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
-  RPM_dagameOnHit: 100
+  RPM_dagameOnHit: 30
   HP_dagameOnHit: 0
-  critMultiplier: 4
-  critChanceIncrement: 0.05
+  critMultiplier: 3
+  critChanceIncrement: 0.01
+  critChance: 0.01
   debugForceLimit: 1000
 --- !u!114 &4894960371429570160
 MonoBehaviour:
@@ -245,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraGravityIsEnabled: 1
-  gravityModifier: 5
+  gravityModifier: 500
 --- !u!114 &-7788080451737306204
 MonoBehaviour:
   m_ObjectHideFlags: 0

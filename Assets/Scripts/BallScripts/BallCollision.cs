@@ -32,7 +32,7 @@ public class BallCollision : MonoBehaviour
     public float critMultiplier;
     [Tooltip("In percent from 0.0 to 1.0")]
     public float critChanceIncrement;
-    float critChance;
+    public float critChance;
     bool doCrit = false;
 
     [Tooltip("Will debug a message to the log if a collision's push force exceeds this value")]
@@ -74,11 +74,14 @@ public class BallCollision : MonoBehaviour
             {
                 magnitude *= critMultiplier;
 
-                critSparks.Play();
+                if (critSparks != null)
+                    critSparks.Play();
+
             }
             else
             {
-                sparks.Play();
+                if (sparks != null)
+                    sparks.Play();
             }
 
             if (magnitude > debugForceLimit)

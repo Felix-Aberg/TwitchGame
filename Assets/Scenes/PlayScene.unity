@@ -530,12 +530,12 @@ GameObject:
   - component: {fileID: 746773137}
   - component: {fileID: 746773136}
   - component: {fileID: 746773135}
-  - component: {fileID: 746773134}
   - component: {fileID: 746773133}
   - component: {fileID: 746773132}
+  - component: {fileID: 746773134}
   m_Layer: 10
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,14 +584,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  RPM_multiplier: 0.5
-  velocityMultiplier: 50
+  RPM_multiplier: 0.1
+  velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 0
   HP_dagameOnHit: 0
   critMultiplier: 0
   critChanceIncrement: 0
+  critChance: 0
   debugForceLimit: 0
 --- !u!114 &746773134
 MonoBehaviour:
@@ -605,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88acea2f83810b5429006a7a13eea7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RPM: 500
+  RPM: 3000
   variableDrag: 0
   constantDrag: 0
 --- !u!136 &746773135
@@ -1259,7 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88acea2f83810b5429006a7a13eea7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RPM: 500
+  RPM: 3000
   variableDrag: 0
   constantDrag: 0
 --- !u!54 &1394058438
@@ -1292,14 +1293,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  RPM_multiplier: 0.5
-  velocityMultiplier: 50
+  RPM_multiplier: 0.1
+  velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_dagameOnHit: 0
   HP_dagameOnHit: 0
   critMultiplier: 0
   critChanceIncrement: 0
+  critChance: 0
   debugForceLimit: 0
 --- !u!136 &1394058440
 CapsuleCollider:
