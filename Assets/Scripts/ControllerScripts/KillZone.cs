@@ -8,7 +8,7 @@ public class KillZone : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Ball>().SelfDestruct();
         }
     }
 }

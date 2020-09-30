@@ -10,8 +10,6 @@ public class BallPhysics : MonoBehaviour
     public bool extraGravityIsEnabled;
     public float gravityModifier;
 
-    
-
     Transform child;
 
     Vector3 childPosition;

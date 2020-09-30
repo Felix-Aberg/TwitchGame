@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     BallManager ballManager;
+    Canvas startPhaseCanvas;
     public bool gameStarted;
 
     // Start is called before the first frame update
     void Start()
     {
         ballManager = gameObject.GetComponent<BallManager>();
+        startPhaseCanvas = GameObject.Find("StartPhaseCanvas").GetComponent<Canvas>();
         Time.timeScale = 0f;
         gameStarted = false;
     }
@@ -21,6 +23,7 @@ public class GameController : MonoBehaviour
         if (Input.GetButton("SUBMIT") && !gameStarted)
         {
             gameStarted = true;
+            startPhaseCanvas.enabled = false;
             Time.timeScale = 1.0f;
         }
     }
