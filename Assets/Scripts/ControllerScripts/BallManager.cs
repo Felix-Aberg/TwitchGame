@@ -75,6 +75,7 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
+            ball.GetComponent<Ball>().gameController = gameObject;
 
             //Add to dictionary
             if (unusedSpawnpoints.Count == 0)
