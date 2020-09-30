@@ -23,7 +23,8 @@ public class BallCollision : MonoBehaviour
     public float RNG_minMultiplier;
     public float RNG_maxMultiplier;
 
-    public float RPM_dagameOnHit;
+    public float RPM_minDagameOnHit;
+    public float RPM_maxDagameOnHit;
     public float HP_dagameOnHit; //not yet used
 
     public float maxRPM;
@@ -100,7 +101,7 @@ public class BallCollision : MonoBehaviour
 
             collision.rigidbody.AddForce(finalForce);
 
-            ballRPM.RPM -= RPM_dagameOnHit;
+            ballRPM.RPM -= UnityEngine.Random.Range(RPM_minDagameOnHit, RPM_maxDagameOnHit);
             //TODO: Reduce self HP;
         }
     }
