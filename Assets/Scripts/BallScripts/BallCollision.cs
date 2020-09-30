@@ -26,7 +26,7 @@ public class BallCollision : MonoBehaviour
     public float RPM_dagameOnHit;
     public float HP_dagameOnHit; //not yet used
 
-    public float maxVelocity;
+    public float maxRPM;
 
 
 
@@ -68,10 +68,11 @@ public class BallCollision : MonoBehaviour
 
             doCrit = RollCrit();
 
-            magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + ballRPM.RPM * RPM_multiplier)
+            float RPM = Mathf.Clamp(ballRPM.RPM, 0, maxRPM);
+
+            magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + RPM * RPM_multiplier)
                 * RNG_multiplier;
 
-            magnitude = Mathf.Clamp(magnitude, 0f, maxVelocity);
 
             if (doCrit)
             {
