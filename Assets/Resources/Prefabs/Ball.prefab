@@ -227,9 +227,10 @@ MonoBehaviour:
   velocityMultiplier: 2
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
-  RPM_dagameOnHit: 30
+  RPM_minDagameOnHit: 999999
+  RPM_maxDagameOnHit: 999999
   HP_dagameOnHit: 0
-  maxVelocity: 1000
+  maxRPM: 0
   critMultiplier: 2
   critMultiplierIncrement: 1
   critChanceIncrement: 0.01

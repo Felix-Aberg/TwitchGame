@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -14,8 +15,10 @@ public class BallManager : MonoBehaviour
 
     GameObject ballPrefab;
     Transform parent;
-    int spawnPointAmount;
+    public int spawnPointAmount;
+    int spawnPointRepetition = -1;
     Transform spawnPointTransform;
+    public List<Transform> unusedSpawnpoints;
 
 
     private void Start()
@@ -40,6 +43,27 @@ public class BallManager : MonoBehaviour
 
             materialDictionary.Add(material.name, material);
         }
+
+        GenerateSpawnPoints();
+    }
+
+    Vector3 GetSpawnPoint()
+    {
+        int rand = Random.Range(0, unusedSpawnpoints.Count - 1);
+        Vector3 returnValue = unusedSpawnpoints[rand].position;
+        unusedSpawnpoints.RemoveAt(rand);
+        returnValue.y += spawnPointRepetition * 3f; //dummy number but its ok
+        return returnValue;
+    }
+
+    void GenerateSpawnPoints()
+    {
+        for (int i = 0; i < spawnPointTransform.childCount; i++)
+        {
+            unusedSpawnpoints.Add(spawnPointTransform.Find("SP" + i));
+        }
+        spawnPointRepetition += 1;
+        return;
     }
 
     public void AddBall(string name, BallMaterial ballMaterial)
@@ -53,7 +77,13 @@ public class BallManager : MonoBehaviour
             ball.name = name;
 
             //Add to dictionary
-            ball.transform.position = spawnPointTransform.Find("SP" + ballDictionary.Count % spawnPointAmount).position;
+            if (unusedSpawnpoints.Count == 0)
+            {
+                GenerateSpawnPoints();
+                Debug.Log("Ran out of spawnpoints, reused them");
+            }
+
+            ball.transform.position = GetSpawnPoint();
             ballDictionary.Add(name, ball);
 
             MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
