@@ -11,6 +11,8 @@ public class BallCollision : MonoBehaviour
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
 
+    public string lastHitBy; //Used to determine killfeeds
+
     Vector3 direction;
     Vector3 finalForce;
 
@@ -54,13 +56,7 @@ public class BallCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            ////Placeholder collision, push each other away by
-            //velocity = rigidbody.velocity.magnitude;
-            //push = transform.position - collision.transform.position;
-
-            //push = push.normalized * pushForce;
-            //RNGmultiplier = Random.Range(RNGminMultiplier, RNGmaxMultiplier);
-            //finalForce = -push.normalized * velocity * RNGmultiplier;
+            lastHitBy = collision.gameObject.name;
 
             direction = collision.transform.position - transform.position;
             direction.Normalize();
