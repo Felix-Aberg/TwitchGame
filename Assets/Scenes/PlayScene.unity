@@ -410,13 +410,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 0
   critMultiplier: 0
@@ -626,10 +628,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6690128234924501368, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6690128235051196674, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
         type: 3}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235336472522, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235336472522, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6690128235404820403, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
         type: 3}
@@ -830,13 +872,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 0
   critMultiplier: 0

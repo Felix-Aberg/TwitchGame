@@ -13,6 +13,8 @@ public class KillFeed : MonoBehaviour
     public string killArrow;
     public string selfDestruct;
 
+    bool started;
+
     private void Start()
     {
         if (killFeed == null)
@@ -27,10 +29,16 @@ public class KillFeed : MonoBehaviour
                 Debug.LogWarning("Warning! KillFeed wasn't assigned before running! Please set it in the gamecontroller killfeed script");
             }
         }
+
+        killFeed.transform.parent.GetComponent<Image>().enabled = false;
     }
 
     public void PostKill(string killed, string killer)
     {
+        if (!started)
+        {
+            killFeed.transform.parent.GetComponent<Image>().enabled = true;
+        }
         lines++;
 
         if (lines > maxLines)
