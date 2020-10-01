@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     BallCollision ballCollision;
     public float minimumRPM;
 
-    public ParticleSystem deathParticles;
+    public GameObject deathParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,8 @@ public class Ball : MonoBehaviour
 
         //TODO: explode
 
-        deathParticles.Play();
+        Instantiate(deathParticles, transform.position, transform.rotation);
+        //deathParticles.Play();
         Destroy(gameObject);
     }
 }
