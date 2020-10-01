@@ -35,6 +35,12 @@ public class Ball : MonoBehaviour
     public void SelfDestruct()
     {
         //Call killfeed
+        if(gameController == null)
+        {
+            Debug.LogWarning("Ball didn't find GameController when instantiating. This is 100% unintended for normal gameplay.");
+            gameController = GameObject.FindGameObjectsWithTag("GameController")[0];
+        }
+
         gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitBy);
 
         //TODO: explode
