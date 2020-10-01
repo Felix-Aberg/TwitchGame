@@ -46,7 +46,12 @@ public class Ball : MonoBehaviour
             gameController = GameObject.FindGameObjectsWithTag("GameController")[0];
         }
 
-        gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitBy);
+        gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitByName);
+        
+        if (ballCollision.lastHitByGameObject != null)
+        {
+            ballCollision.lastHitByGameObject.GetComponent<BallRPM>().RPM += ballCollision.RPM_onKill;
+        }
         
         Instantiate(deathParticles, transform.position, transform.rotation);
         //deathParticles.Play();

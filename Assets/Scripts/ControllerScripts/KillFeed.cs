@@ -44,13 +44,18 @@ public class KillFeed : MonoBehaviour
             killed = "nobody??";
         }
 
+        if (killFeed.text != "")
+        {
+            killFeed.text += "\n";
+        }
+
         if (killer == "")
         {
-            killFeed.text = killFeed.text + killed + " " + selfDestruct + "\n";
+            killFeed.text = killFeed.text + killed + " " + selfDestruct;
             return;
         }
 
-        killFeed.text = killFeed.text + killer + " " + killArrow + " " + killed + "\n";
+        killFeed.text = killFeed.text + killer + " " + killArrow + " " + killed;
 
     }
 
