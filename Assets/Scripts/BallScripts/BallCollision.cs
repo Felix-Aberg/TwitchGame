@@ -37,7 +37,7 @@ public class BallCollision : MonoBehaviour
     public float maxRPM;
 
 
-
+    [Header("Critical hits")]
     [Tooltip("Multiplies force by this on crit")]
     public float critMultiplier;
     public float critMultiplierIncrement;
@@ -46,6 +46,7 @@ public class BallCollision : MonoBehaviour
     public float critChance;
     bool doCrit = false;
 
+    [Header("Debug")]
     [Tooltip("Will debug a message to the log if a collision's push force exceeds this value")]
     public float debugForceLimit;
 
