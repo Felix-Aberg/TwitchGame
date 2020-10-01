@@ -25,9 +25,10 @@ public class TempTwitchChat : MonoBehaviour
 
     void Start()
     {
-        userdata = GetUserdata();
         gameController = GetComponent<GameController>();
         ballManager = GetComponent<BallManager>();
+
+        userdata = GetUserdata();
         Connect();
     }
 
@@ -41,7 +42,7 @@ public class TempTwitchChat : MonoBehaviour
         ReadChat();
     }
 
-    //Store your password in /Assets/Resources/Userdata.txt
+    //Store your password in /Assets/Resources/userdata.txt
     //If the file does not exist, create it. It is not included in the git repository.
     private string[] GetUserdata()
     {

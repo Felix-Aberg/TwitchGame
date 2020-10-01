@@ -10,8 +10,6 @@ public class BallPhysics : MonoBehaviour
     public bool extraGravityIsEnabled;
     public float gravityModifier;
 
-    
-
     Transform child;
 
     Vector3 childPosition;
@@ -33,7 +31,7 @@ public class BallPhysics : MonoBehaviour
     {
         if (extraGravityIsEnabled)
         {
-            rigidbody.AddForce(Vector3.down * (gravityModifier - 1));
+            rigidbody.AddForce(Vector3.down * (gravityModifier - 1) * Time.deltaTime);
         }
     }
     void LateUpdate()
