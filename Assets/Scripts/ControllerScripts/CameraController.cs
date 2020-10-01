@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -25,7 +24,6 @@ public class CameraController : MonoBehaviour
     {
         Move();
         Rotate();
-        CheckControlInputs();
     }
 
     void Move()
@@ -50,6 +48,9 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetButton("FIRE2"))
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
             eulerRotation.y += Input.GetAxisRaw("MOUSEX") * mouseSensitivityX;
             eulerRotation.x += -Input.GetAxisRaw("MOUSEY") * mouseSensitivityY;
 
@@ -65,18 +66,12 @@ public class CameraController : MonoBehaviour
             //deltaRotation = transform.rotation.eulerAngles;
             transform.rotation = Quaternion.Euler(eulerRotation);
         }
-    }
-
-    void CheckControlInputs()
-    {
-        if (Input.GetButtonDown("CANCEL"))
+        else
         {
-            Application.Quit();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftControl))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
+
+
 }

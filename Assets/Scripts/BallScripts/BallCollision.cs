@@ -11,7 +11,8 @@ public class BallCollision : MonoBehaviour
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
 
-    public string lastHitBy; //Used to determine killfeeds
+    public string lastHitByName; //Used to determine killfeeds
+    public GameObject lastHitByGameObject; //Used to give RPM
 
     Vector3 direction;
     Vector3 finalForce;
@@ -19,14 +20,18 @@ public class BallCollision : MonoBehaviour
     float magnitude;
     float RNG_multiplier;
 
+    [Header("Type multipliers")]
     public float RPM_multiplier;
     public float velocityMultiplier;
 
+    [Header("RNG")]
     public float RNG_minMultiplier;
     public float RNG_maxMultiplier;
 
+    [Header("Damage values")]
     public float RPM_minDagameOnHit;
     public float RPM_maxDagameOnHit;
+    public float RPM_onKill;
     public float HP_dagameOnHit; //not yet used
 
     public float maxRPM;
@@ -56,7 +61,8 @@ public class BallCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            lastHitBy = collision.gameObject.name;
+            lastHitByName = collision.gameObject.name;
+            lastHitByGameObject = collision.gameObject;
 
             direction = collision.transform.position - transform.position;
             direction.Normalize();
