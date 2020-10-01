@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
     public GameObject gameController;
     BallRPM ballRPM;
     BallCollision ballCollision;
+    NameplateDisplay nameplateDisplay;
+
     public float minimumRPM;
 
     public GameObject deathParticles;
@@ -16,6 +18,7 @@ public class Ball : MonoBehaviour
     {
         ballRPM = GetComponent<BallRPM>();
         ballCollision = GetComponent<BallCollision>();
+        nameplateDisplay = GetComponent<NameplateDisplay>();
     }
 
     // Update is called once per frame
@@ -44,11 +47,11 @@ public class Ball : MonoBehaviour
         }
 
         gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitBy);
-
-        //TODO: explode
-
+        
         Instantiate(deathParticles, transform.position, transform.rotation);
         //deathParticles.Play();
+
+        Destroy(nameplateDisplay.nameplate);
         Destroy(gameObject);
     }
 }
