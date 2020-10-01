@@ -213,15 +213,15 @@ MonoBehaviour:
   critSparks: {fileID: 3461791368108906330}
   lastHitBy: 
   RPM_multiplier: 0.13
-  velocityMultiplier: 3
-  RNG_minMultiplier: 0.85
+  velocityMultiplier: 3.2
+  RNG_minMultiplier: 0.8
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 5
   RPM_maxDagameOnHit: 20
   HP_dagameOnHit: 0
   maxRPM: 1500
   critMultiplier: 2
-  critMultiplierIncrement: 0.7
+  critMultiplierIncrement: 0.64
   critChanceIncrement: 0.01
   critChance: 0.01
   debugForceLimit: 1000
@@ -582,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3044212348968105801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.632, z: 0}
+  m_LocalPosition: {x: 0, y: -0.608, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6878684924062534309}
@@ -628,7 +628,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 1.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
