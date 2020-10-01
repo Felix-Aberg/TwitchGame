@@ -47,6 +47,7 @@ public class Ball : MonoBehaviour
 
         //TODO: explode
 
+        Instantiate(deathParticles, transform.position, transform.rotation);
         deathParticles.Play();
         Destroy(gameObject);
     }
