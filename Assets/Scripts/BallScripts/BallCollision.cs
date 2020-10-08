@@ -29,6 +29,7 @@ public class BallCollision : MonoBehaviour
     float critMultiplier;
     bool doCrit = false;
 
+    [Header("Debug")]
     [Tooltip("Will debug a message to the log if a collision's push force exceeds this value")]
     public float debugForceLimit;
 

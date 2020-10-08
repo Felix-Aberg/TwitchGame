@@ -202,13 +202,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 3000
   critMultiplier: 0
@@ -612,13 +614,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 3000
   critMultiplier: 0
@@ -783,13 +787,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 8000
   critMultiplier: 0
@@ -858,6 +864,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773423323}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &938522716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6690128234924501370, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1724484660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1001582182 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6690128235051196674, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
@@ -882,6 +900,11 @@ PrefabInstance:
       propertyPath: killFeed
       value: 
       objectReference: {fileID: 1001582182}
+    - target: {fileID: 1719976341089925050, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: chatBox
+      value: 
+      objectReference: {fileID: 938522716}
     - target: {fileID: 1719976341563409688, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1183,13 +1206,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 3000
   critMultiplier: 0
@@ -1638,13 +1663,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 3000
   critMultiplier: 0
@@ -1830,10 +1857,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParentCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6690128235051196674, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
         type: 3}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235336472522, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690128235336472522, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39f55a12ada78b042a6cc9fef3e06d5a, type: 3}
@@ -1993,13 +2055,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.1
   velocityMultiplier: 10
   RNG_minMultiplier: 0.75
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 0
   RPM_maxDagameOnHit: 0
+  RPM_onKill: 0
   HP_dagameOnHit: 0
   maxRPM: 8000
   critMultiplier: 0
