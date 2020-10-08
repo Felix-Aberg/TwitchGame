@@ -12,13 +12,15 @@ public class BallManager : MonoBehaviour
     public Dictionary<string, Material> materialDictionary;
 
     NameGenerator nameGenerator;
+    public BallConfig ballConfig;
+
+    [HideInInspector] public Transform parent;
 
     GameObject ballPrefab;
-    Transform parent;
-    public int spawnPointAmount;
+    int spawnPointAmount;
     int spawnPointRepetition = -1;
     Transform spawnPointTransform;
-    public List<Transform> unusedSpawnpoints;
+    [HideInInspector] public List<Transform> unusedSpawnpoints;
 
 
     private void Start()
@@ -39,6 +41,7 @@ public class BallManager : MonoBehaviour
 
         foreach (Material material in loadedMaterials)
         {
+            //TODO: what's this??
             string name = material.name.Remove(0, 13).ToLowerInvariant();
 
             materialDictionary.Add(material.name, material);
@@ -76,6 +79,9 @@ public class BallManager : MonoBehaviour
             ball.transform.parent = parent;
             ball.name = name;
             ball.GetComponent<Ball>().gameController = gameObject;
+
+            ball.GetComponent<BallCollision>().ballConfig = ballConfig;
+            ball.GetComponent<BallCollision>().InitializeConfig();
 
             //Add to dictionary
             if (unusedSpawnpoints.Count == 0)

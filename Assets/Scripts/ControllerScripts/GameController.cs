@@ -49,5 +49,18 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (gameStarted && !gameEnded)
+        {
+            CheckWin();
+        }
+    }
+
+    private void CheckWin()
+    {
+        if(ballManager.parent.childCount == 1)
+        {
+
+        }
     }
 }

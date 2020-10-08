@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallRPM : MonoBehaviour
 {
-    public float RPM;
+    [HideInInspector] public float RPM;
 
     [Tooltip("Percent of RPM lost per second based off current RPM")]
     public float variableDrag;

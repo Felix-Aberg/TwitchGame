@@ -408,23 +408,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 0
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!114 &746773134
 MonoBehaviour:
@@ -870,23 +858,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 0
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!136 &1394058440
 CapsuleCollider:
@@ -1583,6 +1559,12 @@ PrefabInstance:
       propertyPath: chatBox
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1719976341089925051, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: ballConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d,
+        type: 2}
     - target: {fileID: 1719976341563409688, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -50,7 +50,7 @@ public class Ball : MonoBehaviour
         
         if (ballCollision.lastHitByGameObject != null)
         {
-            ballCollision.lastHitByGameObject.GetComponent<BallRPM>().RPM += ballCollision.RPM_onKill;
+            ballCollision.lastHitByGameObject.GetComponent<BallRPM>().RPM += ballCollision.ballConfig.RPMOnKill;
         }
         
         Instantiate(deathParticles, transform.position, transform.rotation);
