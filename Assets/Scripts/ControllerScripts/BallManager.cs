@@ -20,7 +20,7 @@ public class BallManager : MonoBehaviour
     int spawnPointAmount;
     int spawnPointRepetition = -1;
     Transform spawnPointTransform;
-    List<Transform> unusedSpawnpoints;
+    [HideInInspector] public List<Transform> unusedSpawnpoints;
 
 
     private void Start()
@@ -79,7 +79,9 @@ public class BallManager : MonoBehaviour
             ball.transform.parent = parent;
             ball.name = name;
             ball.GetComponent<Ball>().gameController = gameObject;
+
             ball.GetComponent<BallCollision>().ballConfig = ballConfig;
+            ball.GetComponent<BallCollision>().InitializeConfig();
 
             //Add to dictionary
             if (unusedSpawnpoints.Count == 0)
