@@ -64,9 +64,6 @@ public class BallCollision : MonoBehaviour
             direction = collision.transform.position - transform.position;
             direction.Normalize();
 
-            Debug.Log(ballConfig);
-            Debug.Log(ballConfig.RNGMinMultiplier);
-            Debug.Log(ballConfig.RNGMaxMultiplier);
             RNG_multiplier = UnityEngine.Random.Range(ballConfig.RNGMinMultiplier, ballConfig.RNGMaxMultiplier);
 
             doCrit = RollCrit();

@@ -469,6 +469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStarted: 0
+  gameRunning: 0
+  gameEnded: 0
 --- !u!114 &1719976341089925050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4453ab3b627d9a4686c954875755513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointAmount: 0
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
+  parent: {fileID: 0}
   unusedSpawnpoints: []
 --- !u!114 &1719976341089925049
 MonoBehaviour:

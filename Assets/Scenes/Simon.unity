@@ -200,23 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 3000
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!136 &39667234
 CapsuleCollider:
@@ -612,23 +600,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 3000
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!114 &746773134
 MonoBehaviour:
@@ -785,23 +761,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 0}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 8000
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!136 &773423328
 CapsuleCollider:
@@ -1204,23 +1168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 3000
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!136 &1394058440
 CapsuleCollider:
@@ -1661,23 +1613,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 3000
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!136 &1692923492
 CapsuleCollider:
@@ -2053,23 +1993,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 0}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.1
-  velocityMultiplier: 10
-  RNG_minMultiplier: 0.75
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 0
-  RPM_maxDagameOnHit: 0
-  RPM_onKill: 0
-  HP_dagameOnHit: 0
-  maxRPM: 8000
-  critMultiplier: 0
-  critMultiplierIncrement: 0
-  critChanceIncrement: 0
-  critChance: 0
   debugForceLimit: 0
 --- !u!136 &1754489576
 CapsuleCollider:
