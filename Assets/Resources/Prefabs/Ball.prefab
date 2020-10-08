@@ -211,17 +211,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparks: {fileID: 543952108443042258}
   critSparks: {fileID: 3461791368108906330}
-  lastHitBy: 
+  lastHitByName: 
+  lastHitByGameObject: {fileID: 0}
   RPM_multiplier: 0.13
   velocityMultiplier: 3.2
   RNG_minMultiplier: 0.8
   RNG_maxMultiplier: 1.15
   RPM_minDagameOnHit: 5
   RPM_maxDagameOnHit: 20
+  RPM_onKill: 100
   HP_dagameOnHit: 0
   maxRPM: 1500
   critMultiplier: 2
-  critMultiplierIncrement: 0.64
+  critMultiplierIncrement: 0.7
   critChanceIncrement: 0.01
   critChance: 0.01
   debugForceLimit: 1000
@@ -233,7 +235,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590208579037662098}
   serializedVersion: 2
-  m_Mass: 0.33
+  m_Mass: 0.3
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
