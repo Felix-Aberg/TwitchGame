@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 
 public class BallCollision : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    public BallConfig ballConfig;
+
+    Rigidbody rb;
     BallRPM ballRPM;
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
@@ -20,9 +19,11 @@ public class BallCollision : MonoBehaviour
     float magnitude;
     float RNG_multiplier;
 
-    [Header("Type multipliers")]
-    public float RPM_multiplier;
-    public float velocityMultiplier;
+    /* Most variables are stored in BallConfig ScriptableObject
+     * Which BallConfig file that is used is decided by the BallManager's GameController
+     * 
+     * All the remaining ""config"" variables (below) are ones that get changed on a object-to-object basis in runtime.
+     */
 
     [Header("RNG")]
     public float RNG_minMultiplier;
@@ -34,16 +35,12 @@ public class BallCollision : MonoBehaviour
     public float RPM_onKill;
     public float HP_dagameOnHit; //not yet used
 
-    public float maxRPM;
-
-
-
     [Tooltip("Multiplies force by this on crit")]
     public float critMultiplier;
-    public float critMultiplierIncrement;
     [Tooltip("In percent from 0.0 to 1.0")]
-    public float critChanceIncrement;
-    public float critChance;
+
+    
+    float critChance = 0f;
     bool doCrit = false;
 
     [Tooltip("Will debug a message to the log if a collision's push force exceeds this value")]
@@ -52,13 +49,14 @@ public class BallCollision : MonoBehaviour
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         ballRPM = GetComponent<BallRPM>();
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.tag == "Ball")
         {
             lastHitByName = collision.gameObject.name;
@@ -71,9 +69,9 @@ public class BallCollision : MonoBehaviour
 
             doCrit = RollCrit();
 
-            float RPM = Mathf.Clamp(ballRPM.RPM, 0, maxRPM);
+            float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
 
-            magnitude = (rigidbody.velocity.magnitude * velocityMultiplier + RPM * RPM_multiplier)
+            magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
                 * RNG_multiplier;
 
 
@@ -95,8 +93,8 @@ public class BallCollision : MonoBehaviour
             {
                 Debug.Log("<b>Excessive force</b> (" + (int)magnitude + ")" + Environment.NewLine
                 +  "<b>Crit:</b> " + doCrit 
-                + " <b>RPM push force:</b> " + (int)(ballRPM.RPM * RPM_multiplier) 
-                + " <b>Velocity push force:</b> " + (int)(rigidbody.velocity.magnitude * velocityMultiplier));
+                + " <b>RPM push force:</b> " + (int)(ballRPM.RPM * ballConfig.RPMMultiplier) 
+                + " <b>Velocity push force:</b> " + (int)(rb.velocity.magnitude * ballConfig.velocityMultiplier));
             }
 
             finalForce = direction * magnitude;
@@ -110,12 +108,12 @@ public class BallCollision : MonoBehaviour
 
     bool RollCrit()
     {
-        critChance += critChanceIncrement;
+        critChance += ballConfig.critChanceIncrement;
         //if crit
         if (UnityEngine.Random.Range(0f, 1f) < critChance)
         {
             critChance = 0f;
-            critMultiplier += critMultiplierIncrement;
+            critMultiplier += ballConfig.critMultiplierIncrement;
             return true;
         }
         return false;
