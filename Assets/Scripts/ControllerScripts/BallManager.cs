@@ -99,7 +99,7 @@ public class BallManager : MonoBehaviour
             switch (ballMaterial)
             {
                 case BallMaterial.RANDOM:
-                    BallMaterial rand = (BallMaterial)Random.Range(1f, 6f);
+                    BallMaterial rand = (BallMaterial) (ballDictionary.Count % materialDictonary.Count) + 1;
                     if (materialDictionary.ContainsKey("BallMaterial" + rand.ToString()))
                     {
                         meshRenderer.material = materialDictionary["BallMaterial" + rand.ToString()];
