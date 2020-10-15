@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallPhysics : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    Rigidbody rb;
     BallRPM ballRPM;
 
     public bool extraGravityIsEnabled;
@@ -18,11 +18,11 @@ public class BallPhysics : MonoBehaviour
     void Start()
     {
         child = transform.GetChild(0);
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         ballRPM = GetComponent<BallRPM>();
 
         childPosition = child.localPosition;
-        rigidbody.centerOfMass = Vector3.zero;
+        rb.centerOfMass = Vector3.zero;
         TurnClockwise(Vector3.zero);
     }
 
@@ -31,7 +31,7 @@ public class BallPhysics : MonoBehaviour
     {
         if (extraGravityIsEnabled)
         {
-            rigidbody.AddForce(Vector3.down * (gravityModifier - 1) * Time.deltaTime);
+            rb.AddForce(Vector3.down * (gravityModifier - 1) * Time.deltaTime);
         }
     }
     void LateUpdate()
