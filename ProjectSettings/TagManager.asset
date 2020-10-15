@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Map
+  - NameplateCanvas
   layers:
   - Default
   - TransparentFX
