@@ -10,6 +10,8 @@ public class BallCollision : MonoBehaviour
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
 
+    public AudioSource audioSource;
+
     public string lastHitByName; //Used to determine killfeeds
     public GameObject lastHitByGameObject; //Used to give RPM
 
@@ -72,6 +74,9 @@ public class BallCollision : MonoBehaviour
 
             magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
                 * RNG_multiplier;
+
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
+            audioSource.Play();
 
 
             if (doCrit)

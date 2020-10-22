@@ -23,10 +23,10 @@ MonoBehaviour:
   RNGMaxMultiplier: 1.15
   RPMMinDamageOnHit: 5
   RPMMaxDamageOnHit: 20
-  RPMOnKill: 0
+  RPMOnKill: 200
   HPDamageOnHit: 0
   critChanceIncrement: 0.01
   minimumCritChance: 0.01
-  critMultiplierIncrement: 0.64
+  critMultiplierIncrement: 0.75
   initRPM: 5000
   initCritMultiplier: 2
