@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
 
     float lastInput;
     bool isAFK;
-
+    int useAFKCamera = 2;
 
     Vector3 velocity; //This is local to the players rotation
     Vector3 eulerRotation;
@@ -26,16 +26,41 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         eulerRotation = transform.rotation.eulerAngles;
+        useAFKCamera = PlayerPrefs.GetInt("AFKCameraMode", 2);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //TODO: redo this
+        //0 = afkCamera off, 1 = afkCamera on, 2 = afkCamera always
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            useAFKCamera = 1;
+            PlayerPrefs.SetInt("AFKCameraMode", 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            useAFKCamera = 2;
+            PlayerPrefs.SetInt("AFKCameraMode", 2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            useAFKCamera = 3;
+            PlayerPrefs.SetInt("AFKCameraMode", 3);
+        }
+
         isAFK = CheckAFK();
-        if (isAFK) 
+        if ((isAFK && useAFKCamera == 2) || useAFKCamera == 3) 
             ExecuteAutoCamera();
+
         Move();
-        Rotate();
+
+        if (useAFKCamera != 3)
+            Rotate();       
     }
 
     void Move()
@@ -46,6 +71,9 @@ public class CameraController : MonoBehaviour
         velocity.x = Input.GetAxisRaw("HORIZONTAL");
         velocity.y = Input.GetAxisRaw("STACKED");
         velocity.z = Input.GetAxisRaw("VERTICAL");
+
+        if (useAFKCamera == 3)
+            velocity.x = 0;
 
         if (Input.GetButton("BOOST"))
         {
@@ -87,7 +115,7 @@ public class CameraController : MonoBehaviour
 
     bool CheckAFK()
     {
-        if (Input.anyKey /*|| Input.GetAxisRaw("MOUSEX") != 0 || Input.GetAxisRaw("MOUSEY") != 0*/)
+        if (Input.anyKey)
         {
             lastInput = 0;
         }

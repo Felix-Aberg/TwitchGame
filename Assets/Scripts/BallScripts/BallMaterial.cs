@@ -4,5 +4,9 @@ using UnityEngine;
 
 public enum BallMaterial
 {
-    RANDOM, Red, Cyan, Purple, Lime, Yellow
+    RANDOM,
+    BLACK, WHITE,
+    RED, GREEN, BLUE,
+    PINK, LIME, CYAN,
+    PURPLE, YELLOW, BROWN, ORANGE
 }
