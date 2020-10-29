@@ -88,6 +88,11 @@ public class TempTwitchChat : MonoBehaviour
                 var chatName = message.Substring(0, splitPoint);
                 chatName = chatName.Substring(1);
 
+                //Capitalise first letter of name
+                char[] name = chatName.ToCharArray();
+                name[0] = char.ToUpper(name[0]);
+                chatName = new string(name);
+
                 //Get the users message by splitting it from the string
                 splitPoint = message.IndexOf(":", 1);
                 message = message.Substring(splitPoint + 1);
@@ -108,26 +113,21 @@ public class TempTwitchChat : MonoBehaviour
             if (ChatInputs.StartsWith("!play "))
             {
                 Debug.Log("Stage 1");
-                string secondWord = ChatInputs.Split(' ').Skip(1).FirstOrDefault();
-                if (ChatInputs.Contains(' '))
+                string secondWord = ChatInputs.Split(' ').Skip(1).FirstOrDefault().ToUpper();
+
+                if (secondWord.Contains(' '))
                 {
-                    Debug.Log("Stage 2");
-                    //Error here
                     secondWord = secondWord.Remove(secondWord.IndexOf(' '));
                 }
 
                 Debug.Log("Stage 3");
                 if (Enum.TryParse(secondWord, out BallMaterial _))
                 {
-
-                    Debug.Log("Stage 4");
                     Debug.Log("Player successfully specified a ballmaterial");
                     ballManager.AddBall(ChatName, (BallMaterial)Enum.Parse(typeof(BallMaterial), secondWord));
                 }
                 else
                 {
-
-                    Debug.Log("Stage 5");
                     Debug.Log("Player failed to specify a ballmaterial");
                     ballManager.AddBall(ChatName);
                 }

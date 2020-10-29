@@ -47,7 +47,8 @@ public class Ball : MonoBehaviour
         }
 
         gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitByName);
-        
+        gameController.GetComponent<PlayerCount>().RemovePlayer();
+
         if (ballCollision.lastHitByGameObject != null)
         {
             ballCollision.lastHitByGameObject.GetComponent<BallRPM>().RPM += ballCollision.ballConfig.RPMOnKill;
