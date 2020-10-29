@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -9,6 +10,14 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivityX;
     public float mouseSensitivityY;
     public float mouseClampY;
+
+    public float rotateSpeed;
+    public float turnSpeed;
+    public float AFKThreshold;
+
+    float lastInput;
+    bool isAFK;
+
 
     Vector3 velocity; //This is local to the players rotation
     Vector3 eulerRotation;
@@ -22,6 +31,9 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isAFK = CheckAFK();
+        if (isAFK) 
+            ExecuteAutoCamera();
         Move();
         Rotate();
     }
@@ -73,5 +85,35 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    bool CheckAFK()
+    {
+        if (Input.anyKey /*|| Input.GetAxisRaw("MOUSEX") != 0 || Input.GetAxisRaw("MOUSEY") != 0*/)
+        {
+            lastInput = 0;
+        }
+        else
+        {
+            lastInput += Time.unscaledDeltaTime;
+        }
 
+        if (lastInput > AFKThreshold)
+            return true;
+        return false;
+    }
+
+    void ExecuteAutoCamera()
+    {
+        //Look toward pivot
+        Vector3 lookTowards = Quaternion.LookRotation(transform.parent.position - transform.position).eulerAngles;
+
+        lookTowards.x = Mathf.LerpAngle(transform.rotation.eulerAngles.x, lookTowards.x, turnSpeed * Time.unscaledDeltaTime);
+        lookTowards.y = Mathf.LerpAngle(transform.rotation.eulerAngles.y, lookTowards.y, turnSpeed * Time.unscaledDeltaTime);
+        transform.rotation = Quaternion.Euler(lookTowards);
+
+        //Rotate around pivot
+        transform.parent.Rotate(0f, rotateSpeed * Time.unscaledDeltaTime, 0f);
+
+        //Apply to euler
+        eulerRotation = transform.rotation.eulerAngles;
+    }
 }
