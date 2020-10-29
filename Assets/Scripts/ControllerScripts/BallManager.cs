@@ -91,6 +91,11 @@ public class BallManager : MonoBehaviour
 
             ball.transform.position = GetSpawnPoint();
             ballDictionary.Add(name, ball);
+            GetComponent<PlayerCount>().AddPlayer();
+            if (GetComponent<PlayerCount>() == null)
+            {
+                Debug.LogError("ERROR! PlayerCount's text is not set in GameController. Did you apply it in this scene?");
+            }
 
             MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
 
