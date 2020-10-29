@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 39667231}
   m_Layer: 10
   m_Name: Obstacle Birgit
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 746773134}
   m_Layer: 10
   m_Name: Obstacle Vera
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 773423325}
   m_Layer: 10
   m_Name: Obstacle JoJo
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 1394058437}
   m_Layer: 10
   m_Name: Obstacle Alfred
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 1692923489}
   m_Layer: 10
   m_Name: Obstacle Arne
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2010,7 +2010,7 @@ GameObject:
   - component: {fileID: 1754489573}
   m_Layer: 10
   m_Name: Obstacle Za Warudo
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
