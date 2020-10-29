@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c7947e72d70d040844714bed6f64fa, type: 3}
+  m_Name: Obstacle Config 1
+  m_EditorClassIdentifier: 
+  Reminder: 'Any values changed in this file WILL BE AUTOMATICALLY SAVED!!!
+
+    This
+    also goes for play mode'
+  RPMMultiplier: 0.2
+  velocityMultiplier: 3.2
+  maxRPM: 1500
+  RNGMinMultiplier: 0.8
+  RNGMaxMultiplier: 1.15
+  RPMMinDamageOnHit: 5
+  RPMMaxDamageOnHit: 20
+  RPMOnKill: 200
+  HPDamageOnHit: 0
+  critChanceIncrement: 0.01
+  minimumCritChance: 0.01
+  critMultiplierIncrement: 0.75
+  initRPM: 5000
+  initCritMultiplier: 2
