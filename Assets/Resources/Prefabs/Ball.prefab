@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4894960371429570160}
   - component: {fileID: -7788080451737306204}
   - component: {fileID: 5770502136650718837}
+  - component: {fileID: 4503040041236317652}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
@@ -209,23 +210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballConfig: {fileID: 0}
   sparks: {fileID: 543952108443042258}
   critSparks: {fileID: 3461791368108906330}
+  audioSource: {fileID: 4503040041236317652}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
-  RPM_multiplier: 0.13
-  velocityMultiplier: 3.2
-  RNG_minMultiplier: 0.8
-  RNG_maxMultiplier: 1.15
-  RPM_minDagameOnHit: 5
-  RPM_maxDagameOnHit: 20
-  RPM_onKill: 100
-  HP_dagameOnHit: 0
-  maxRPM: 1500
-  critMultiplier: 2
-  critMultiplierIncrement: 0.7
-  critChanceIncrement: 0.01
-  critChance: 0.01
   debugForceLimit: 1000
 --- !u!54 &1780281590171312226
 Rigidbody:
@@ -288,6 +278,102 @@ MonoBehaviour:
     type: 3}
   nameplate: {fileID: 0}
   offset: {x: 0, y: 1, z: 0}
+--- !u!82 &4503040041236317652
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590208579037662098}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2fe94650c476bd544bba5bfc91694bf1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
+  m_Pitch: 0.2
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1948478479935380388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,15 +1684,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
---- !u!198 &543952108443042258 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 3387537164175226823}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &431523737458298455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3098449708092291472, guid: 73cdc5b67c718cd4f8522ea10803f7ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 3387537164175226823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &543952108443042258 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed,
     type: 3}
   m_PrefabInstance: {fileID: 3387537164175226823}
   m_PrefabAsset: {fileID: 0}

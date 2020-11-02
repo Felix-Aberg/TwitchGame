@@ -10,6 +10,8 @@ public class BallCollision : MonoBehaviour
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
 
+    public AudioSource audioSource;
+
     public string lastHitByName; //Used to determine killfeeds
     public GameObject lastHitByGameObject; //Used to give RPM
 
@@ -55,12 +57,14 @@ public class BallCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.tag == "Ball")
         {
             lastHitByName = collision.gameObject.name;
             lastHitByGameObject = collision.gameObject;
+        }
 
+        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Ball")
+        {
             direction = collision.transform.position - transform.position;
             direction.Normalize();
 
@@ -72,6 +76,9 @@ public class BallCollision : MonoBehaviour
 
             magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
                 * RNG_multiplier;
+
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
+            audioSource.Play();
 
 
             if (doCrit)
@@ -91,8 +98,8 @@ public class BallCollision : MonoBehaviour
             if (magnitude > debugForceLimit)
             {
                 Debug.Log("<b>Excessive force</b> (" + (int)magnitude + ")" + Environment.NewLine
-                +  "<b>Crit:</b> " + doCrit 
-                + " <b>RPM push force:</b> " + (int)(ballRPM.RPM * ballConfig.RPMMultiplier) 
+                + "<b>Crit:</b> " + doCrit
+                + " <b>RPM push force:</b> " + (int)(ballRPM.RPM * ballConfig.RPMMultiplier)
                 + " <b>Velocity push force:</b> " + (int)(rb.velocity.magnitude * ballConfig.velocityMultiplier));
             }
 

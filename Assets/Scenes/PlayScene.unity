@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 39667231}
   m_Layer: 10
   m_Name: Obstacle Birgit
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
+  audioSource: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   debugForceLimit: 0
@@ -553,7 +554,7 @@ GameObject:
   - component: {fileID: 746773134}
   m_Layer: 10
   m_Name: Obstacle Vera
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -603,6 +604,7 @@ MonoBehaviour:
   ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
+  audioSource: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   debugForceLimit: 0
@@ -699,7 +701,7 @@ GameObject:
   - component: {fileID: 773423325}
   m_Layer: 10
   m_Name: Obstacle JoJo
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,6 +766,7 @@ MonoBehaviour:
   ballConfig: {fileID: 0}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
+  audioSource: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   debugForceLimit: 0
@@ -929,10 +932,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlObjects
       objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252958, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252958, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: AFKThreshold
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252958, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.34889922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9371603
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 40.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1719976342750664562, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510009013610873590, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: playerAmountText
+      value: 
+      objectReference: {fileID: 1495149983}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f4017bc82eb0e46ba8a8c36c5a4911, type: 3}
@@ -1106,7 +1169,7 @@ GameObject:
   - component: {fileID: 1394058437}
   m_Layer: 10
   m_Name: Obstacle Alfred
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,6 +1234,7 @@ MonoBehaviour:
   ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
+  audioSource: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   debugForceLimit: 0
@@ -1390,6 +1454,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1495149983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7694373955473158811, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1724484660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1514060286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2138617255496885812, guid: b10f435b92530db438cf511f76688fdd,
@@ -1551,7 +1627,7 @@ GameObject:
   - component: {fileID: 1692923489}
   m_Layer: 10
   m_Name: Obstacle Arne
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1616,6 +1692,7 @@ MonoBehaviour:
   ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
+  audioSource: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   debugForceLimit: 0
@@ -1797,6 +1874,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParentCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6690128234924501369, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6690128235051196673, guid: 39f55a12ada78b042a6cc9fef3e06d5a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1945,7 +2027,7 @@ GameObject:
   - component: {fileID: 1754489573}
   m_Layer: 10
   m_Name: Obstacle Za Warudo
-  m_TagString: Ball
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1996,6 +2078,7 @@ MonoBehaviour:
   ballConfig: {fileID: 0}
   sparks: {fileID: 0}
   critSparks: {fileID: 0}
+  audioSource: {fileID: 0}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   debugForceLimit: 0
