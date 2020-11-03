@@ -13,7 +13,7 @@ public class NameplateDisplay : MonoBehaviour
     private Transform nameplateTransform;
     Text text;
 
-    private Camera camera;
+    private Camera cam;
     public Vector3 offset;
 
     // Start is called before the first frame update
@@ -27,13 +27,13 @@ public class NameplateDisplay : MonoBehaviour
         text.text = name;
 
         nameplateTransform = nameplate.transform;
-        camera = Camera.main;
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        nameplateTransform.position = camera.WorldToScreenPoint(transform.position + offset);
+        nameplateTransform.position = cam.WorldToScreenPoint(transform.position + offset);
         if (nameplateTransform.position.z < 0)
         {
             nameplate.SetActive(false);
