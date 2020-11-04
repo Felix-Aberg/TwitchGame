@@ -110,7 +110,7 @@ public class BallManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("Error! Attempted to load a random material which could not be found!");
+                        Debug.LogError("Error! Attempted to load a random material (" + rand + ")which could not be found!");
                     }
                     break;
 

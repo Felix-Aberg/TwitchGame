@@ -13,7 +13,7 @@ public class KillFeed : MonoBehaviour
     public string killArrow;
     public string selfDestruct;
 
-    bool started;
+    bool started = false;
 
     private void Start()
     {
