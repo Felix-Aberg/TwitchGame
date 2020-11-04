@@ -16,7 +16,7 @@ MonoBehaviour:
 
     This
     also goes for play mode'
-  RPMMultiplier: 0.2
+  RPMMultiplier: 0.3
   velocityMultiplier: 3.2
   maxRPM: 1500
   RNGMinMultiplier: 0.8
