@@ -55,9 +55,13 @@ public class Ball : MonoBehaviour
         }
         
         Instantiate(deathParticles, transform.position, transform.rotation);
-        //deathParticles.Play();
+        
+        //If player has a nameplate, destroy it
+        if (GetComponent<NameplateDisplay>() != null)
+        {
+            Destroy(nameplateDisplay.nameplate);
+        }
 
-        Destroy(nameplateDisplay.nameplate);
         Destroy(gameObject);
     }
 }

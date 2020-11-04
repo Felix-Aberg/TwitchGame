@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballConfig: {fileID: 0}
+  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
   sparks: {fileID: 543952108443042258}
   critSparks: {fileID: 3461791368108906330}
   audioSource: {fileID: 4503040041236317652}
