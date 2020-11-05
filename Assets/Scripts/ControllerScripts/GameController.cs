@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetButtonDown("CANCEL"))
         {
+            GetComponent<DataManager>().SaveAll();
+
             if (SceneManager.GetSceneByName("LevelSelectScene") == null)
             {
                 Debug.LogError("ERROR! Couldn't find LevelSelectScene!");
