@@ -37,17 +37,26 @@ public class FileWriter : MonoBehaviour
         return returnPath;
     }
 
-    public static string GetDirectoryPath(bool isTotal)
+    public static string GetDirectoryPath(bool isTotal, bool isUser)
     {
-        string returnPath = savePathPlayerRoot;
+        string returnPath;
 
-        if (isTotal)
+        if (isUser)
         {
-            returnPath += "/" + savePathTotal + "/";
+            returnPath = savePathPlayerRoot;
+
+            if (isTotal)
+            {
+                returnPath += "/" + savePathTotal + "/";
+            }
+            else
+            {
+                returnPath += "/" + sessionID.ToString() + "/";
+            }
         }
         else
         {
-            returnPath += "/" + sessionID.ToString() + "/";
+            returnPath = savePathStreamerRoot + "/";
         }
 
         return returnPath;
@@ -60,20 +69,30 @@ public class FileWriter : MonoBehaviour
 
         //TODO: TURN INTO USERID INSTEAD OF USERNAME
         string savePath = GetFilePath(playerData.username, isTotal);
-        string saveDirectory = GetDirectoryPath(isTotal);
+        string saveDirectory = GetDirectoryPath(isTotal, true);
 
         if (!Directory.Exists(saveDirectory))
         {
             //if it doesn't, create it
             Directory.CreateDirectory(saveDirectory);
         }
-
+        /*
+        //Serialize Method
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         using (FileStream fileStream = File.Create(savePath))
         {
             binaryFormatter.Serialize(fileStream, playerData);
+
+
         }
-        Debug.Log("saved");
+        */
+
+        //JSON Method
+        string output = JsonUtility.ToJson(playerData, true);
+        using (StreamWriter newTask = new StreamWriter(savePath, false))
+        {
+            newTask.WriteLine(output);
+        }
     }
 
     /// <summary> Get file path for streamer's save file </summary>
@@ -85,13 +104,17 @@ public class FileWriter : MonoBehaviour
 
         if (File.Exists(savePath))
         {
+            /*
+            //Serialize Method
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             using (FileStream fileStream = File.Open(savePath, FileMode.Open))
             {
                 playerData = (PlayerData)binaryFormatter.Deserialize(fileStream);
             }
+            */
 
-            return playerData;
+            string input = File.ReadAllText(savePath);
+            return playerData = JsonUtility.FromJson<PlayerData>(input);
         }
         return null;
     }
@@ -119,10 +142,27 @@ public class FileWriter : MonoBehaviour
     public static void SaveStreamerData(StreamerData streamerData, bool isTotal)
     {
         string savePath = GetFilePath(isTotal);
+        string saveDirectory = GetDirectoryPath(isTotal, false);
+        if (!Directory.Exists(saveDirectory))
+        {
+            //if it doesn't, create it
+            Directory.CreateDirectory(saveDirectory);
+        }
+
+        /*
+        //Serialize Method
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         using (FileStream fileStream = File.Create(savePath))
         {
             binaryFormatter.Serialize(fileStream, streamerData);
+        }
+        */
+
+        //JSON Method
+        string output = JsonUtility.ToJson(streamerData, true);
+        using (StreamWriter newTask = new StreamWriter(savePath, false))
+        {
+            newTask.WriteLine(output);
         }
     }
 
@@ -133,13 +173,18 @@ public class FileWriter : MonoBehaviour
         StreamerData streamerData;
         if (File.Exists(savePath))
         {
+            /*
+            //Serialize Method
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             using (FileStream fileStream = File.Open(savePath, FileMode.Open))
             {
                 streamerData = (StreamerData)binaryFormatter.Deserialize(fileStream);
             }
+            */
 
-            return streamerData;
+            //JSON Method
+            string input = File.ReadAllText(savePath);
+            return streamerData = JsonUtility.FromJson<StreamerData>(input);
         }
 
         return null;
