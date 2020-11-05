@@ -109,6 +109,7 @@ public class BallManager : MonoBehaviour
                     if (materialDictionary.ContainsKey("BallMaterial" + rand.ToString()))
                     {
                         meshRenderer.material = materialDictionary["BallMaterial" + rand.ToString()];
+                        Debug.Log(meshRenderer.material);
                     }
                     else
                     {
