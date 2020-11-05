@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1109903b8063f25488d8be144b3d41c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBot: 1
   gameController: {fileID: 0}
   minimumRPM: 30
   deathParticles: {fileID: 5577456928450954301, guid: df07eabe33f42574da574a62a9f1d305,

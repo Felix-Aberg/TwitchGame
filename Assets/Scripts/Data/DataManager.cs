@@ -43,36 +43,16 @@ public class DataManager : MonoBehaviour
 
         if(streamerSessionData == null)
         {
-            streamerSessionData = new StreamerData();
-            streamerTotalData = new StreamerData();
-            Debug.LogWarning("No streamer data loaded! Created a fresh set");
+            streamerSessionData = DefaultStreamerData();
+            Debug.LogWarning("No streamer session data loaded! Created a fresh set");
+        }
+
+        if (streamerTotalData == null)
+        {
+            streamerTotalData = DefaultStreamerData();
+            Debug.LogWarning("No streamer total data loaded! Created a fresh set");
         }
     }
-
-
-    /*
-    static IEnumerator LoadPlayer(string url)
-    {
-        UnityWebRequest www = UnityWebRequest.Get(url);
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            //Handle data
-            //if entry doesnt exist, add:
-
-            //TODO: turn playerID from int to string
-            {
-                FileWriter.LoadPlayerData(, false);
-                FileWriter.LoadPlayerData(, true);
-            } 
-        }
-    }
-    */
 
     public void LoadPlayerData(string userID)
     {
@@ -138,6 +118,21 @@ public class DataManager : MonoBehaviour
         playerData.totalLifeSpan            = 0;
 
         return playerData;
+    }
+
+    public StreamerData DefaultStreamerData()
+    {
+        StreamerData streamerData = new StreamerData();
+        streamerData.dataVersion = currentDataVersion;
+
+        streamerData.gamesPlayed            = 0;
+        streamerData.totalJoins             = 0;
+        streamerData.uniqueJoins            = 0;
+
+        streamerData.longestGame            = 0;
+        streamerData.shortestGame           = 0;
+        streamerData.totalGameLength        = 0;
+        return streamerData;
     }
 
     public void SaveAll()

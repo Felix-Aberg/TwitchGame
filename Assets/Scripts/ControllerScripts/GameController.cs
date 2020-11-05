@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     BallManager ballManager;
     DataManager dataManager;
+    PlayerCount playerCount;
 
     Transform parentCanvas;
     Canvas startPhaseCanvas;
@@ -19,14 +20,17 @@ public class GameController : MonoBehaviour
     public bool gameEnded;
     bool nameplatesEnabled;
 
+    int playersLastFrame = 0;
+    int counter = 0;
     // Supporting data stuff
-    private string[] topTwo;
+    public string[] topTwo;
 
     // Start is called before the first frame update
     void Start()
     {
         ballManager = gameObject.GetComponent<BallManager>();
         dataManager = gameObject.GetComponent<DataManager>();
+        playerCount = gameObject.GetComponent<PlayerCount>();
         parentCanvas = GameObject.FindWithTag("ParentCanvas").transform;
         startPhaseCanvas = parentCanvas.Find("StartPhaseCanvas").GetComponent<Canvas>();
         nameplateCanvas = parentCanvas.Find("NameplateCanvas").GetComponent<Canvas>();
@@ -45,6 +49,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        CheckControlInputs();
+    }
+
+    void CheckControlInputs()
+    {
         if (Input.GetButton("SUBMIT") && !gameStarted)
         {
             gameStarted = true;
@@ -52,11 +61,6 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1.0f;
         }
 
-        CheckControlInputs();
-    }
-
-    void CheckControlInputs()
-    {
         if (Input.GetButtonDown("CANCEL"))
         {
             BeforeSceneExit();
@@ -110,53 +114,64 @@ public class GameController : MonoBehaviour
 
     private void CheckWin()
     {
-        if (ballManager.parent.childCount == 5)
+        if (playersLastFrame != 5 && playerCount.alivePlayers == 5)
         {
+            Debug.Log("Top 5!");
             //Top 5!
-            foreach (KeyValuePair<string, GameObject> entry in ballManager.ballDictionary)
+            foreach (Transform child in ballManager.parent)
             {
-                // do something with entry.Value or entry.Key
-                dataManager.playerSessionDataArray[entry.Key].topFives += 1;
-                dataManager.playerTotalDataArray[entry.Key].topFives += 1;
+                if (!child.GetComponent<Ball>().isBot)
+                {
+                    //Statistics: Top 5 placement
+                    dataManager.playerSessionDataArray[child.name].topFives += 1;
+                    dataManager.playerTotalDataArray[child.name].topFives += 1;
+                }
             }
         }
 
-        if (ballManager.parent.childCount == 2)
+        if (playersLastFrame != 2 && playerCount.alivePlayers == 2)
         {
+            Debug.Log("Top 2!");
             //Top 2!
             int i = 0;
-            foreach (KeyValuePair<string, GameObject> entry in ballManager.ballDictionary)
+
+            foreach (Transform child in ballManager.parent)
             {
-                topTwo[i] = entry.Key;
+
+                Debug.Log(child);
+                topTwo[i] = child.name;
                 i++;
             }
         }
 
-        if (ballManager.parent.childCount == 1)
+        if (playersLastFrame != 1 && playerCount.alivePlayers == 1)
         {
             gameEnded = true;
+            Debug.Log("Game ended!");
 
             //Player won!
             string lastPlayerName = ballManager.parent.GetChild(0).name;
-            if (ballManager.ballDictionary.ContainsKey(lastPlayerName))
+            if (dataManager.playerTotalDataArray.ContainsKey(lastPlayerName))
             {
+                //Statistics: 1st place win
                 dataManager.playerSessionDataArray[lastPlayerName].wins += 1;
                 dataManager.playerTotalDataArray[lastPlayerName].wins += 1;
             }
 
             if (topTwo[0] != null)
             {
-                foreach (string s in topTwo)
+                for (int i = 0; i < topTwo.Length; i++) 
                 {
-                    if (s != ballManager.ballDictionary.Keys.ToArray()[0])
+                    if (topTwo[i] != ballManager.parent.GetChild(0).name)
                     {
-                        Debug.Log(s);
-                        Debug.Log(dataManager.playerSessionDataArray.ContainsKey(s));
+                        //2nd place identified
+
                         //If the ball has loaded data, which only players joining through twitch.tv do
-                        if (dataManager.playerSessionDataArray.ContainsKey(s))
+                        if (dataManager.playerSessionDataArray.ContainsKey(topTwo[i]))
                         {
-                            dataManager.playerSessionDataArray[s].secondPlaces += 1;
-                            dataManager.playerTotalDataArray[s].secondPlaces += 1;
+                            //Statistics: 2nd place
+                            dataManager.playerSessionDataArray[topTwo[i]].secondPlaces += 1;
+                            dataManager.playerTotalDataArray[topTwo[i]].secondPlaces += 1;
                         }
                     }
                 }
@@ -164,5 +179,7 @@ public class GameController : MonoBehaviour
             
 
         }
+
+        playersLastFrame = playerCount.alivePlayers;
     }
 }

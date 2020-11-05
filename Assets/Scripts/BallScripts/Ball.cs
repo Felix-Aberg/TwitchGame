@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public bool isBot;
     public GameObject gameController;
     BallRPM ballRPM;
     BallCollision ballCollision;
     NameplateDisplay nameplateDisplay;
 
     public float minimumRPM;
-
     public GameObject deathParticles;
 
     // Start is called before the first frame update
@@ -49,9 +49,41 @@ public class Ball : MonoBehaviour
         gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitByName);
         gameController.GetComponent<PlayerCount>().RemovePlayer();
 
+        if(!isBot)
+        {
+            //Statistics: Add death to player
+            gameController.GetComponent<DataManager>().playerSessionDataArray[name].deaths += 1;
+            gameController.GetComponent<DataManager>().playerTotalDataArray[name].deaths += 1;
+        }
+        
         if (ballCollision.lastHitByGameObject != null)
         {
+            //Gain RPM on kill
             ballCollision.lastHitByGameObject.GetComponent<BallRPM>().RPM += ballCollision.ballConfig.RPMOnKill;
+
+            if (!ballCollision.lastHitByGameObject.GetComponent<Ball>().isBot)
+            {
+                if (isBot)
+                {
+                    //Statistics: Add bot kill to player
+                    gameController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].botKills += 1;
+                    gameController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].botKills += 1;
+                }
+                else
+                {
+                    //Statistics: Add kill to player
+                    gameController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].kills += 1;
+                    gameController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].kills += 1;
+                }
+
+                PlayerCount playerCount = gameController.GetComponent<PlayerCount>();
+                if (playerCount.totalPlayers == playerCount.alivePlayers + 1)
+                {
+                    //Statistics: Add bounty kill to player
+                    gameController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].firstBloods += 1;
+                    gameController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].firstBloods += 1;
+                }
+            }
         }
         
         Instantiate(deathParticles, transform.position, transform.rotation);
