@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerCount : MonoBehaviour
 {
-    int totalPlayers = 0;
-    int alivePlayers = 0;
+    public int totalPlayers = 0;
+    public int alivePlayers = 0;
 
     public Text playerAmountText;
 
