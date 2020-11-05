@@ -20,6 +20,7 @@ public class TempTwitchChat : MonoBehaviour
     public Text chatBox;
     private GameController gameController;
     private BallManager ballManager;
+    private DataManager dataManager;
 
     //Move these into GetUserdata() later
 
@@ -27,6 +28,7 @@ public class TempTwitchChat : MonoBehaviour
     {
         gameController = GetComponent<GameController>();
         ballManager = GetComponent<BallManager>();
+        dataManager = GetComponent<DataManager>();
 
         userdata = GetUserdata();
         Connect();
@@ -107,9 +109,20 @@ public class TempTwitchChat : MonoBehaviour
 
     private void GameInputs(string ChatInputs, string ChatName)
     {
+
+
         ChatInputs = ChatInputs.ToLower();
-        if (!gameController.gameStarted)
+        if (!gameController.gameStarted && ChatInputs.StartsWith("!play"))
         {
+            //Load save data
+            if (!ballManager.ballDictionary.ContainsKey(ChatName))
+            {
+                Debug.Log("Loaded player data for: " + ChatName);
+                dataManager.LoadPlayerData(ChatName);
+            }
+
+
+            //!play | Spawn ball
             if (ChatInputs.StartsWith("!play "))
             {
                 Debug.Log("Stage 1");
