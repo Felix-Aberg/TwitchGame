@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c7947e72d70d040844714bed6f64fa, type: 3}
-  m_Name: LaunchObstacle Config 2
+  m_Name: LaunchConfig
   m_EditorClassIdentifier: 
   Reminder: 'Any values changed in this file WILL BE AUTOMATICALLY SAVED!!!
 
     This
     also goes for play mode'
-  RPMMultiplier: 1.02
-  velocityMultiplier: 3.68
-  maxRPM: 1500
+  RPMMultiplier: 5
+  velocityMultiplier: 3.2
+  maxRPM: 5000
   RNGMinMultiplier: 0.8
   RNGMaxMultiplier: 1.15
   RPMMinDamageOnHit: 5
   RPMMaxDamageOnHit: 20
   RPMOnKill: 200
   HPDamageOnHit: 0
-  critChanceIncrement: 5.06
-  minimumCritChance: 1.97
-  critMultiplierIncrement: 1.92
-  initRPM: 7000
+  critChanceIncrement: 0.01
+  minimumCritChance: 0.01
+  critMultiplierIncrement: 0.75
+  initRPM: 5000
   initCritMultiplier: 2
