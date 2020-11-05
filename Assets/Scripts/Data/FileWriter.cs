@@ -7,37 +7,48 @@ using UnityEngine;
 public class FileWriter : MonoBehaviour
 {
     //This script is to read/write data
-    private static readonly string savePathRoot = Application.persistentDataPath + "/Saves";
-    private static readonly string savePathPlayerRoot = savePathRoot + "/Players";
-    private static readonly string savePathStreamerRoot = savePathRoot + "/Streamer";
-    private static readonly string savePathTotal = "/Total";
-    private static readonly string fileType = ".txt";
-    private static readonly int sessionID = (int)Time.time;
+    private string savePathRoot;
+    private string savePathPlayerRoot;
+    private string savePathStreamerRoot;
+    private string savePathTotal;
+    private string fileType;
+
+    //To be replaced
+    //private static readonly string sessionID = "0";
+
+    private string sessionID; //TODO: doesn't work
+
 
     // ##### PLAYER FUNCTIONS ###
 
-    public static void Init()
+    public void Init()
     {
+        savePathRoot = Application.persistentDataPath + "/Saves";
+        savePathPlayerRoot = savePathRoot + "/Players";
+        savePathStreamerRoot = savePathRoot + "/Streamer";
+        savePathTotal = "/Total";
+        fileType = ".txt";
 
+    sessionID = System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss")
+                                        .Replace("/", "").Replace(":", "");
     }
 
-    public static string GetFilePath(string userID, bool isTotal)
+    public string GetFilePath(string userID, bool isTotal)
     {
         string returnPath = savePathPlayerRoot;
 
         if (isTotal)
         {
-            returnPath += "/" + savePathTotal + "/" + userID.ToString() + fileType;
+            returnPath += "/" + savePathTotal + "/" + userID + fileType;
         }
         else
         {
-            returnPath += "/" + sessionID.ToString() + "/" + userID.ToString() + fileType;
+            returnPath += "/" + sessionID.ToString() + "/" + userID + fileType;
         }
-
         return returnPath;
     }
 
-    public static string GetDirectoryPath(bool isTotal, bool isUser)
+    public string GetDirectoryPath(bool isTotal, bool isUser)
     {
         string returnPath;
 
@@ -63,7 +74,7 @@ public class FileWriter : MonoBehaviour
     }
 
     //WARNING: This save OVERWRITES ANY PREVIOUSLY STORED DATA
-    public static void SavePlayerData(PlayerData playerData, bool isTotal)
+    public void SavePlayerData(PlayerData playerData, bool isTotal)
     {
         Debug.Log("PlayerData: " + playerData);
 
@@ -75,6 +86,7 @@ public class FileWriter : MonoBehaviour
         {
             //if it doesn't, create it
             Directory.CreateDirectory(saveDirectory);
+            Debug.Log("Directory doesn't exist! Creating it! " + saveDirectory);
         }
         /*
         //Serialize Method
@@ -96,7 +108,7 @@ public class FileWriter : MonoBehaviour
     }
 
     /// <summary> Get file path for streamer's save file </summary>
-    public static PlayerData LoadPlayerData(string userID, bool isTotal)
+    public PlayerData LoadPlayerData(string userID, bool isTotal)
     {
         string savePath = GetFilePath(userID, isTotal);
 
@@ -122,7 +134,7 @@ public class FileWriter : MonoBehaviour
     // ##### STREAMER FUNCTIONS ###
 
     /// <summary> Get file path for streamer's save file </summary>
-    public static string GetFilePath(bool isTotal)
+    public string GetFilePath(bool isTotal)
     {
         string returnPath = savePathStreamerRoot;
 
@@ -139,7 +151,7 @@ public class FileWriter : MonoBehaviour
     }
 
     /// <summary> WARNING: This save OVERWRITES ANY PREVIOUSLY STORED DATA </summary>
-    public static void SaveStreamerData(StreamerData streamerData, bool isTotal)
+    public void SaveStreamerData(StreamerData streamerData, bool isTotal)
     {
         string savePath = GetFilePath(isTotal);
         string saveDirectory = GetDirectoryPath(isTotal, false);
@@ -166,7 +178,7 @@ public class FileWriter : MonoBehaviour
         }
     }
 
-    public static StreamerData LoadStreamerData(bool isTotal)
+    public StreamerData LoadStreamerData(bool isTotal)
     {
         string savePath = GetFilePath(isTotal);
 
