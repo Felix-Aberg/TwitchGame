@@ -16,6 +16,7 @@ public class BallManager : MonoBehaviour
     [HideInInspector] public Transform parent;
 
     GameObject ballPrefab;
+    GameObject botPrefab;
     int spawnPointAmount;
     int spawnPointRepetition = -1;
     Transform spawnPointTransform;
@@ -31,6 +32,7 @@ public class BallManager : MonoBehaviour
         parent = Instantiate(new GameObject()).transform;
         parent.name = "Balls";
         ballPrefab = Resources.Load("Prefabs/Ball") as GameObject;
+        botPrefab = Resources.Load("Prefabs/BotBall") as GameObject;
 
         spawnPointTransform = transform.Find("SpawnPoints");
         spawnPointAmount = spawnPointTransform.childCount;
@@ -132,6 +134,62 @@ public class BallManager : MonoBehaviour
         }
     }
 
+    public void AddBot()
+    {
+        AddBot(false);
+    }
+
+    public void AddBot(bool useRandomColor)
+    {
+        string name = nameGenerator.GetRandomName();
+        if (!ballDictionary.ContainsKey(name))
+        {
+            //Create ball
+            GameObject ball = Instantiate(botPrefab);
+
+            ball.transform.parent = parent;
+            ball.name = name;
+            ball.GetComponent<Ball>().gameController = gameObject;
+
+            ball.GetComponent<BallCollision>().ballConfig = ballConfig;
+            ball.GetComponent<BallCollision>().InitializeConfig();
+
+            //Add to dictionary
+            if (unusedSpawnpoints.Count == 0)
+            {
+                GenerateSpawnPoints();
+                Debug.Log("Ran out of spawnpoints, reused them");
+            }
+
+            ball.transform.position = GetSpawnPoint();
+            ballDictionary.Add(name, ball);
+            GetComponent<PlayerCount>().AddPlayer();
+            if (GetComponent<PlayerCount>() == null)
+            {
+                Debug.LogError("ERROR! PlayerCount's text is not set in GameController. Did you apply it in this scene?");
+            }
+
+            if (useRandomColor)
+            {
+                MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+
+                BallMaterial rand = (BallMaterial)(ballDictionary.Count % materialDictionary.Count) + 1;
+                if (materialDictionary.ContainsKey("BallMaterial" + rand.ToString()))
+                {
+                    meshRenderer.material = materialDictionary["BallMaterial" + rand.ToString()];
+                }
+                else
+                {
+                    Debug.LogError("Error! Attempted to load a random material (" + rand + ")which could not be found!");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Error! Attempted to create ball using a name that already exists");
+        }
+    }
+
     public void AddBall(string name)
     {
         AddBall(name, BallMaterial.RANDOM);
@@ -152,14 +210,12 @@ public class BallManager : MonoBehaviour
         //Press spacebar to create a ball with a unique ID
         if (Input.GetButtonDown("SPAWNBALL"))
         {
-            //TEMP rng ball spawn
-            AddBall(nameGenerator.GetRandomName());
+            AddBot();
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetButton("SPAWNBALL"))
         {
-            //TEMP rng ball spawn
-            AddBall(nameGenerator.GetRandomName());
+            AddBot();
         }
     }
 }
