@@ -27,20 +27,20 @@ public class PlayerData
      * total lifespan (show average)
      */
 
-    public short dataVersion;
-    public int userID;
-    public string username;
+    public short dataVersion;   //Added, functional, seemingly bug free!
+    public int userID;          //To be added
+    public string username;     //Added, functional, seemingly bug free!
 
-    public uint deaths;
-    public uint kills;
-    public uint botKills;
-    public uint bountyKills;
-    public uint firstBloods;
+    public uint deaths;         //Added, functional, seemingly bug free!
+    public uint kills;          //Added, functional, seemingly bug free!
+    public uint botKills;       //Added, functional, seemingly bug free!
+    public uint bountyKills;            //not to be added this time
+    public uint firstBloods;    //Added, functional, seemingly bug free!
 
-    public uint gamesPlayed;
-    public uint points;
-    public uint wins;
-    public uint secondPlaces;
-    public uint topFives;
-    public uint totalLifeSpan;
+    public uint gamesPlayed;    
+    public uint points;         
+    public uint wins;           //Added, functional, seemingly bug free!
+    public uint secondPlaces;   //Added, functional, seemingly bug free!
+    public uint topFives;       //Added, functional, seemingly bug free!
+    public uint totalLifeSpan;  
 }

@@ -1078,6 +1078,11 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.b
       value: 0.6226415
       objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252952, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1719976342434252954, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_IsActive
