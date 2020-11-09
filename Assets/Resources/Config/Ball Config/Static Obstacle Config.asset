@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c7947e72d70d040844714bed6f64fa, type: 3}
-  m_Name: Obstacle Config 1
+  m_Name: Static Obstacle Config
   m_EditorClassIdentifier: 
   Reminder: 'Any values changed in this file WILL BE AUTOMATICALLY SAVED!!!
 
     This
     also goes for play mode'
-  RPMMultiplier: 0.3
+  RPMMultiplier: 0.12
   velocityMultiplier: 3.2
   maxRPM: 1500
   RNGMinMultiplier: 0.8
