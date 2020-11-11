@@ -17,12 +17,12 @@ public class SlowMoTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(Time.timeScale);
         Time.timeScale += (1f / timeSpeedUpLenght) * Time.unscaledDeltaTime;
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
 
 
-       if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z))
         {
             Time.timeScale = timeSlowdonwTime;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
@@ -30,9 +30,13 @@ public class SlowMoTime : MonoBehaviour
             {
                 Time.timeScale = timeSlowGoal;
         }*/
-            }
-        
-       
-                
+        }
+        else
+        {
+            Time.fixedDeltaTime = Time.deltaTime;
+
+
+
+        }
     }
 }
