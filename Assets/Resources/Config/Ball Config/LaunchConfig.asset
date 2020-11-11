@@ -25,8 +25,8 @@ MonoBehaviour:
   RPMMaxDamageOnHit: 20
   RPMOnKill: 200
   HPDamageOnHit: 0
-  critChanceIncrement: 0.01
-  minimumCritChance: 0.01
-  critMultiplierIncrement: 0.75
+  critChanceIncrement: 0
+  minimumCritChance: 0
+  critMultiplierIncrement: 0
   initRPM: 5000
   initCritMultiplier: 2
