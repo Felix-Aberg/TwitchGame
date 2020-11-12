@@ -10,8 +10,8 @@ public class Blastof : MonoBehaviour
    public Vector3 startpos;
     public bool go;
 
-    public float MinTimer;
-    public float MaxTimer;
+    public float minTimer;
+    public float maxTimer;
     [SerializeField]
     float timerr;
 
