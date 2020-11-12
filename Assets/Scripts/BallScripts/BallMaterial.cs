@@ -8,5 +8,6 @@ public enum BallMaterial
     BLACK, WHITE,
     RED, GREEN, BLUE,
     PINK, LIME, CYAN,
-    PURPLE, YELLOW, BROWN, ORANGE
+    PURPLE, YELLOW, BROWN, ORANGE,
+    GOLD
 }

@@ -81,10 +81,10 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
-            ball.GetComponent<Ball>().gameController = gameObject;
 
-            ball.GetComponent<BallCollision>().ballConfig = ballConfig;
-            ball.GetComponent<BallCollision>().InitializeConfig();
+            ball.transform.GetChild(0).gameObject.GetComponent<Ball>().gameController = gameObject;
+            ball.transform.GetChild(0).gameObject.GetComponent<BallCollision>().ballConfig = ballConfig;
+            ball.transform.GetChild(0).gameObject.GetComponent<BallCollision>().InitializeConfig();
 
             //Add to dictionary
             if (unusedSpawnpoints.Count == 0)
@@ -101,7 +101,7 @@ public class BallManager : MonoBehaviour
                 Debug.LogError("ERROR! PlayerCount's text is not set in GameController. Did you apply it in this scene?");
             }
 
-            MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
 
             //Set material
             switch (ballMaterial)
@@ -129,6 +129,11 @@ public class BallManager : MonoBehaviour
                         Debug.LogError("Error! Attempted to load the material " + ballMaterial.ToString() + " which could not be found!");
                     }
                     break;
+            }
+
+            if (ballMaterial == BallMaterial.GOLD)
+            {
+                MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
             }
         }
         else
@@ -174,7 +179,7 @@ public class BallManager : MonoBehaviour
 
             if (useRandomColor)
             {
-                MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+                MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
 
                 BallMaterial rand = (BallMaterial)(ballDictionary.Count % materialDictionary.Count) + 1;
                 if (materialDictionary.ContainsKey("BallMaterial" + rand.ToString()))
