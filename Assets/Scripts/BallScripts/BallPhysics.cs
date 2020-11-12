@@ -19,6 +19,9 @@ public class BallPhysics : MonoBehaviour
 
     Vector3 childPosition;
 
+    int layer;
+    int mapCollisions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,8 @@ public class BallPhysics : MonoBehaviour
         cfg = GetComponent<BallCollision>().ballConfig;
         childPosition = child.localPosition;
         rb.centerOfMass = Vector3.zero;
+
+        layer = LayerMask.NameToLayer("Map");
 
         circleSpeed = Random.Range(cfg.minCircleSpeed, cfg.maxCircleSpeed);
         dir = Random.Range(0f, 360f);
@@ -46,7 +51,12 @@ public class BallPhysics : MonoBehaviour
         {
             rb.AddForce(Vector3.down * (gravityModifier - 1) * Time.fixedDeltaTime);
         }
-        MoveCircular();
+
+        //If colliding with anything on the map layer
+        if (mapCollisions > 0)
+        {
+            MoveCircular();
+        }
     }
 
     void LateUpdate()
@@ -65,7 +75,6 @@ public class BallPhysics : MonoBehaviour
         dir += circleSpeed * Time.fixedDeltaTime;
         
         rotation.rotation = Quaternion.AngleAxis(dir, Vector3.up);
-        Debug.Log(dir + " | " + rotation.rotation.eulerAngles);
         rb.AddForce(rotation.forward * cfg.circleForce * Time.fixedDeltaTime, ForceMode.Force);
     }
 
@@ -75,5 +84,21 @@ public class BallPhysics : MonoBehaviour
         dir = Random.Range(0f, 360f);
         if (Random.value < 0.5f)
             circleSpeed *= -1;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == layer)
+        {
+            mapCollisions++;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == layer)
+        {
+            mapCollisions--;
+        }
     }
 }

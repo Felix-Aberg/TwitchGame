@@ -8,10 +8,10 @@ public class Blastof : MonoBehaviour
     public float upSpeed;
     public float downSpeed;
    public Vector3 startpos;
-    public bool ascending;
+    public bool go;
 
-    public float minTimer;
-    public float maxTimer;
+    public float MinTimer;
+    public float MaxTimer;
     [SerializeField]
     float timerr;
 
@@ -34,12 +34,12 @@ public class Blastof : MonoBehaviour
             timerr -= Time.deltaTime;
             if(timerr <= 0)
             {
-                ascending = true;
+                go = true;
 
                 timerr = Random.Range(minTimer, maxTimer);
             }
         }
-        if(ascending == true)
+        if(go == true)
         {
             blasteroffer.GetComponent<Collider>().enabled = true;
             transform.position = transform.position + new Vector3(0, 5 * upSpeed * Time.deltaTime, 0);
@@ -47,9 +47,9 @@ public class Blastof : MonoBehaviour
         }
         if(transform.position.y > targethight.y)
         {
-            ascending = false;
+            go = false;
         }
-        if (ascending == false && transform.position.y > startpos.y)
+        if (go == false && transform.position.y > startpos.y)
         {
             blasteroffer.GetComponent<Collider>().enabled = false;
 

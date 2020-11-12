@@ -61,7 +61,7 @@ public class BallCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            lastHitByName = collision.gameObject.name;
+            lastHitByName = collision.transform.parent.name;
             lastHitByGameObject = collision.gameObject;
         }
 
