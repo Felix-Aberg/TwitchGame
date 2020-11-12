@@ -137,8 +137,6 @@ public class GameController : MonoBehaviour
 
             foreach (Transform child in ballManager.parent)
             {
-
-                Debug.Log(child);
                 topTwo[i] = child.name;
                 i++;
             }

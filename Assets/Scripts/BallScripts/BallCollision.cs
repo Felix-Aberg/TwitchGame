@@ -22,7 +22,6 @@ public class BallCollision : MonoBehaviour
 
     float magnitude;
     float RNG_multiplier;
-    int isRepeat; //if you hit the same ball multiple times *consecutively*
 
     /* Most variables are stored in BallConfig ScriptableObject
      * Which BallConfig file that is used is decided by the BallManager's GameController
@@ -62,19 +61,8 @@ public class BallCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.tag == "Ball")
         {
-            //If the other ball last collided with you, increase repeats
-            if (collision.gameObject.GetComponent<BallCollision>().lastHitByName == transform.parent.name)
-            {
-                isRepeat++;
-            }
-            else
-            {
-                isRepeat = 0;
-            }
-
             lastHitByName = collision.transform.parent.name;
             lastHitByGameObject = collision.gameObject;
         }
@@ -87,7 +75,7 @@ public class BallCollision : MonoBehaviour
 
             RNG_multiplier = UnityEngine.Random.Range(ballConfig.RNGMinMultiplier, ballConfig.RNGMaxMultiplier);
 
-            doCrit = RollCrit(isRepeat);
+            doCrit = RollCrit();
 
             float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
 
@@ -138,11 +126,11 @@ public class BallCollision : MonoBehaviour
         }
     }
 
-    bool RollCrit(int isRepeat)
+    bool RollCrit()
     {
         critChance += ballConfig.critChanceIncrement;
         //if crit
-        if (UnityEngine.Random.Range(0f, 1f) < critChance + (isRepeat * ballConfig.nemesisCritChanceIncrement))
+        if (UnityEngine.Random.Range(0f, 1f) < critChance)
         {
             critChance = 0f;
             critMultiplier += ballConfig.critMultiplierIncrement;
