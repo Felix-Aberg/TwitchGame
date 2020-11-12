@@ -31,5 +31,6 @@ MonoBehaviour:
   minCircleSpeed: 40
   maxCircleSpeed: 100
   circleForce: 200
+  decaySpeed: 40
   initRPM: 5000
   initCritMultiplier: 2
