@@ -64,13 +64,13 @@ public class GameController : MonoBehaviour
         if (Input.GetButtonDown("CANCEL"))
         {
             BeforeSceneExit();
-            if (SceneManager.GetSceneByName("LevelSelectScene") == null)
+            if (SceneManager.GetSceneByName("LevelSelect") == null)
             {
-                Debug.LogError("ERROR! Couldn't find LevelSelectScene!");
+                Debug.LogError("ERROR! Couldn't find LevelSelect!");
                 SceneManager.LoadScene(0);
             }
 
-            SceneManager.LoadScene("LevelSelectScene");
+            SceneManager.LoadScene("LevelSelect");
 
         }
 

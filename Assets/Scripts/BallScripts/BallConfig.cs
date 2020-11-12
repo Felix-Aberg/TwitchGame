@@ -44,6 +44,15 @@ public class BallConfig : ScriptableObject
     [Tooltip("Increase crit multiplier by this (additively) on successful crit")]
     public float critMultiplierIncrement;
 
+    [Header("Circular Movement")]
+
+    [Tooltip("Minimum speed a ball will spin around in")]
+    public float minCircleSpeed;
+    [Tooltip("Maximum speed a ball will spin around in")]
+    public float maxCircleSpeed;
+    [Tooltip("The force which the bal lwill be moved in a circular pattern with")]
+    public float circleForce;
+
 
     [Header("Initial Values")]
 

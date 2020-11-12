@@ -1,68 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PetalsOpen : MonoBehaviour
 {
-    public Vector3 targethight;
+    public Quaternion startQ;
+    public Quaternion targetQ;
+
     public float smooth = 5f;
 
- 
-   public Vector3 startpos;
-    public bool go;
+    public bool ping;
 
-    public float MinTimer;
-    public float MaxTimer;
+    public float speed = 15f;
+
+    public float minTimer;
+    public float maxTimer;
     [SerializeField]
-    float timerr;
 
+    float timerStart;
+    float timer;
+
+    float deltaTime;
+    public float offset;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        targethight = new Vector3(transform.position.x, transform.position.y, targethight.z);
+        timerStart = Random.Range(minTimer, maxTimer);
+        timer = timerStart;
 
-        timerr = Random.Range(MinTimer, MaxTimer);
-       
-        startpos = (transform.rotation.eulerAngles);
-        
+        startQ = transform.localRotation;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(transform.rotation.z <= startpos.z)
+        MoveSine();
+    }
+
+    void MoveTowards(bool forwards)
+    {
+        Quaternion a;
+        Quaternion b;
+        float t;
+
+        if (forwards)
         {
-
-            timerr -= Time.deltaTime;
-            if(timerr <= 0)
-            {
-                go = true;
-
-                timerr = Random.Range(MinTimer, MaxTimer);
-            }
+            a = startQ;
+            b = targetQ;
         }
-        if(go == true)
+        else
         {
-           
-            Quaternion target = Quaternion.Euler(targethight);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-
-        }
-        if(transform.rotation.z > targethight.z)
-        {
-            go = false;
-        }
-        if (go == false && transform.rotation.z >= startpos.z)
-        {
-            Quaternion target = Quaternion.Euler(startpos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-           
-
-            
+            a = targetQ;
+            b = startQ;
         }
 
-        
+
+        transform.localRotation = Quaternion.Slerp(a, b, speed * Time.fixedDeltaTime);
+    }
+
+    void MoveSine()
+    {
+        Quaternion a;
+        Quaternion b;
+        float t;
+
+        a = startQ;
+        b = targetQ;
+
+        deltaTime += Time.fixedDeltaTime;
+
+        t = (Mathf.Sin((deltaTime * speed) + offset) + 1) / 2;
+
+        transform.localRotation = Quaternion.Slerp(a, b, t);
     }
 }

@@ -10,8 +10,8 @@ public class Blastof : MonoBehaviour
    public Vector3 startpos;
     public bool go;
 
-    public float MinTimer;
-    public float MaxTimer;
+    public float minTimer;
+    public float maxTimer;
     [SerializeField]
     float timerr;
 
@@ -20,7 +20,7 @@ public class Blastof : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timerr = Random.Range(MinTimer, MaxTimer);
+        timerr = Random.Range(minTimer, maxTimer);
         startpos = transform.position;
         
     }
@@ -36,7 +36,7 @@ public class Blastof : MonoBehaviour
             {
                 go = true;
 
-                timerr = Random.Range(MinTimer, MaxTimer);
+                timerr = Random.Range(minTimer, maxTimer);
             }
         }
         if(go == true)

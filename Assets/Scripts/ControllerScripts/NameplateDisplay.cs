@@ -21,10 +21,10 @@ public class NameplateDisplay : MonoBehaviour
     {
         nameplateCanvas = GameObject.FindGameObjectWithTag("NameplateCanvas");
         nameplate = Instantiate(nameplatePrefab, nameplateCanvas.transform);
-        nameplate.name = name;
+        nameplate.name = transform.parent.name;
 
         text = nameplate.GetComponent<Text>();
-        text.text = name;
+        text.text = transform.parent.name;
 
         nameplateTransform = nameplate.transform;
         cam = Camera.main;
