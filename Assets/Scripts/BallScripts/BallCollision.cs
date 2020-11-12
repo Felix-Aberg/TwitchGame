@@ -79,9 +79,11 @@ public class BallCollision : MonoBehaviour
             magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
                 * RNG_multiplier;
 
-            audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
-            audioSource.Play();
-
+            if(audioSource != null)
+            {
+                audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
+                audioSource.Play();
+            }
 
             if (doCrit)
             {

@@ -64,7 +64,9 @@ public class BallManager : MonoBehaviour
     {
         for (int i = 0; i < spawnPointTransform.childCount; i++)
         {
-            unusedSpawnpoints.Add(spawnPointTransform.Find("SP" + i));
+            Transform sp = spawnPointTransform.Find("SP" + i);
+            if (sp.gameObject.activeSelf)
+                unusedSpawnpoints.Add(sp);
         }
         spawnPointRepetition += 1;
         return;
