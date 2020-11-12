@@ -7,6 +7,7 @@ public class BallCollision : MonoBehaviour
 
     Rigidbody rb;
     BallRPM ballRPM;
+    BallDurability ballDur;
     BallPhysics ballPhysics;
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
@@ -41,6 +42,7 @@ public class BallCollision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         ballRPM = GetComponent<BallRPM>();
+        ballDur = GetComponent<BallDurability>();
         ballPhysics = GetComponent<BallPhysics>();
 
         //Initialise ballConfig values
@@ -67,6 +69,7 @@ public class BallCollision : MonoBehaviour
 
         if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Ball")
         {
+
             direction = collision.transform.position - transform.position;
             direction.Normalize();
 
@@ -76,6 +79,7 @@ public class BallCollision : MonoBehaviour
 
             float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
 
+            //Magnitude formula
             magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
                 * RNG_multiplier;
 
