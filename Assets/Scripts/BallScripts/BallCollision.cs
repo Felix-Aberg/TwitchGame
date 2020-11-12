@@ -7,6 +7,7 @@ public class BallCollision : MonoBehaviour
 
     Rigidbody rb;
     BallRPM ballRPM;
+    BallPhysics ballPhysics;
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
 
@@ -40,6 +41,7 @@ public class BallCollision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         ballRPM = GetComponent<BallRPM>();
+        ballPhysics = GetComponent<BallPhysics>();
 
         //Initialise ballConfig values
     }
@@ -105,6 +107,9 @@ public class BallCollision : MonoBehaviour
 
                 //*/
             }
+
+            if(ballPhysics != null)
+                ballPhysics.NewCircular();
 
             finalForce = direction * magnitude;
 

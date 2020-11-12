@@ -4,65 +4,61 @@ using UnityEngine;
 
 public class PetalsOpen : MonoBehaviour
 {
-    public Vector3 targethight;
+    public float targetHeight;
     public float smooth = 5f;
 
- 
-   public Vector3 startpos;
-    public bool go;
+    public float startHeight;
+    public bool ascending;
 
-    public float MinTimer;
-    public float MaxTimer;
+    public float minTimer;
+    public float maxTimer;
     [SerializeField]
-    float timerr;
+    float timer;
 
     
 
     // Start is called before the first frame update
     void Start()
     {
-        targethight = new Vector3(transform.position.x, transform.position.y, targethight.z);
-
-        timerr = Random.Range(MinTimer, MaxTimer);
+        timer = Random.Range(minTimer, maxTimer);
        
-        startpos = (transform.rotation.eulerAngles);
-        
+        startHeight = transform.rotation.eulerAngles.y;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(transform.rotation.z <= startpos.z)
+        if (!ascending && transform.rotation.eulerAngles.y <= startHeight)
         {
-
-            timerr -= Time.deltaTime;
-            if(timerr <= 0)
+            timer -= Time.fixedDeltaTime;
+            
+            //If time is up
+            if(timer <= 0)
             {
-                go = true;
+                ascending = true;
 
-                timerr = Random.Range(MinTimer, MaxTimer);
+                timer = Random.Range(minTimer, maxTimer);
             }
         }
-        if(go == true)
+        
+        if (ascending == true)
         {
-           
-            Quaternion target = Quaternion.Euler(targethight);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-
+            Vector3 rot = transform.rotation.eulerAngles;
+            rot.y = Mathf.Lerp(transform.rotation.eulerAngles.y, targetHeight, smooth * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.Euler(rot);
         }
-        if(transform.rotation.z > targethight.z)
+        
+        if (transform.rotation.eulerAngles.y > targetHeight)
         {
-            go = false;
-        }
-        if (go == false && transform.rotation.z >= startpos.z)
-        {
-            Quaternion target = Quaternion.Euler(startpos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-           
-
-            
+            ascending = false;
         }
 
+        if (ascending == false && transform.rotation.eulerAngles.y >= startHeight)
+        {
+            Vector3 rot = transform.rotation.eulerAngles;
+            rot.y = Mathf.Lerp(transform.rotation.eulerAngles.y, startHeight, smooth * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.Euler(rot);
+        }
         
     }
 }

@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5770502136650718837}
   - component: {fileID: 4503040041236317652}
   m_Layer: 8
-  m_Name: Ball
+  m_Name: BotBall
   m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1109903b8063f25488d8be144b3d41c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBot: 0
+  isBot: 1
   gameController: {fileID: 0}
   minimumRPM: 30
   deathParticles: {fileID: 5577456928450954301, guid: df07eabe33f42574da574a62a9f1d305,
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adce6ae270560b14ba1de02991fe2c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballConfig: {fileID: 11400000, guid: eb76cd5ff84bb6548bffb2ff2b2ff48d, type: 2}
+  ballConfig: {fileID: 11400000, guid: 58298e64a5983fd4c9e0b72560c9108d, type: 2}
   sparks: {fileID: 543952108443042258}
   critSparks: {fileID: 3461791368108906330}
   audioSource: {fileID: 4503040041236317652}
@@ -248,9 +248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraGravityIsEnabled: 1
   gravityModifier: 800
-  dir: 0
-  circleSpeed: 0
-  circleForce: 0
 --- !u!114 &-7788080451737306204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 24a513ae4abb2b34287183c71843f98f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1438,7 +1435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a2bafeba314636489df99be65690e61, type: 2}
+  - {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

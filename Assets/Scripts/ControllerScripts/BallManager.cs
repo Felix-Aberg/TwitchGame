@@ -150,10 +150,10 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
-            ball.GetComponent<Ball>().gameController = gameObject;
-
-            ball.GetComponent<BallCollision>().ballConfig = ballConfig;
-            ball.GetComponent<BallCollision>().InitializeConfig();
+            ball.transform.GetChild(0).GetComponent<Ball>().gameController = gameObject;
+            //not for bots
+            //ball.transform.GetChild(0).GetComponent<BallCollision>().ballConfig = ballConfig;
+            ball.transform.GetChild(0).GetComponent<BallCollision>().InitializeConfig();
 
             //Add to dictionary
             if (unusedSpawnpoints.Count == 0)
