@@ -13,14 +13,14 @@ public class Blastof : MonoBehaviour
     public float minTimer;
     public float maxTimer;
     [SerializeField]
-    float timer;
+    float timerr;
 
     public GameObject blasteroffer;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = Random.Range(minTimer, maxTimer);
+        timerr = Random.Range(minTimer, maxTimer);
         startpos = transform.position;
         
     }
@@ -31,12 +31,12 @@ public class Blastof : MonoBehaviour
         if(transform.position.y <= startpos.y)
         {
 
-            timer -= Time.deltaTime;
-            if(timer <= 0)
+            timerr -= Time.deltaTime;
+            if(timerr <= 0)
             {
                 ascending = true;
 
-                timer = Random.Range(minTimer, maxTimer);
+                timerr = Random.Range(minTimer, maxTimer);
             }
         }
         if(ascending == true)
