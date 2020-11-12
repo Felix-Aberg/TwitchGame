@@ -255,8 +255,8 @@ MonoBehaviour:
   upSpeed: 15
   downSpeed: 2
   startpos: {x: 0, y: 0, z: 0}
-  go: 0
-  MinTimer: 2
-  MaxTimer: 5
+  ascending: 0
+  minTimer: 2
+  maxTimer: 5
   timerr: 0
   blasteroffer: {fileID: 1812928131325456629}
