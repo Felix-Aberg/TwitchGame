@@ -29,7 +29,7 @@ MonoBehaviour:
   minimumCritChance: 0.01
   critMultiplierIncrement: 0.65
   minCircleSpeed: 40
-  maxCircleSpeed: 200
+  maxCircleSpeed: 100
   circleForce: 200
   initRPM: 4500
   initCritMultiplier: 2
