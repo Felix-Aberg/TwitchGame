@@ -8,19 +8,19 @@ public class Blastof : MonoBehaviour
     public float upSpeed;
     public float downSpeed;
    public Vector3 startpos;
-    public bool go;
+    public bool ascending;
 
-    public float MinTimer;
-    public float MaxTimer;
+    public float minTimer;
+    public float maxTimer;
     [SerializeField]
-    float timerr;
+    float timer;
 
     public GameObject blasteroffer;
 
     // Start is called before the first frame update
     void Start()
     {
-        timerr = Random.Range(MinTimer, MaxTimer);
+        timer = Random.Range(minTimer, maxTimer);
         startpos = transform.position;
         
     }
@@ -31,15 +31,15 @@ public class Blastof : MonoBehaviour
         if(transform.position.y <= startpos.y)
         {
 
-            timerr -= Time.deltaTime;
-            if(timerr <= 0)
+            timer -= Time.deltaTime;
+            if(timer <= 0)
             {
-                go = true;
+                ascending = true;
 
-                timerr = Random.Range(MinTimer, MaxTimer);
+                timer = Random.Range(minTimer, maxTimer);
             }
         }
-        if(go == true)
+        if(ascending == true)
         {
             blasteroffer.GetComponent<Collider>().enabled = true;
             transform.position = transform.position + new Vector3(0, 5 * upSpeed * Time.deltaTime, 0);
@@ -47,9 +47,9 @@ public class Blastof : MonoBehaviour
         }
         if(transform.position.y > targethight.y)
         {
-            go = false;
+            ascending = false;
         }
-        if (go == false && transform.position.y > startpos.y)
+        if (ascending == false && transform.position.y > startpos.y)
         {
             blasteroffer.GetComponent<Collider>().enabled = false;
 
