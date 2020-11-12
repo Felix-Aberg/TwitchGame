@@ -28,9 +28,10 @@ MonoBehaviour:
   critChanceIncrement: 0.01
   minimumCritChance: 0.01
   critMultiplierIncrement: 0.75
+  nemesisCritChanceIncrement: 0
   minCircleSpeed: 40
   maxCircleSpeed: 100
   circleForce: 200
-  decaySpeed: 40
+  decaySpeed: 30
   initRPM: 5000
   initCritMultiplier: 2
