@@ -16,6 +16,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        name = transform.parent.name;
         ballRPM = GetComponent<BallRPM>();
         ballCollision = GetComponent<BallCollision>();
         nameplateDisplay = GetComponent<NameplateDisplay>();
@@ -46,7 +47,7 @@ public class Ball : MonoBehaviour
             gameController = GameObject.FindGameObjectsWithTag("GameController")[0];
         }
 
-        gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitByName);
+        gameController.GetComponent<KillFeed>().PostKill(transform.parent.name, ballCollision.lastHitByName);
         gameController.GetComponent<PlayerCount>().RemovePlayer();
 
         if(!isBot)
@@ -94,6 +95,6 @@ public class Ball : MonoBehaviour
             Destroy(nameplateDisplay.nameplate);
         }
 
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

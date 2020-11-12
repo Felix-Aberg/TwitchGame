@@ -1,64 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PetalsOpen : MonoBehaviour
 {
-    public float targetHeight;
+    public Quaternion startQ;
+    public Quaternion targetQ;
+
     public float smooth = 5f;
 
-    public float startHeight;
-    public bool ascending;
+    public bool ping;
+
+    public float speed = 15f;
 
     public float minTimer;
     public float maxTimer;
     [SerializeField]
+
+    float timerStart;
     float timer;
 
+    float deltaTime;
+    public float offset;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = Random.Range(minTimer, maxTimer);
-       
-        startHeight = transform.rotation.eulerAngles.y;
+        timerStart = Random.Range(minTimer, maxTimer);
+        timer = timerStart;
+
+        startQ = transform.localRotation;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!ascending && transform.rotation.eulerAngles.y <= startHeight)
-        {
-            timer -= Time.fixedDeltaTime;
-            
-            //If time is up
-            if(timer <= 0)
-            {
-                ascending = true;
+        MoveSine();
+    }
 
-                timer = Random.Range(minTimer, maxTimer);
-            }
-        }
-        
-        if (ascending == true)
+    void MoveTowards(bool forwards)
+    {
+        Quaternion a;
+        Quaternion b;
+        float t;
+
+        if (forwards)
         {
-            Vector3 rot = transform.rotation.eulerAngles;
-            rot.y = Mathf.Lerp(transform.rotation.eulerAngles.y, targetHeight, smooth * Time.fixedDeltaTime);
-            transform.rotation = Quaternion.Euler(rot);
+            a = startQ;
+            b = targetQ;
         }
-        
-        if (transform.rotation.eulerAngles.y > targetHeight)
+        else
         {
-            ascending = false;
+            a = targetQ;
+            b = startQ;
         }
 
-        if (ascending == false && transform.rotation.eulerAngles.y >= startHeight)
-        {
-            Vector3 rot = transform.rotation.eulerAngles;
-            rot.y = Mathf.Lerp(transform.rotation.eulerAngles.y, startHeight, smooth * Time.fixedDeltaTime);
-            transform.rotation = Quaternion.Euler(rot);
-        }
-        
+
+        transform.localRotation = Quaternion.Slerp(a, b, speed * Time.fixedDeltaTime);
+    }
+
+    void MoveSine()
+    {
+        Quaternion a;
+        Quaternion b;
+        float t;
+
+        a = startQ;
+        b = targetQ;
+
+        deltaTime += Time.fixedDeltaTime;
+
+        t = (Mathf.Sin((deltaTime * speed) + offset) + 1) / 2;
+
+        transform.localRotation = Quaternion.Slerp(a, b, t);
     }
 }

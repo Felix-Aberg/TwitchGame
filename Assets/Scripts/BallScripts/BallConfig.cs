@@ -50,9 +50,10 @@ public class BallConfig : ScriptableObject
     public float minCircleSpeed;
     [Tooltip("Maximum speed a ball will spin around in")]
     public float maxCircleSpeed;
-    [Tooltip("The force which the bal lwill be moved in a circular pattern with")]
+    [Tooltip("The force which the ball will be moved in a circular pattern with")]
     public float circleForce;
-
+    [Tooltip("The speed which the circle force's power will decay")]
+    public float decaySpeed;
 
     [Header("Initial Values")]
 
