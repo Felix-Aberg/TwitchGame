@@ -7,6 +7,7 @@ public class BallCollision : MonoBehaviour
 
     Rigidbody rb;
     BallRPM ballRPM;
+    BallDurability ballDur;
     BallPhysics ballPhysics;
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
@@ -21,6 +22,7 @@ public class BallCollision : MonoBehaviour
 
     float magnitude;
     float RNG_multiplier;
+    int isRepeat; //if you hit the same ball multiple times *consecutively*
 
     /* Most variables are stored in BallConfig ScriptableObject
      * Which BallConfig file that is used is decided by the BallManager's GameController
@@ -41,6 +43,7 @@ public class BallCollision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         ballRPM = GetComponent<BallRPM>();
+        ballDur = GetComponent<BallDurability>();
         ballPhysics = GetComponent<BallPhysics>();
 
         //Initialise ballConfig values
@@ -59,23 +62,36 @@ public class BallCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.tag == "Ball")
         {
+            //If the other ball last collided with you, increase repeats
+            if (collision.gameObject.GetComponent<BallCollision>().lastHitByName == transform.parent.name)
+            {
+                isRepeat++;
+            }
+            else
+            {
+                isRepeat = 0;
+            }
+
             lastHitByName = collision.transform.parent.name;
             lastHitByGameObject = collision.gameObject;
         }
 
         if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Ball")
         {
+
             direction = collision.transform.position - transform.position;
             direction.Normalize();
 
             RNG_multiplier = UnityEngine.Random.Range(ballConfig.RNGMinMultiplier, ballConfig.RNGMaxMultiplier);
 
-            doCrit = RollCrit();
+            doCrit = RollCrit(isRepeat);
 
             float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
 
+            //Magnitude formula
             magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
                 * RNG_multiplier;
 
@@ -122,11 +138,11 @@ public class BallCollision : MonoBehaviour
         }
     }
 
-    bool RollCrit()
+    bool RollCrit(int isRepeat)
     {
         critChance += ballConfig.critChanceIncrement;
         //if crit
-        if (UnityEngine.Random.Range(0f, 1f) < critChance)
+        if (UnityEngine.Random.Range(0f, 1f) < critChance + (isRepeat * ballConfig.nemesisCritChanceIncrement))
         {
             critChance = 0f;
             critMultiplier += ballConfig.critMultiplierIncrement;
