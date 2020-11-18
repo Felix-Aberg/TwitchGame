@@ -180,7 +180,7 @@ public class BallManager : MonoBehaviour
             if (useRandomColor)
             {
                 MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
-
+                Debug.Log(ball.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).name);
                 BallMaterial rand = (BallMaterial)(ballDictionary.Count % materialDictionary.Count) + 1;
                 if (materialDictionary.ContainsKey("BallMaterial" + rand.ToString()))
                 {
