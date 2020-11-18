@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour
             //Top 5!
             foreach (Transform child in ballManager.parent)
             {
-                if (!child.GetComponent<Ball>().isBot)
+                if (!child.GetChild(0).GetComponent<Ball>().isBot)
                 {
                     //Statistics: Top 5 placement
                     dataManager.playerSessionDataArray[child.name].topFives += 1;
@@ -137,8 +137,6 @@ public class GameController : MonoBehaviour
 
             foreach (Transform child in ballManager.parent)
             {
-
-                Debug.Log(child);
                 topTwo[i] = child.name;
                 i++;
             }
@@ -176,8 +174,6 @@ public class GameController : MonoBehaviour
                     }
                 }
             }
-            
-
         }
 
         playersLastFrame = playerCount.alivePlayers;
