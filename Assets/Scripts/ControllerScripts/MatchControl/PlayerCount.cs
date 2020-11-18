@@ -12,6 +12,9 @@ public class PlayerCount : MonoBehaviour
 
     private void Start()
     {
+        //Get Text;
+        playerAmountText = GameObject.FindGameObjectWithTag("PlayerCountText").GetComponent<Text>();
+
         UpdateText();
     }
 

@@ -17,7 +17,6 @@ public class SlowMoTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Time.timeScale);
         Time.timeScale += (1f / timeSpeedUpLenght) * Time.unscaledDeltaTime;
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
 

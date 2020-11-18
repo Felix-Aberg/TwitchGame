@@ -1,52 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    BallManager ballManager;
-    DataManager dataManager;
-    PlayerCount playerCount;
+    TournamentController tournament;
+    MatchController match;
 
-    Transform parentCanvas;
-    Canvas startPhaseCanvas;
-    Canvas nameplateCanvas;
-
-    [Header("Boolean states")]
-    public bool gameStarted;
-    public bool gameRunning;
-    public bool gameEnded;
-    bool nameplatesEnabled;
-
-    int playersLastFrame = 0;
-    int counter = 0;
-    // Supporting data stuff
-    public string[] topTwo;
-
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        ballManager = gameObject.GetComponent<BallManager>();
-        dataManager = gameObject.GetComponent<DataManager>();
-        playerCount = gameObject.GetComponent<PlayerCount>();
-        parentCanvas = GameObject.FindWithTag("ParentCanvas").transform;
-        startPhaseCanvas = parentCanvas.Find("StartPhaseCanvas").GetComponent<Canvas>();
-        nameplateCanvas = parentCanvas.Find("NameplateCanvas").GetComponent<Canvas>();
-
-        GetComponent<Canvas>();
-        Time.timeScale = 0f;
-        gameStarted = false;
-        gameRunning = false;
-        gameEnded = false;
-
-        nameplatesEnabled = (PlayerPrefs.GetInt("nameplatesEnabled", 1) == 1) ? true : false;
-
-        topTwo = new string[2];
+        //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
-    // Update is called once per frame
+    void OnDisable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to stop listening for
+        //a scene change as soon as this script is disabled. Remember to always 
+        //have an unsubscription for every delegate you subscribe to!
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    
+
     private void Update()
     {
         CheckControlInputs();
@@ -54,132 +33,78 @@ public class GameController : MonoBehaviour
 
     void CheckControlInputs()
     {
-        if (Input.GetButton("SUBMIT") && !gameStarted)
+        if (Input.GetButton("CANCEL"))
         {
-            gameStarted = true;
-            startPhaseCanvas.enabled = false;
-            Time.timeScale = 1.0f;
-        }
-
-        if (Input.GetButtonDown("CANCEL"))
-        {
-            BeforeSceneExit();
-            if (SceneManager.GetSceneByName("LevelSelectScene") == null)
-            {
-                Debug.LogError("ERROR! Couldn't find LevelSelectScene!");
-                SceneManager.LoadScene(0);
-            }
-
-            SceneManager.LoadScene("LevelSelectScene");
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftControl))
-        {
-            BeforeSceneExit();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
-
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
-        {
-            //Toggle boolean
-            nameplatesEnabled = nameplatesEnabled ? false : true;
-
-            if (nameplatesEnabled)
-            {
-                PlayerPrefs.SetInt("nameplatesEnabled", 1);
-                nameplateCanvas.enabled = true;
-            }
-            else
-            {
-                PlayerPrefs.SetInt("nameplatesEnabled", 0);
-                nameplateCanvas.enabled = false;
-            }
-        }
-
-        if (gameStarted && !gameEnded)
-        {
-            CheckWin();
+            Exit();
         }
     }
 
-    /// <summary>
-    /// Call this before leaving the scene! Wether restarting or gonig to a different level
-    /// </summary>
-    private void BeforeSceneExit()
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        GetComponent<DataManager>().SaveAll();
+        Debug.Log("Level Loaded");
+        Debug.Log(scene.name);
+        Debug.Log(mode);
+
+        if (scene.name == "ModeSelect")
+        {
+            LoadModeSelect();
+        }
+        else if (scene.name == "LevelSelect")
+        {
+            LoadLevelSelect();
+        }
+        else if (scene.name.StartsWith("Level "))
+        {
+            LoadedLevel();
+        }
     }
 
-    private void CheckWin()
+    void LoadModeSelect()
     {
-        if (playersLastFrame != 5 && playerCount.alivePlayers == 5)
+        tournament.LoadModeSelect();
+    }
+
+    void LoadLevelSelect()
+    {
+        //
+        tournament.LoadLevelSelect();
+    }
+
+    void LoadedLevel()
+    {
+        tournament.LoadedLevel();
+
+        //Spawn match manager
+        match = Instantiate(Resources.Load("Prefabs/CorePrefabs/MatchController") as GameObject).GetComponent<MatchController>();
+    }
+
+    void Exit()
+    {
+        //call the abstract class
+
+        //Load scene 0 if level select can't be found
+        if (SceneManager.GetSceneByName("LevelSelectScene") == null)
         {
-            Debug.Log("Top 5!");
-            //Top 5!
-            foreach (Transform child in ballManager.parent)
-            {
-                if (!child.GetComponent<Ball>().isBot)
-                {
-                    //Statistics: Top 5 placement
-                    dataManager.playerSessionDataArray[child.name].topFives += 1;
-                    dataManager.playerTotalDataArray[child.name].topFives += 1;
-                }
-            }
+            Debug.LogError("ERROR! Couldn't find LevelSelectScene!");
+            SceneManager.LoadScene(0);
         }
 
-        if (playersLastFrame != 2 && playerCount.alivePlayers == 2)
+        SceneManager.LoadScene("ModeSelect");
+
+
+    }
+
+    public void startTournament(int matches)
+    {
+        if (matches == -1)
         {
-            Debug.Log("Top 2!");
-            //Top 2!
-            int i = 0;
-
-            foreach (Transform child in ballManager.parent)
-            {
-
-                Debug.Log(child);
-                topTwo[i] = child.name;
-                i++;
-            }
+            matches = int.Parse(GameObject.FindGameObjectWithTag("AmountOfGamesDisplay").GetComponent<TextMeshProUGUI>().text);
         }
 
-        if (playersLastFrame != 1 && playerCount.alivePlayers == 1)
-        {
-            gameEnded = true;
-            Debug.Log("Game ended!");
+        SceneManager.LoadScene("LevelSelect");
 
-            //Player won!
-            string lastPlayerName = ballManager.parent.GetChild(0).name;
-            if (dataManager.playerTotalDataArray.ContainsKey(lastPlayerName))
-            {
-                //Statistics: 1st place win
-                dataManager.playerSessionDataArray[lastPlayerName].wins += 1;
-                dataManager.playerTotalDataArray[lastPlayerName].wins += 1;
-            }
-
-            if (topTwo[0] != null)
-            {
-                for (int i = 0; i < topTwo.Length; i++) 
-                {
-                    if (topTwo[i] != ballManager.parent.GetChild(0).name)
-                    {
-                        //2nd place identified
-
-                        //If the ball has loaded data, which only players joining through twitch.tv do
-                        if (dataManager.playerSessionDataArray.ContainsKey(topTwo[i]))
-                        {
-                            //Statistics: 2nd place
-                            dataManager.playerSessionDataArray[topTwo[i]].secondPlaces += 1;
-                            dataManager.playerTotalDataArray[topTwo[i]].secondPlaces += 1;
-                        }
-                    }
-                }
-            }
-            
-
-        }
-
-        playersLastFrame = playerCount.alivePlayers;
+        //Spawn tournament manager
+        tournament = Instantiate(Resources.Load("Prefabs/CorePrefabs/TournamentController") as GameObject).GetComponent<TournamentController>();
+        tournament.totalMatches = matches;
     }
 }

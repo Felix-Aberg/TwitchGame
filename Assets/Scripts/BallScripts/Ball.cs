@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public bool isBot;
-    public GameObject gameController;
+    public GameObject matchController;
     BallRPM ballRPM;
     BallCollision ballCollision;
     NameplateDisplay nameplateDisplay;
@@ -40,20 +40,20 @@ public class Ball : MonoBehaviour
     public void SelfDestruct()
     {
         //Call killfeed
-        if(gameController == null)
+        if(matchController == null)
         {
-            Debug.LogWarning("Ball didn't find GameController when instantiating. This is 100% unintended for normal gameplay.");
-            gameController = GameObject.FindGameObjectsWithTag("GameController")[0];
+            Debug.LogWarning("Ball didn't find MatchController when instantiating. This is 100% unintended for normal gameplay.");
+            matchController = GameObject.FindGameObjectsWithTag("MatchController")[0];
         }
 
-        gameController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitByName);
-        gameController.GetComponent<PlayerCount>().RemovePlayer();
+        matchController.GetComponent<KillFeed>().PostKill(name, ballCollision.lastHitByName);
+        matchController.GetComponent<PlayerCount>().RemovePlayer();
 
         if(!isBot)
         {
             //Statistics: Add death to player
-            gameController.GetComponent<DataManager>().playerSessionDataArray[name].deaths += 1;
-            gameController.GetComponent<DataManager>().playerTotalDataArray[name].deaths += 1;
+            matchController.GetComponent<DataManager>().playerSessionDataArray[name].deaths += 1;
+            matchController.GetComponent<DataManager>().playerTotalDataArray[name].deaths += 1;
         }
         
         if (ballCollision.lastHitByGameObject != null)
@@ -66,22 +66,22 @@ public class Ball : MonoBehaviour
                 if (isBot)
                 {
                     //Statistics: Add bot kill to player
-                    gameController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].botKills += 1;
-                    gameController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].botKills += 1;
+                    matchController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].botKills += 1;
+                    matchController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].botKills += 1;
                 }
                 else
                 {
                     //Statistics: Add kill to player
-                    gameController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].kills += 1;
-                    gameController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].kills += 1;
+                    matchController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].kills += 1;
+                    matchController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].kills += 1;
                 }
 
-                PlayerCount playerCount = gameController.GetComponent<PlayerCount>();
+                PlayerCount playerCount = matchController.GetComponent<PlayerCount>();
                 if (playerCount.totalPlayers == playerCount.alivePlayers + 1)
                 {
                     //Statistics: Add bounty kill to player
-                    gameController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].firstBloods += 1;
-                    gameController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].firstBloods += 1;
+                    matchController.GetComponent<DataManager>().playerSessionDataArray[ballCollision.lastHitByName].firstBloods += 1;
+                    matchController.GetComponent<DataManager>().playerTotalDataArray[ballCollision.lastHitByName].firstBloods += 1;
                 }
             }
         }

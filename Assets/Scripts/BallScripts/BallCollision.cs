@@ -22,7 +22,7 @@ public class BallCollision : MonoBehaviour
     float RNG_multiplier;
 
     /* Most variables are stored in BallConfig ScriptableObject
-     * Which BallConfig file that is used is decided by the BallManager's GameController
+     * Which BallConfig file that is used is decided by the BallManager's MatchController
      * 
      * All the remaining ""config"" variables (below) are ones that get changed on a object-to-object basis in runtime.
      */

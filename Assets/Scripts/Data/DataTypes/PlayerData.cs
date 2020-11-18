@@ -31,10 +31,10 @@ public class PlayerData
     public int userID;          //To be added
     public string username;     //Added, functional, seemingly bug free!
 
-    public uint deaths;         //Added, functional, seemingly bug free!
+    public uint deaths;         //Added, functional,
     public uint kills;          //Added, functional, seemingly bug free!
     public uint botKills;       //Added, functional, seemingly bug free!
-    public uint bountyKills;            //not to be added this time
+    public uint bountyKills;    
     public uint firstBloods;    //Added, functional, seemingly bug free!
 
     public uint gamesPlayed;    
@@ -43,4 +43,6 @@ public class PlayerData
     public uint secondPlaces;   //Added, functional, seemingly bug free!
     public uint topFives;       //Added, functional, seemingly bug free!
     public uint totalLifeSpan;  
+
+    //Kills count less than deaths?
 }

@@ -19,7 +19,7 @@ public class KillFeed : MonoBehaviour
     {
         if (killFeed == null)
         {
-            killFeed = GameObject.Find("KillFeed").GetComponent<Text>();
+            killFeed = GameObject.FindGameObjectWithTag("KillFeedText").GetComponent<Text>();
             if (killFeed == null)
             {
                 Debug.LogError("Error! Couldn't find the KillFeed text in a canvas!");

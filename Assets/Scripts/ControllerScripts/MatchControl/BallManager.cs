@@ -31,10 +31,10 @@ public class BallManager : MonoBehaviour
 
         parent = Instantiate(new GameObject()).transform;
         parent.name = "Balls";
-        ballPrefab = Resources.Load("Prefabs/Ball") as GameObject;
-        botPrefab = Resources.Load("Prefabs/BotBall") as GameObject;
+        ballPrefab = Resources.Load("Prefabs/CorePrefabs/Ball") as GameObject;
+        botPrefab = Resources.Load("Prefabs/CorePrefabs/BotBall") as GameObject;
 
-        spawnPointTransform = transform.Find("SpawnPoints");
+        spawnPointTransform = GameObject.FindGameObjectWithTag("SpawnPoints").transform;
         spawnPointAmount = spawnPointTransform.childCount;
 
         //Add materials to dictionary
@@ -79,7 +79,7 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
-            ball.GetComponent<Ball>().gameController = gameObject;
+            ball.GetComponent<Ball>().matchController = gameObject;
 
             ball.GetComponent<BallCollision>().ballConfig = ballConfig;
             ball.GetComponent<BallCollision>().InitializeConfig();
@@ -96,7 +96,7 @@ public class BallManager : MonoBehaviour
             GetComponent<PlayerCount>().AddPlayer();
             if (GetComponent<PlayerCount>() == null)
             {
-                Debug.LogError("ERROR! PlayerCount's text is not set in GameController. Did you apply it in this scene?");
+                Debug.LogError("ERROR! PlayerCount's text is not set in MatchController. Did you apply it in this scene?");
             }
 
             MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
@@ -150,7 +150,7 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
-            ball.GetComponent<Ball>().gameController = gameObject;
+            ball.GetComponent<Ball>().matchController = gameObject;
 
             ball.GetComponent<BallCollision>().ballConfig = ballConfig;
             ball.GetComponent<BallCollision>().InitializeConfig();
@@ -167,7 +167,7 @@ public class BallManager : MonoBehaviour
             GetComponent<PlayerCount>().AddPlayer();
             if (GetComponent<PlayerCount>() == null)
             {
-                Debug.LogError("ERROR! PlayerCount's text is not set in GameController. Did you apply it in this scene?");
+                Debug.LogError("ERROR! PlayerCount's text is not set in MatchController. Did you apply it in this scene?");
             }
 
             if (useRandomColor)

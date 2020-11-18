@@ -18,7 +18,7 @@ public class TempTwitchChat : MonoBehaviour
     private string[] userdata; //Get the password from https://twitchapps.com/tmi
 
     public Text chatBox;
-    private GameController gameController;
+    private MatchController matchController;
     private BallManager ballManager;
     private DataManager dataManager;
 
@@ -26,9 +26,10 @@ public class TempTwitchChat : MonoBehaviour
 
     void Start()
     {
-        gameController = GetComponent<GameController>();
+        matchController = GetComponent<MatchController>();
         ballManager = GetComponent<BallManager>();
         dataManager = GetComponent<DataManager>();
+        chatBox = GameObject.FindGameObjectWithTag("ChatFeedText").GetComponent<Text>();
 
         userdata = GetUserdata();
         Connect();
@@ -112,7 +113,7 @@ public class TempTwitchChat : MonoBehaviour
 
 
         ChatInputs = ChatInputs.ToLower();
-        if (!gameController.gameStarted && ChatInputs.StartsWith("!play"))
+        if (!matchController.gameStarted && ChatInputs.StartsWith("!play"))
         {
             //Load save data
             if (!ballManager.ballDictionary.ContainsKey(ChatName))
