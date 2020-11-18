@@ -3980,6 +3980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slowmo
       objectReference: {fileID: 0}
+    - target: {fileID: 2053761533802614749, guid: bf60c6de7ec1d79489f6ff05a3a31f21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2053761533802614751, guid: bf60c6de7ec1d79489f6ff05a3a31f21,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -43,7 +43,19 @@ public class BallConfig : ScriptableObject
     public float minimumCritChance;
     [Tooltip("Increase crit multiplier by this (additively) on successful crit")]
     public float critMultiplierIncrement;
+    [Tooltip("Increase crit chance (from 0.0 to 1.0) against consecutively hit target")]
+    public float nemesisCritChanceIncrement;
 
+    [Header("Circular Movement")]
+
+    [Tooltip("Minimum speed a ball will spin around in")]
+    public float minCircleSpeed;
+    [Tooltip("Maximum speed a ball will spin around in")]
+    public float maxCircleSpeed;
+    [Tooltip("The force which the ball will be moved in a circular pattern with")]
+    public float circleForce;
+    [Tooltip("The speed which the circle force's power will decay")]
+    public float decaySpeed;
 
     [Header("Initial Values")]
 
