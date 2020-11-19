@@ -60,13 +60,11 @@ public class DataManager : MonoBehaviour
         //If userID is not already loaded
         if (!playerSessionDataArray.ContainsKey(userID))
         {
-            Debug.Log("marco 1");
             playerTotalDataArray.Add(userID, fileWriter.LoadPlayerData(userID, true));
         }
 
         if (playerTotalDataArray[userID] == null)
         {
-            Debug.Log("polo 1");
             playerTotalDataArray[userID] = DefaultPlayerData(userID);
 
             //playerSessionDataArray.Add(userID, new PlayerData());
@@ -78,13 +76,11 @@ public class DataManager : MonoBehaviour
         //If userID is not already loaded
         if (!playerSessionDataArray.ContainsKey(userID))
         {
-            Debug.Log("marco 2");
             playerSessionDataArray.Add(userID, fileWriter.LoadPlayerData(userID, false));
         }
 
         if (playerSessionDataArray[userID] == null || playerSessionDataArray[userID].dataVersion == 0)
         {
-            Debug.Log("polo 2");
             playerSessionDataArray[userID] = DefaultPlayerData(userID);
 
             //playerSessionDataArray.Add(userID, new PlayerData());

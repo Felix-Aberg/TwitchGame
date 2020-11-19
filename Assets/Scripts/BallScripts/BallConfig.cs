@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ball Config", menuName = "Game/Config/Create Ball Config")]
+[CreateAssetMenu(fileName = "Ball Config", menuName = "Game/Ball Config")]
 public class BallConfig : ScriptableObject
 {
     /* README
