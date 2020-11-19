@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public bool gameStarted;
     public bool gameRunning;
     public bool gameEnded;
+    public bool commandsEnabled;
     bool nameplatesEnabled;
 
     int playersLastFrame = 0;
@@ -42,6 +43,7 @@ public class GameController : MonoBehaviour
         gameEnded = false;
 
         nameplatesEnabled = (PlayerPrefs.GetInt("nameplatesEnabled", 1) == 1) ? true : false;
+        commandsEnabled = (PlayerPrefs.GetInt("commandsEnabled", 1) == 1) ? true : false;
 
         topTwo = new string[2];
     }
@@ -80,11 +82,26 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        if (Input.GetKeyDown(KeyCode.K) && Input.GetKey(KeyCode.LeftControl))
+        {
+            //Toggle boolean
+            commandsEnabled = !commandsEnabled;
+
+            if (commandsEnabled)
+            {
+                PlayerPrefs.SetInt("nameplatesEnabled", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("nameplatesEnabled", 0);
+            }
+        }
+
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
         {
             //Toggle boolean
-            nameplatesEnabled = nameplatesEnabled ? false : true;
+            nameplatesEnabled = !nameplatesEnabled;
 
             if (nameplatesEnabled)
             {
