@@ -31,8 +31,8 @@ public class BallManager : MonoBehaviour
 
         parent = Instantiate(new GameObject()).transform;
         parent.name = "Balls";
-        ballPrefab = Resources.Load("Prefabs/Ball") as GameObject;
-        botPrefab = Resources.Load("Prefabs/BotBall") as GameObject;
+        ballPrefab = Resources.Load("Prefabs/Spinnytops/Ball") as GameObject;
+        botPrefab = Resources.Load("Prefabs/Spinnytops/BotBall") as GameObject;
 
         spawnPointTransform = transform.Find("SpawnPoints");
         spawnPointAmount = spawnPointTransform.childCount;
@@ -180,7 +180,7 @@ public class BallManager : MonoBehaviour
             if (useRandomColor)
             {
                 MeshRenderer meshRenderer = ball.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
-
+                Debug.Log(ball.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).name);
                 BallMaterial rand = (BallMaterial)(ballDictionary.Count % materialDictionary.Count) + 1;
                 if (materialDictionary.ContainsKey("BallMaterial" + rand.ToString()))
                 {
