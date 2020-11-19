@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/LevelSelect.unity
     guid: 952b1f72b69e2954c9a52d05dcbcbca1
   - enabled: 0
-    path: Assets/Scenes/LevelSelectScene.unity
+    path: Assets/Scenes/Old scenes/LevelSelectScene.unity
     guid: c837bbf3e9bcc6c4da8bdc2e66a5ad44
   - enabled: 1
     path: Assets/Scenes/MapPool/Level 1.unity
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapPool/Level 4.unity
     guid: d990ca5b043310947b84f0bde5e8c0df
+  - enabled: 1
+    path: Assets/Scenes/MapPool/Level 5.unity
+    guid: 98b4ae919da3ecf48a7e1a0beb478a86
   m_configObjects: {}
