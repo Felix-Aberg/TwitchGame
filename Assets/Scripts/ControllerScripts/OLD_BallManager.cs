@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 [RequireComponent(typeof(NameGenerator))]
-public class BallManager : MonoBehaviour
+public class OLDBallManager : MonoBehaviour
 {
     //I am really not sure if I should exclusively be using a dictionary
     public Dictionary<string, GameObject> ballDictionary;
@@ -82,7 +82,7 @@ public class BallManager : MonoBehaviour
             ball.transform.parent = parent;
             ball.name = name;
 
-            ball.transform.GetChild(0).gameObject.GetComponent<Ball>().gameController = gameObject;
+            ball.transform.GetChild(0).gameObject.GetComponent<Ball>().matchController = gameObject;
             ball.transform.GetChild(0).gameObject.GetComponent<BallCollision>().ballConfig = ballConfig;
             ball.transform.GetChild(0).gameObject.GetComponent<BallCollision>().InitializeConfig();
 
@@ -157,7 +157,7 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
-            ball.transform.GetChild(0).GetComponent<Ball>().gameController = gameObject;
+            ball.transform.GetChild(0).GetComponent<Ball>().matchController = gameObject;
             //not for bots
             //ball.transform.GetChild(0).GetComponent<BallCollision>().ballConfig = ballConfig;
             ball.transform.GetChild(0).GetComponent<BallCollision>().InitializeConfig();

@@ -15,6 +15,7 @@ TagManager:
   - SpawnPoints
   - ScrollBar
   - AmountOfGamesDisplay
+  - MatchController
   layers:
   - Default
   - TransparentFX

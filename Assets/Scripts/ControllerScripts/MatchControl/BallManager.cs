@@ -150,7 +150,7 @@ public class BallManager : MonoBehaviour
 
             ball.transform.parent = parent;
             ball.name = name;
-            ball.GetComponent<Ball>().matchController = gameObject;
+            ball.GetComponent<Ball>().matchController = GameObject.FindGameObjectsWithTag("MatchController")[0];
 
             ball.GetComponent<BallCollision>().ballConfig = ballConfig;
             ball.GetComponent<BallCollision>().InitializeConfig();

@@ -45,10 +45,14 @@ public class Ball : MonoBehaviour
         {
             Debug.LogWarning("Ball didn't find MatchController when instantiating. This is 100% unintended for normal gameplay.");
             matchController = GameObject.FindGameObjectsWithTag("MatchController")[0];
+            if (matchController == null)
+            {
+                Debug.LogError("Ball didn't find MatchController when searching for it!. This is 100% unintended at any point ever!");
+            }
         }
 
-        gameController.GetComponent<KillFeed>().PostKill(transform.parent.name, ballCollision.lastHitByName);
-        gameController.GetComponent<PlayerCount>().RemovePlayer();
+        matchController.GetComponent<KillFeed>().PostKill(transform.parent.name, ballCollision.lastHitByName);
+        matchController.GetComponent<PlayerCount>().RemovePlayer();
 
         if(!isBot)
         {

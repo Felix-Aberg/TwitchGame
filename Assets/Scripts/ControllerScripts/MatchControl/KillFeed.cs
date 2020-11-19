@@ -26,7 +26,8 @@ public class KillFeed : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Warning! KillFeed wasn't assigned before running! Please set it in the gamecontroller killfeed script");
+                //Normally there would be a debug there but this is how things work now with the new controller hierarchy
+                //Debug.LogWarning("Warning! KillFeed wasn't assigned before running! Please set it in the gamecontroller killfeed script");
             }
         }
 
