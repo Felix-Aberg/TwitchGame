@@ -28,7 +28,7 @@ public class BallCollision : MonoBehaviour
      * 
      * All the remaining ""config"" variables (below) are ones that get changed on a object-to-object basis in runtime.
      */
-    float critChance = 0f;
+    public float critChance = 0f;
     [Tooltip("Multiplies force by this on crit")]
     float critMultiplier;
     bool doCrit = false;
