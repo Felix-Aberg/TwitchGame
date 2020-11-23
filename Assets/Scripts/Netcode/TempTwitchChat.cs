@@ -152,5 +152,24 @@ public class TempTwitchChat : MonoBehaviour
                 ballManager.AddBall(ChatName);
             }
         }
+        else if (gameController.gameStarted)
+        {
+            //!
+            if (ChatInputs.StartsWith("!crit"))
+            {
+                GameObject ball = ballManager.ballDictionary[ChatName].transform.GetChild(0).gameObject;
+                BallCommand cmd = ball.GetComponent<BallCommand>();
+                if (cmd == null)
+                {
+                    Debug.Log("Didn't have a BallCommand component!");
+                    cmd = ball.AddComponent(typeof(BallCmdCrit)) as BallCommand;
+                    cmd.ActivateCommand();
+                }
+                else
+                {
+                    Debug.Log("Player did have a BallCommand component!");
+                }
+            }
+        }
     }
 }

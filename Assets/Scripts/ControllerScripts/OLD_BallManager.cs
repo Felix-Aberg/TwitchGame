@@ -31,8 +31,18 @@ public class OLDBallManager : MonoBehaviour
 
         parent = Instantiate(new GameObject()).transform;
         parent.name = "Balls";
-        ballPrefab = Resources.Load("Prefabs/Ball") as GameObject;
-        botPrefab = Resources.Load("Prefabs/BotBall") as GameObject;
+        ballPrefab = Resources.Load("Prefabs/Spinnytops/Ball") as GameObject;
+        botPrefab = Resources.Load("Prefabs/Spinnytops/BotBall") as GameObject;
+
+        if(ballPrefab == null)
+        {
+            Debug.LogError("Couldn't load player ball in BallManager!");
+        }
+
+        if(botPrefab == null)
+        {
+            Debug.LogError("Couldn't load player ball in BallManager!");
+        }
 
         spawnPointTransform = transform.Find("SpawnPoints");
         spawnPointAmount = spawnPointTransform.childCount;
