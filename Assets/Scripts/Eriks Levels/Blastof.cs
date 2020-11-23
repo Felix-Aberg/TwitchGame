@@ -17,10 +17,21 @@ public class Blastof : MonoBehaviour
 
     public GameObject blasteroffer;
 
+
+    [SerializeField] bool specificStart;
+    public float specificStartTimer;
     // Start is called before the first frame update
     void Start()
     {
-        timerr = Random.Range(minTimer, maxTimer);
+        if (specificStart == true)
+        {
+            timerr = specificStartTimer;
+        }else
+        {
+        timerr += Random.Range(minTimer, maxTimer);
+
+        }
+
         startpos = transform.position;
         
     }
@@ -28,6 +39,22 @@ public class Blastof : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (specificStart == true)
+        {
+            if(transform.position.y <= startpos.y)
+            {
+                transform.position = transform.position;
+            }
+            timerr -= Time.deltaTime;
+            if (timerr <= 0)
+            {
+                go = true;
+
+                timerr += Random.Range(minTimer, maxTimer);
+            }
+        }
+        else
+        {
         if(transform.position.y <= startpos.y)
         {
 
@@ -36,8 +63,10 @@ public class Blastof : MonoBehaviour
             {
                 go = true;
 
-                timerr = Random.Range(minTimer, maxTimer);
+                timerr += Random.Range(minTimer, maxTimer);
             }
+        }
+
         }
         if(go == true)
         {
