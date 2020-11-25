@@ -20,11 +20,12 @@ public class Blastof : MonoBehaviour
 
     [SerializeField] bool specificStart;
     public float specificStartTimer;
+
     // Start is called before the first frame update
     void Start()
     {
         if (specificStart == true)
-        {
+        { 
             timerr = specificStartTimer;
         }else
         {
@@ -32,20 +33,21 @@ public class Blastof : MonoBehaviour
 
         }
 
-        startpos = transform.position;
+        startpos = transform.localPosition;
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (specificStart == true)
         {
-            if(transform.position.y <= startpos.y)
+
+            if (transform.localPosition.y <= startpos.y)
             {
-                transform.position = transform.position;
+                transform.localPosition = transform.localPosition;
             }
-            timerr -= Time.deltaTime;
+            timerr -= Time.fixedDeltaTime;
             if (timerr <= 0)
             {
                 go = true;
@@ -55,10 +57,10 @@ public class Blastof : MonoBehaviour
         }
         else
         {
-        if(transform.position.y <= startpos.y)
+        if(transform.localPosition.y <= startpos.y)
         {
 
-            timerr -= Time.deltaTime;
+            timerr -= Time.fixedDeltaTime;
             if(timerr <= 0)
             {
                 go = true;
@@ -71,18 +73,18 @@ public class Blastof : MonoBehaviour
         if(go == true)
         {
             blasteroffer.GetComponent<Collider>().enabled = true;
-            transform.position = transform.position + new Vector3(0, 5 * upSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, 5 * upSpeed * Time.fixedDeltaTime, 0);
 
         }
-        if(transform.position.y > targethight.y)
+        if(transform.localPosition.y > targethight.y)
         {
             go = false;
         }
-        if (go == false && transform.position.y > startpos.y)
+        if (go == false && transform.localPosition.y > startpos.y)
         {
             blasteroffer.GetComponent<Collider>().enabled = false;
 
-            transform.position = transform.position - new Vector3(0, 5 * downSpeed * Time.deltaTime, 0);
+            transform.localPosition -= new Vector3(0, 5 * downSpeed * Time.fixedDeltaTime, 0);
         }
 
         
