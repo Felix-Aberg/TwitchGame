@@ -11,7 +11,7 @@ public class BallCmdCrit : BallCommand
 
     public override void Init()
     {
-        sprite = Resources.Load<Sprite>("Images/Icon/Crit");
+        sprite = Resources.Load<Sprite>("Images/Icon/Crit Icon");
     }
 
     public override void DoAbility()
