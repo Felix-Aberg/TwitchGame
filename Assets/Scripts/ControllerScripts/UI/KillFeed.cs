@@ -13,10 +13,16 @@ public class KillFeed : MonoBehaviour
     public string killArrow;
     public string selfDestruct;
 
+    private TempScoreDisplay tempScoreDisplay;
+    private PlayerCount playerCount;
+
     bool started = false;
 
     private void Start()
     {
+        tempScoreDisplay = FindObjectOfType<TempScoreDisplay>();
+        playerCount = FindObjectOfType<PlayerCount>();
+
         if (killFeed == null)
         {
             killFeed = GameObject.Find("KillFeed").GetComponent<Text>();
@@ -65,6 +71,24 @@ public class KillFeed : MonoBehaviour
 
         killFeed.text = killFeed.text + killer + " " + killArrow + " " + killed;
 
+        bool defaultKill = true;
+        
+        if(killed == tempScoreDisplay.bountyName)
+        {
+            tempScoreDisplay.AddScore(killer, ScoreEvent.BOUNTYKILL);
+            defaultKill = false;
+        }
+
+        if (playerCount.alivePlayers == playerCount.totalPlayers)
+        {
+            tempScoreDisplay.AddScore(killer, ScoreEvent.FIRSTBLOOD);
+            defaultKill = false;
+        }
+
+        if (defaultKill)
+        {
+            tempScoreDisplay.AddScore(killer, ScoreEvent.KILL);
+        }
     }
 
     void DeleteLine()
