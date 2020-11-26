@@ -1120,6 +1120,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f022b31d02f0ce4886396f552ff41d0, type: 2}
+    - target: {fileID: 3537595039176068450, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3710364637593254949, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1416,6 +1421,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cd67d90a4aa60024dbcabdca9964cc42, type: 2}
+    - target: {fileID: 6177795730609898547, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6467824255739313587, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
         type: 3}
       propertyPath: gameController
@@ -1452,6 +1462,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6637141495687883340, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6801692084226428799, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
         type: 3}
       propertyPath: m_Enabled
@@ -1472,6 +1487,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d407b9dfde85ba6469cc12c6dd401b79, type: 2}
+    - target: {fileID: 7652498314906706803, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8518594479375603426, guid: f91a8f9931ffdaa44bbf95daa4239ed1,
         type: 3}
       propertyPath: m_LocalScale.x
