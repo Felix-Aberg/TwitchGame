@@ -47,9 +47,25 @@ public class KillFeed : MonoBehaviour
         }
         lines++;
 
-        if (lines > maxLines)
+        bool defaultKill = true;
+
+        if (killed == tempScoreDisplay.bountyName)
         {
-            DeleteLine();
+            tempScoreDisplay.AddScore(killer, ScoreEvent.BOUNTYKILL);
+            killFeed.text = killFeed.text + "\n" + "-v- BOUNTY KILL -v-";
+            defaultKill = false;
+        }
+
+        if (playerCount.alivePlayers == playerCount.totalPlayers)
+        {
+            tempScoreDisplay.AddScore(killer, ScoreEvent.FIRSTBLOOD);
+            killFeed.text = killFeed.text + "\n" + "-v- FIRST BLOOD -v-";
+            defaultKill = false;
+        }
+
+        if (defaultKill)
+        {
+            tempScoreDisplay.AddScore(killer, ScoreEvent.KILL);
         }
 
         //chatBox.text = chatBox.text + "\n" + String.Format("{0}: {1}", chatName, message);
@@ -71,23 +87,14 @@ public class KillFeed : MonoBehaviour
 
         killFeed.text = killFeed.text + killer + " " + killArrow + " " + killed;
 
-        bool defaultKill = true;
-        
-        if(killed == tempScoreDisplay.bountyName)
+        if (playerCount.alivePlayers == 1)
         {
-            tempScoreDisplay.AddScore(killer, ScoreEvent.BOUNTYKILL);
-            defaultKill = false;
+            return;
         }
 
-        if (playerCount.alivePlayers == playerCount.totalPlayers)
+        while (lines > maxLines)
         {
-            tempScoreDisplay.AddScore(killer, ScoreEvent.FIRSTBLOOD);
-            defaultKill = false;
-        }
-
-        if (defaultKill)
-        {
-            tempScoreDisplay.AddScore(killer, ScoreEvent.KILL);
+            DeleteLine();
         }
     }
 

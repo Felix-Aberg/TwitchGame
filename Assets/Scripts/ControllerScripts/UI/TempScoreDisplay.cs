@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public enum ScoreEvent
 {
@@ -18,12 +19,27 @@ public class TempScoreDisplay : MonoBehaviour
     List<KeyValuePair<string, int>> list;
     Dictionary<string, int> dictionary;
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void OnDisable()
+    {
+    }
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
         list = new List<KeyValuePair<string, int>>();
         dictionary = new Dictionary<string, int>();
 
+        /*
         //Example of adding score
         AddScore("First", ScoreEvent.PLACE1);
         AddScore("Seconds", ScoreEvent.REVENGEKILL);
@@ -31,6 +47,7 @@ public class TempScoreDisplay : MonoBehaviour
         AddScore("Fourth", ScoreEvent.BOTKILL);
         AddScore("Fifth", ScoreEvent.BOUNTYKILL);
         AddScore("Sixth", 5);
+        */
     }
 
     private void Update()
@@ -124,7 +141,6 @@ public class TempScoreDisplay : MonoBehaviour
             Debug.Log(pair);
         }
 
-        bountyName = list[0].Key;
         UpdateUI();
     }
 
