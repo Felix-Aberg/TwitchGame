@@ -63,7 +63,7 @@ public class KillFeed : MonoBehaviour
             defaultKill = false;
         }
 
-        if (defaultKill)
+        if (defaultKill && playerCount.alivePlayers > 1)
         {
             tempScoreDisplay.AddScore(killer, ScoreEvent.KILL);
         }
