@@ -15,6 +15,7 @@ public class KillFeed : MonoBehaviour
 
     private TempScoreDisplay tempScoreDisplay;
     private PlayerCount playerCount;
+    private DataManager dataManager;
 
     bool started = false;
 
@@ -22,6 +23,7 @@ public class KillFeed : MonoBehaviour
     {
         tempScoreDisplay = FindObjectOfType<TempScoreDisplay>();
         playerCount = FindObjectOfType<PlayerCount>();
+        dataManager = FindObjectOfType<DataManager>();
 
         if (killFeed == null)
         {
@@ -39,6 +41,9 @@ public class KillFeed : MonoBehaviour
         killFeed.transform.parent.GetComponent<Image>().enabled = false;
     }
 
+    /// <summary>
+    /// Kills are posted by the dead player.
+    /// </summary>
     public void PostKill(string killed, string killer)
     {
         if (!started)
@@ -46,6 +51,12 @@ public class KillFeed : MonoBehaviour
             killFeed.transform.parent.GetComponent<Image>().enabled = true;
         }
         lines++;
+
+        //If it's a bot
+        if (!dataManager.playerSessionDataArray.ContainsKey(killer))
+        {
+            return; //Give no points
+        }
 
         bool defaultKill = true;
 
