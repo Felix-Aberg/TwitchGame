@@ -61,6 +61,20 @@ public class BallCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        /* 
+        if (TryGetComponent<BallCmdGhost>(out BallCmdGhost ghost))
+        {
+            if (ghost.ghostActive)
+                return;
+        }
+
+        if (collision.gameObject.TryGetComponent<BallCmdGhost>(out BallCmdGhost theirGhost))
+        {
+            if (theirGhost.ghostActive)
+                return;             
+        }
+        */
+
         if (collision.gameObject.tag == "Ball")
         {
             lastHitByName = collision.transform.parent.name;
