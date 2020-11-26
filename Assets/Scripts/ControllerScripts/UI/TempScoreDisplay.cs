@@ -59,6 +59,7 @@ public class TempScoreDisplay : MonoBehaviour
         {
             dictionary.Clear();
             list.Clear();
+            text.text = "";
         }
     }
 
