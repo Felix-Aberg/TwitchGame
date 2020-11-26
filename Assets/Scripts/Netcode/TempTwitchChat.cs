@@ -112,7 +112,7 @@ public class TempTwitchChat : MonoBehaviour
 
 
         ChatInputs = ChatInputs.ToLower();
-        if (!gameController.gameStarted && ChatInputs.StartsWith("!play"))
+        if (!gameController.gameStarted && (ChatInputs.StartsWith("!play") || ChatInputs.StartsWith("!town")))
         {
             //Load save data
             if (!ballManager.ballDictionary.ContainsKey(ChatName))
@@ -123,7 +123,7 @@ public class TempTwitchChat : MonoBehaviour
 
 
             //!play | Spawn ball
-            if (ChatInputs.StartsWith("!play "))
+            if (ChatInputs.StartsWith("!play ") || ChatInputs.StartsWith("!town "))
             {
                 Debug.Log("Stage 1");
                 string secondWord = ChatInputs.Split(' ').Skip(1).FirstOrDefault().ToUpper();
@@ -162,6 +162,24 @@ public class TempTwitchChat : MonoBehaviour
                 {
                     Debug.Log("Didn't have a BallCommand component!");
                     cmd = ball.AddComponent(typeof(BallCmdCrit)) as BallCommand;
+                    cmd.ActivateCommand();
+                }
+                else
+                {
+                    Debug.Log("Player did have a BallCommand component!");
+                }
+            }
+
+
+            //!
+            if (ChatInputs.StartsWith("!ghost"))
+            {
+                GameObject ball = ballManager.ballDictionary[ChatName].transform.GetChild(0).gameObject;
+                BallCommand cmd = ball.GetComponent<BallCommand>();
+                if (cmd == null)
+                {
+                    Debug.Log("Didn't have a BallCommand component!");
+                    cmd = ball.AddComponent(typeof(BallCmdGhost)) as BallCommand;
                     cmd.ActivateCommand();
                 }
                 else

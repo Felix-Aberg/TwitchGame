@@ -17,43 +17,74 @@ public class Blastof : MonoBehaviour
 
     public GameObject blasteroffer;
 
+
+    [SerializeField] bool specificStart;
+    public float specificStartTimer;
+
     // Start is called before the first frame update
     void Start()
     {
-        timerr = Random.Range(minTimer, maxTimer);
-        startpos = transform.position;
+        if (specificStart == true)
+        { 
+            timerr = specificStartTimer;
+        }else
+        {
+        timerr += Random.Range(minTimer, maxTimer);
+
+        }
+
+        startpos = transform.localPosition;
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(transform.position.y <= startpos.y)
+        if (specificStart == true)
         {
 
-            timerr -= Time.deltaTime;
+            if (transform.localPosition.y <= startpos.y)
+            {
+                transform.localPosition = transform.localPosition;
+            }
+            timerr -= Time.fixedDeltaTime;
+            if (timerr <= 0)
+            {
+                go = true;
+
+                timerr += Random.Range(minTimer, maxTimer);
+            }
+        }
+        else
+        {
+        if(transform.localPosition.y <= startpos.y)
+        {
+
+            timerr -= Time.fixedDeltaTime;
             if(timerr <= 0)
             {
                 go = true;
 
-                timerr = Random.Range(minTimer, maxTimer);
+                timerr += Random.Range(minTimer, maxTimer);
             }
+        }
+
         }
         if(go == true)
         {
             blasteroffer.GetComponent<Collider>().enabled = true;
-            transform.position = transform.position + new Vector3(0, 5 * upSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, 5 * upSpeed * Time.fixedDeltaTime, 0);
 
         }
-        if(transform.position.y > targethight.y)
+        if(transform.localPosition.y > targethight.y)
         {
             go = false;
         }
-        if (go == false && transform.position.y > startpos.y)
+        if (go == false && transform.localPosition.y > startpos.y)
         {
             blasteroffer.GetComponent<Collider>().enabled = false;
 
-            transform.position = transform.position - new Vector3(0, 5 * downSpeed * Time.deltaTime, 0);
+            transform.localPosition -= new Vector3(0, 5 * downSpeed * Time.fixedDeltaTime, 0);
         }
 
         
