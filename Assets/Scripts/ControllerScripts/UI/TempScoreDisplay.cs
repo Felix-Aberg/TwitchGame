@@ -24,13 +24,15 @@ public class TempScoreDisplay : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        throw new System.NotImplementedException();
+        if(list != null && list.Count > 0)
+            bountyName = list[0].Key;
     }
 
     private void OnDisable()
     {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
@@ -123,24 +125,9 @@ public class TempScoreDisplay : MonoBehaviour
     /// </summary>
     void SortList()
     {
-
         list = dictionary.ToList<KeyValuePair<string, int>>();
-
-        Debug.Log("<b>Pre Sort:</b>");
-        foreach (var pair in list)
-        {
-            Debug.Log(pair);
-        }
-
-        //sort
         list.Sort(CompareValues);
         list.Reverse();
-        Debug.Log("<b>Post Sort:</b>");
-        foreach (var pair in list)
-        {
-            Debug.Log(pair);
-        }
-
         UpdateUI();
     }
 
@@ -176,10 +163,5 @@ public class TempScoreDisplay : MonoBehaviour
 
         //Remove the last newline
         text.text = text.text.Remove(text.text.Length - 1);
-    }
-
-    List<KeyValuePair<string, int>> GetList()
-    {
-        return list;
     }
 }
