@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapPool/Level 5.unity
     guid: 98b4ae919da3ecf48a7e1a0beb478a86
+  - enabled: 1
+    path: Assets/Scenes/MapPool/Level 6.unity
+    guid: 28d3b6f8b043b0b4084f8d181e87f64f
+  - enabled: 1
+    path: Assets/Scenes/MapPool/Level 7.unity
+    guid: a70cbf6994434f64aa2125f3a434352c
   m_configObjects: {}
