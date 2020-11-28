@@ -66,14 +66,14 @@ public class KillFeed : MonoBehaviour
         if (killed == tempScoreDisplay.bountyName)
         {
             tempScoreDisplay.AddScore(killer, ScoreEvent.BOUNTYKILL);
-            killFeed.text = killFeed.text + "\n" + "-v- BOUNTY KILL -v-";
+            killFeed.text = killFeed.text + "-v- BOUNTY KILL -v-" + "\n";
             defaultKill = false;
         }
 
         if (playerCount.alivePlayers == playerCount.totalPlayers)
         {
             tempScoreDisplay.AddScore(killer, ScoreEvent.FIRSTBLOOD);
-            killFeed.text = killFeed.text + "\n" + "-v- FIRST BLOOD -v-";
+            killFeed.text = killFeed.text + "-v- FIRST BLOOD -v-" + "\n";
             defaultKill = false;
         }
 

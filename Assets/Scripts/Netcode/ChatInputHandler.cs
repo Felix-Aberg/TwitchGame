@@ -65,12 +65,8 @@ public class ChatInputHandler : MonoBehaviour
         }
 
         // Spawn ball
-        if (message.StartsWith("play") || message.StartsWith("town"))
-        {
-            ballManager.AddBall(username);
-            PostPlayerJoin(username);
-        }
-        else if (message.StartsWith("play ") || message.StartsWith("town "))
+
+        if (message.StartsWith("play ") || message.StartsWith("town "))
         {
             // Remove the first word
             string secondWord = message.Split(' ').Skip(1).FirstOrDefault().ToUpper();
@@ -94,7 +90,7 @@ public class ChatInputHandler : MonoBehaviour
                 PostPlayerJoin(username);
             }
         }
-        else if (message == "!play" || message == "!town")
+        else if (message == "play" || message == "town")
         {
             Debug.Log("Player didn't specify a ballmaterial");
             ballManager.AddBall(username);

@@ -84,6 +84,7 @@ public class BallManager : MonoBehaviour
 
     public void AddBall(string name, BallMaterial ballMaterial)
     {
+        Debug.Log(ballMaterial);
         if (!ballDictionary.ContainsKey(name))
         {
             //Create ball
