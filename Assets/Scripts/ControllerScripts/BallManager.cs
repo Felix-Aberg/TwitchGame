@@ -141,9 +141,23 @@ public class BallManager : MonoBehaviour
                     break;
             }
 
-            if (ballMaterial == BallMaterial.GOLD)
+            if (name == "Ragntard")
             {
-                MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+                Debug.Log("Ragntard joined");
+                MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<MeshRenderer>();
+                Debug.Log(mr);
+                Debug.Log(mr.material);
+
+                mr.material = Resources.Load("Materials/BallIcons/BallMaterialRagntard") as Material;
+            }
+            else if (name == "Mickster_man")
+            {
+                Debug.Log("Mickster_man joined");
+                MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<MeshRenderer>();
+                Debug.Log(mr);
+                Debug.Log(mr.material);
+
+                mr.material = Resources.Load("Materials/BallIcons/BallMaterialMickster_man") as Material;
             }
         }
         else
