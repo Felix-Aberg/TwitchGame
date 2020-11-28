@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9e313fb2d3a3d41a2c8c5cdac2f8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLines: 14
+  maxLines: 8
   killFeed: {fileID: 0}
   killArrow: killed
   selfDestruct: self-destructed
