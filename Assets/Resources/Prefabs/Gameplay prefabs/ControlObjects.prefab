@@ -461,7 +461,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1719976341089925028}
   - component: {fileID: 1719976341089925029}
-  - component: {fileID: 1719976341089925050}
+  - component: {fileID: 31278739429405402}
+  - component: {fileID: 6345688242134369306}
   - component: {fileID: 1719976341089925051}
   - component: {fileID: 1719976341089925049}
   - component: {fileID: 1719976341089925048}
@@ -504,7 +505,9 @@ MonoBehaviour:
   gameStarted: 0
   gameRunning: 0
   gameEnded: 0
---- !u!114 &1719976341089925050
+  commandsEnabled: 0
+  topTwo: []
+--- !u!114 &31278739429405402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,10 +516,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1719976341089925030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9584ffa8ade694aa7bbb9ca4b7f3f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 06e6229ab8a16284a88ea28436963ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatBox: {fileID: 0}
+--- !u!114 &6345688242134369306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719976341089925030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009611744d8429943a0df86ed4924ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1719976341089925051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993a94352c1a1c1429b8e15ba44d45a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalPlayers: 0
+  alivePlayers: 0
   playerAmountText: {fileID: 0}
 --- !u!114 &946606343475754716
 MonoBehaviour:
@@ -586,6 +602,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9e3e4e026cf70429efd6493762ef1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  streamerSessionData:
+    dataVersion: 0
+    gamesPlayed: 0
+    totalJoins: 0
+    uniqueJoins: 0
+    longestGame: 0
+    shortestGame: 0
+    totalGameLength: 0
+  streamerTotalData:
+    dataVersion: 0
+    gamesPlayed: 0
+    totalJoins: 0
+    uniqueJoins: 0
+    longestGame: 0
+    shortestGame: 0
+    totalGameLength: 0
 --- !u!1 &1719976341235597323
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +838,7 @@ MonoBehaviour:
   mouseSensitivityX: 1
   mouseSensitivityY: 1
   mouseClampY: 90
-  rotateSpeed: 15
+  rotateSpeed: 12
   turnSpeed: 3
   AFKThreshold: 5
 --- !u!1 &1719976342750664562
