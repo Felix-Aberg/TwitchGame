@@ -8,12 +8,15 @@ public class BallCmdGhost : BallCommand
     public float transparency = 0.2f;
     public bool ghostActive;
     private float timer = 8f;
+    private float critTimer = 0.05f;
+    private float ghostExitCritChance = 1f;
 
     BallCollision ballCollision;
 
     public override void Init()
     {
         sprite = Resources.Load<Sprite>("Images/Icon/Ghost Icon");
+        ballCollision = GetComponent<BallCollision>();
     }
 
     public override void DoAbility()
@@ -28,6 +31,8 @@ public class BallCmdGhost : BallCommand
 
     private void DisableGhost()
     {
+
+        ballCollision.critChance += ghostExitCritChance;
         ToggleIcon(false);
 
         setAlpha(1f);
@@ -35,6 +40,13 @@ public class BallCmdGhost : BallCommand
         gameObject.layer = 8;
 
         ghostActive = false;
+
+        Invoke("DisableCrits", critTimer);
+    }
+
+    private void DisableCrits()
+    {
+        ballCollision.critChance -= ghostExitCritChance;
     }
 
     public void setAlpha(float alpha)
@@ -46,7 +58,6 @@ public class BallCmdGhost : BallCommand
             newColor = child.material.color;
             newColor.a = alpha;
             child.material.color = newColor;
-            Debug.Log(child.material.color);
 
             if(alpha == 1f)
             {

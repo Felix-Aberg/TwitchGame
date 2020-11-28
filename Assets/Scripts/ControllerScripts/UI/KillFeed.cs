@@ -46,17 +46,20 @@ public class KillFeed : MonoBehaviour
     /// </summary>
     public void PostKill(string killed, string killer)
     {
+
         if (!started)
         {
             killFeed.transform.parent.GetComponent<Image>().enabled = true;
         }
-        lines++;
 
         //If it's a bot
         if (!dataManager.playerSessionDataArray.ContainsKey(killer))
         {
             return; //Give no points
         }
+
+        // Kill is determined to be posted beyond this point, so run InitMessage();
+        InitMessage();
 
         bool defaultKill = true;
 
@@ -85,11 +88,6 @@ public class KillFeed : MonoBehaviour
             killed = "nobody??";
         }
 
-        if (killFeed.text != "")
-        {
-            killFeed.text += "\n";
-        }
-
         if (killer == "")
         {
             killFeed.text = killFeed.text + killed + " " + selfDestruct;
@@ -103,6 +101,29 @@ public class KillFeed : MonoBehaviour
             return;
         }
 
+        ExitMessage();
+    }
+
+    public void PostText(string message)
+    {
+        InitMessage();
+
+        killFeed.text += message;
+
+        ExitMessage();
+    }
+
+    void InitMessage()
+    {
+        if (killFeed.text != "")
+        {
+            killFeed.text += "\n";
+        }
+        lines++;
+    }
+
+    void ExitMessage()
+    {
         while (lines > maxLines)
         {
             DeleteLine();
