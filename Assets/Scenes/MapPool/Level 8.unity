@@ -4134,7 +4134,7 @@ MonoBehaviour:
   shrinkSpeed: 0.02
   doShrink: 0
   timeUntilShrink: 10
-  toosmol: 0.85
+  toosmol: 0.65
 --- !u!4 &1630150925
 Transform:
   m_ObjectHideFlags: 0
