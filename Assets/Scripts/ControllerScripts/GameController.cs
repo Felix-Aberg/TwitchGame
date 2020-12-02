@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     BallManager ballManager;
     DataManager dataManager;
     PlayerCount playerCount;
+    TempScoreDisplay tempScoreDisplay;
 
     Transform parentCanvas;
     Canvas startPhaseCanvas;
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
         ballManager = gameObject.GetComponent<BallManager>();
         dataManager = gameObject.GetComponent<DataManager>();
         playerCount = gameObject.GetComponent<PlayerCount>();
+        tempScoreDisplay = FindObjectOfType<TempScoreDisplay>();
         parentCanvas = GameObject.FindWithTag("ParentCanvas").transform;
         startPhaseCanvas = parentCanvas.Find("StartPhaseCanvas").GetComponent<Canvas>();
         nameplateCanvas = parentCanvas.Find("NameplateCanvas").GetComponent<Canvas>();
@@ -171,6 +173,9 @@ public class GameController : MonoBehaviour
                 //Statistics: 1st place win
                 dataManager.playerSessionDataArray[lastPlayerName].wins += 1;
                 dataManager.playerTotalDataArray[lastPlayerName].wins += 1;
+
+                Debug.Log("Adding score to winner! Name: " + lastPlayerName);
+                tempScoreDisplay.AddScore(lastPlayerName, ScoreEvent.PLACE1);
             }
 
             if (topTwo[0] != null)
@@ -187,6 +192,9 @@ public class GameController : MonoBehaviour
                             //Statistics: 2nd place
                             dataManager.playerSessionDataArray[topTwo[i]].secondPlaces += 1;
                             dataManager.playerTotalDataArray[topTwo[i]].secondPlaces += 1;
+
+                            Debug.Log("Adding score to first loser! Name: " + topTwo[i]);
+                            tempScoreDisplay.AddScore(topTwo[i], ScoreEvent.PLACE2);
                         }
                     }
                 }

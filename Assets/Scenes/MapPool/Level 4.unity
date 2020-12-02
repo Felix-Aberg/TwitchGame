@@ -1455,6 +1455,7 @@ MonoBehaviour:
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
+  critChance: 0
   debugForceLimit: 0
 --- !u!114 &746773134
 MonoBehaviour:
@@ -1970,7 +1971,7 @@ PrefabInstance:
     - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.6
+      value: 30.88
       objectReference: {fileID: 0}
     - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
@@ -2000,7 +2001,12 @@ PrefabInstance:
     - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719976342434252959, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -37.52
       objectReference: {fileID: 0}
     - target: {fileID: 1719976342750664560, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
@@ -2902,6 +2908,7 @@ MonoBehaviour:
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
+  critChance: 0
   debugForceLimit: 0
 --- !u!136 &1394058440
 CapsuleCollider:

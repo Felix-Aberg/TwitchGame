@@ -28,6 +28,7 @@ public class BallCollision : MonoBehaviour
      * 
      * All the remaining ""config"" variables (below) are ones that get changed on a object-to-object basis in runtime.
      */
+
     public float critChance = 0f;
     [Tooltip("Multiplies force by this on crit")]
     float critMultiplier;
@@ -81,63 +82,70 @@ public class BallCollision : MonoBehaviour
             lastHitByGameObject = collision.gameObject;
         }
 
-        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
-
-            direction = collision.transform.position - transform.position;
-            direction.Normalize();
-
-            RNG_multiplier = UnityEngine.Random.Range(ballConfig.RNGMinMultiplier, ballConfig.RNGMaxMultiplier);
-
             doCrit = RollCrit();
-
-            float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
-
-            //Magnitude formula
-            magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
-                * RNG_multiplier;
-
-            if(audioSource != null)
-            {
-                audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
-                audioSource.Play();
-            }
-
-            if (doCrit)
-            {
-                magnitude *= critMultiplier;
-
-                if (critSparks != null)
-                    critSparks.Play();
-
-            }
-            else
-            {
-                if (sparks != null)
-                    sparks.Play();
-            }
-
-            if (magnitude > debugForceLimit)
-            {
-                /*
-                Debug.Log("<b>Excessive force</b> (" + (int)magnitude + ")" + Environment.NewLine
-                + "<b>Crit:</b> " + doCrit
-                + " <b>RPM push force:</b> " + (int)(ballRPM.RPM * ballConfig.RPMMultiplier)
-                + " <b>Velocity push force:</b> " + (int)(rb.velocity.magnitude * ballConfig.velocityMultiplier));
-
-                //*/
-            }
-
-            if(ballPhysics != null)
-                ballPhysics.NewCircular();
-
-            finalForce = direction * magnitude;
-
-            collision.rigidbody.AddForce(finalForce);
-
-            ballRPM.RPM -= UnityEngine.Random.Range(ballConfig.RPMMinDamageOnHit, ballConfig.RPMMaxDamageOnHit);
-            //TODO: Reduce self HP;
+            HitEnemy(collision);
         }
+        else if (collision.gameObject.tag == "Obstacle")
+        {
+            HitEnemy(collision);
+        }
+    }
+
+    void HitEnemy(Collision collision)
+    {
+        direction = collision.transform.position - transform.position;
+        direction.Normalize();
+
+        RNG_multiplier = UnityEngine.Random.Range(ballConfig.RNGMinMultiplier, ballConfig.RNGMaxMultiplier);
+
+        float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
+
+        //Magnitude formula
+        magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
+            * RNG_multiplier;
+
+        if (audioSource != null)
+        {
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
+            audioSource.Play();
+        }
+
+        if (doCrit)
+        {
+            magnitude *= critMultiplier;
+
+            if (critSparks != null)
+                critSparks.Play();
+
+        }
+        else
+        {
+            if (sparks != null)
+                sparks.Play();
+        }
+
+        if (magnitude > debugForceLimit)
+        {
+            /*
+            Debug.Log("<b>Excessive force</b> (" + (int)magnitude + ")" + Environment.NewLine
+            + "<b>Crit:</b> " + doCrit
+            + " <b>RPM push force:</b> " + (int)(ballRPM.RPM * ballConfig.RPMMultiplier)
+            + " <b>Velocity push force:</b> " + (int)(rb.velocity.magnitude * ballConfig.velocityMultiplier));
+
+            //*/
+        }
+
+        if (ballPhysics != null)
+            ballPhysics.NewCircular();
+
+        finalForce = direction * magnitude;
+
+        collision.rigidbody.AddForce(finalForce);
+
+        ballRPM.RPM -= UnityEngine.Random.Range(ballConfig.RPMMinDamageOnHit, ballConfig.RPMMaxDamageOnHit);
+        //TODO: Reduce self HP;
     }
 
     bool RollCrit()
@@ -152,6 +160,4 @@ public class BallCollision : MonoBehaviour
         }
         return false;
     }
-
-    
 }
