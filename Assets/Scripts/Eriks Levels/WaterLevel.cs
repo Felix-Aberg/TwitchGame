@@ -17,7 +17,7 @@ public class WaterLevel : MonoBehaviour
 
   public bool isDripping;
 
- 
+    public GameObject theBoosters;
 
     // Start is called before the first frame update
     void Start()
@@ -42,11 +42,15 @@ public class WaterLevel : MonoBehaviour
             transform.position = transform.position + new Vector3(0, 1 * speed * Time.deltaTime, 0);
 
         }
-        if(isDripping == false && transform.position.y > startpos.y)
+        if (isDripping == false && transform.position.y > startpos.y)
         {
 
             transform.position = transform.position - new Vector3(0, 1 * downSpeed * Time.deltaTime, 0);
+
+            theBoosters.SetActive(true);
         }
+        else
+            theBoosters.SetActive(false);
         
         
     }
