@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 3000
-  variableDrag: 0
-  constantDrag: 0
 --- !u!54 &39667232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -411,7 +409,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.640625
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -710,7 +708,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.6640625
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -942,7 +940,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.65625
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1166,8 +1164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 3000
-  variableDrag: 0
-  constantDrag: 0
 --- !u!136 &746773135
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1278,8 +1274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 8000
-  variableDrag: 0
-  constantDrag: 0
 --- !u!54 &773423326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1479,7 +1473,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.7109375
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1965,8 +1959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 3000
-  variableDrag: 0
-  constantDrag: 0
 --- !u!54 &1394058438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2426,8 +2418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 3000
-  variableDrag: 0
-  constantDrag: 0
 --- !u!54 &1692923490
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2829,8 +2819,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 8000
-  variableDrag: 0
-  constantDrag: 0
 --- !u!54 &1754489574
 Rigidbody:
   m_ObjectHideFlags: 0
