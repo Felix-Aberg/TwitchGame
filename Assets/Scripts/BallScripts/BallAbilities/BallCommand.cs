@@ -33,13 +33,17 @@ public abstract class BallCommand : MonoBehaviour
         used = true;
     }
 
-    public virtual void ToggleIcon(bool enable)
+    public void ToggleIcon(bool enable)
     {
         GetComponent<NameplateDisplay>().nameplate.GetComponentInChildren<Image>(true).enabled = enable;
     }
 
     /// <summary>
-    /// Please call ActivateCommand instead, this one is to be called by ActivateCommand();
+    /// Don't call this
     /// </summary>
-
+    public virtual void SelfDestruct()
+    {
+        ToggleIcon(false);
+        Destroy(this);
+    }
 }

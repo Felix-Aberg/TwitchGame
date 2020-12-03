@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     public bool isBot;
     public GameObject gameController;
-    BallRPM ballRPM;
+    BallDurability ballDur;
     BallCollision ballCollision;
     NameplateDisplay nameplateDisplay;
 
@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         name = transform.parent.name;
-        ballRPM = GetComponent<BallRPM>();
+        ballDur = GetComponent<BallDurability>();
         ballCollision = GetComponent<BallCollision>();
         nameplateDisplay = GetComponent<NameplateDisplay>();
     }
@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
             SelfDestruct();
         }
 
-        if (ballRPM.RPM < minimumRPM)
+        if (ballDur.RPM < minimumRPM)
         {
             SelfDestruct();
         }
@@ -60,7 +60,7 @@ public class Ball : MonoBehaviour
         if (ballCollision.lastHitByGameObject != null)
         {
             //Gain RPM on kill
-            ballCollision.lastHitByGameObject.GetComponent<BallRPM>().RPM += ballCollision.ballConfig.RPMOnKill;
+            ballCollision.lastHitByGameObject.GetComponent<BallDurability>().RPM += ballCollision.ballConfig.DurOnKill;
 
             if (!ballCollision.lastHitByGameObject.GetComponent<Ball>().isBot)
             {
