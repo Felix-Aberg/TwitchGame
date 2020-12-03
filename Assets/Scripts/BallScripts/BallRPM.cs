@@ -12,8 +12,11 @@ public class BallRPM : MonoBehaviour
     [Tooltip("RPM lost per second regardless of current RPM")]
     public float constantDrag;
 
+    /*
+    // RPM consistently draining
     private void Update()
     {
         RPM -= (RPM * variableDrag * 0.01f * Time.deltaTime) + (constantDrag * Time.deltaTime);
     }
+    */
 }
