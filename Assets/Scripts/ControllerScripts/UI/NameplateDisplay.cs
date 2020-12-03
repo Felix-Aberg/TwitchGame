@@ -16,6 +16,9 @@ public class NameplateDisplay : MonoBehaviour
     private Camera cam;
     public Vector3 offset;
 
+    public Color maxHealthColor;
+    public Color minHealthColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,18 @@ public class NameplateDisplay : MonoBehaviour
 
         nameplateTransform = nameplate.transform;
         cam = Camera.main;
+    }
+
+    /// <summary>
+    /// Color the name according to the player's durability
+    /// </summary>
+    /// <param name="durability"> From 0-100 </param>
+    public void ColorName(float durability)
+    {
+        if (durability < 50f)
+        {
+            text.color = Color.Lerp(minHealthColor, maxHealthColor, durability * 0.01f);
+        }
     }
 
     // Update is called once per frame

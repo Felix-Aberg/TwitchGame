@@ -8,8 +8,11 @@ public class BallCollision : MonoBehaviour
     Rigidbody rb;
     BallDurability ballDur;
     BallPhysics ballPhysics;
+    NameplateDisplay nameplate;
+    
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
+
 
     public AudioSource audioSource;
 
@@ -43,6 +46,7 @@ public class BallCollision : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ballDur = GetComponent<BallDurability>();
         ballPhysics = GetComponent<BallPhysics>();
+        nameplate = GetComponent<NameplateDisplay>();
 
         //Initialise ballConfig values
     }
@@ -78,16 +82,18 @@ public class BallCollision : MonoBehaviour
         {
             lastHitByName = collision.transform.parent.name;
             lastHitByGameObject = collision.gameObject;
-        }
-
-        if (collision.gameObject.tag == "Ball")
-        {
             doCrit = RollCrit();
+
             HitEnemy(collision);
         }
         else if (collision.gameObject.tag == "Obstacle")
         {
             HitEnemy(collision);
+        }
+
+        if (gameObject.tag == "Ball")
+        {
+            nameplate.ColorName(ballDur.RPM);
         }
     }
 
@@ -142,8 +148,8 @@ public class BallCollision : MonoBehaviour
 
         collision.rigidbody.AddForce(finalForce);
 
+
         ballDur.RPM -= UnityEngine.Random.Range(ballConfig.DurMinDamageOnHit, ballConfig.DurMaxDamageOnHit);
-        //TODO: Reduce self HP;
     }
 
     bool RollCrit()
