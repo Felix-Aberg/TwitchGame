@@ -10,27 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c7947e72d70d040844714bed6f64fa, type: 3}
-  m_Name: Bot Config
+  m_Name: Pre-Durability Ball Config
   m_EditorClassIdentifier: 
   Reminder: 'Any values changed in this file WILL BE AUTOMATICALLY SAVED!!!
 
     This
     also goes for play mode'
-  RPMMultiplier: 0.15
+  RPMMultiplier: 0.156
   velocityMultiplier: 8
-  maxRPM: 200
+  maxRPM: 1200
   RNGMinMultiplier: 0.8
-  RNGMaxMultiplier: 1.1
-  DurMinDamageOnHit: 1
-  DurMaxDamageOnHit: 2
-  DurOnKill: 5
+  RNGMaxMultiplier: 1.15
+  RPMMinDamageOnHit: 5
+  RPMMaxDamageOnHit: 20
+  RPMOnKill: 200
+  HPDamageOnHit: 0
   critChanceIncrement: 0.01
   minimumCritChance: 0.01
-  critMultiplierIncrement: 0.75
+  critMultiplierIncrement: 0.8
   nemesisCritChanceIncrement: 0
   minCircleSpeed: 40
   maxCircleSpeed: 100
   circleForce: 200
   decaySpeed: 80
-  initDur: 100
+  initRPM: 5000
   initCritMultiplier: 1.5

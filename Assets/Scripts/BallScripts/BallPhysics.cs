@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallPhysics : MonoBehaviour
 {
     Rigidbody rb;
-    BallRPM ballRPM;
+    BallDurability ballDur;
     BallConfig cfg;
 
     public bool extraGravityIsEnabled;
@@ -30,7 +30,7 @@ public class BallPhysics : MonoBehaviour
         rotation = transform.parent.GetChild(1);
 
         rb = GetComponent<Rigidbody>();
-        ballRPM = GetComponent<BallRPM>();
+        ballDur = GetComponent<BallDurability>();
         cfg = GetComponent<BallCollision>().ballConfig;
         childPosition = child.localPosition;
         rb.centerOfMass = Vector3.zero;
@@ -66,7 +66,7 @@ public class BallPhysics : MonoBehaviour
     {
         Vector3 deltaRotation = child.transform.rotation.eulerAngles;
         deltaRotation.x = 0f;
-        deltaRotation.y += ballRPM.RPM * Time.deltaTime * 5;
+        deltaRotation.y += Time.deltaTime * 2500;
         deltaRotation.z = 0f;
 
         child.transform.rotation = Quaternion.Euler(deltaRotation);
