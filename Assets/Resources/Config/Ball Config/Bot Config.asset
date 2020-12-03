@@ -16,17 +16,17 @@ MonoBehaviour:
 
     This
     also goes for play mode'
-  RPMMultiplier: 0.15
+  RPMMultiplier: 0.156
   velocityMultiplier: 8
   maxRPM: 200
   RNGMinMultiplier: 0.8
-  RNGMaxMultiplier: 1.1
+  RNGMaxMultiplier: 1.15
   DurMinDamageOnHit: 1
-  DurMaxDamageOnHit: 2
-  DurOnKill: 5
+  DurMaxDamageOnHit: 1
+  DurOnKill: 1
   critChanceIncrement: 0.01
   minimumCritChance: 0.01
-  critMultiplierIncrement: 0.75
+  critMultiplierIncrement: 0.8
   nemesisCritChanceIncrement: 0
   minCircleSpeed: 40
   maxCircleSpeed: 100

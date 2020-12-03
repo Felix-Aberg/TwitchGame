@@ -77,7 +77,15 @@ public class ChatInputHandler : MonoBehaviour
                 secondWord = secondWord.Remove(secondWord.IndexOf(' '));
             }
 
-            if (Enum.TryParse(secondWord, out BallMaterial _))
+
+            if(secondWord == "POGCHAMP")
+            {
+                Debug.Log("POG");
+                GameObject ball = ballManager.AddBall(username);
+                ballManager.EquipImageMaterial("Materials/BallIcons/BallMaterialPogChamp", ball);
+                PostPlayerJoin(username);
+            }
+            else if (Enum.TryParse(secondWord, out BallMaterial _))
             {
                 Debug.Log("Player successfully specified a ballmaterial");
                 ballManager.AddBall(username, (BallMaterial)Enum.Parse(typeof(BallMaterial), secondWord));

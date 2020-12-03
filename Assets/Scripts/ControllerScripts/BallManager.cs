@@ -82,7 +82,7 @@ public class BallManager : MonoBehaviour
         return;
     }
 
-    public void AddBall(string name, BallMaterial ballMaterial)
+    public GameObject AddBall(string name, BallMaterial ballMaterial)
     {
         Debug.Log(ballMaterial);
         if (!ballDictionary.ContainsKey(name))
@@ -144,26 +144,19 @@ public class BallManager : MonoBehaviour
 
             if (name == "Ragntard")
             {
-                Debug.Log("Ragntard joined");
-                MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<MeshRenderer>();
-                Debug.Log(mr);
-                Debug.Log(mr.material);
-
-                mr.material = Resources.Load("Materials/BallIcons/BallMaterialRagntard") as Material;
+                EquipImageMaterial("Materials/BallIcons/BallMaterialRagntard", ball);
             }
             else if (name == "Mickster_man")
             {
-                Debug.Log("Mickster_man joined");
-                MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<MeshRenderer>();
-                Debug.Log(mr);
-                Debug.Log(mr.material);
-
-                mr.material = Resources.Load("Materials/BallIcons/BallMaterialMickster_man") as Material;
+                EquipImageMaterial("Materials/BallIcons/BallMaterialMickster_man", ball);
             }
+
+            return ball;
         }
         else
         {
             Debug.LogWarning("Error! Attempted to create ball using a name that already exists");
+            return null;
         }
     }
 
@@ -223,9 +216,9 @@ public class BallManager : MonoBehaviour
         }
     }
 
-    public void AddBall(string name)
+    public GameObject AddBall(string name)
     {
-        AddBall(name, BallMaterial.RANDOM);
+        return AddBall(name, BallMaterial.RANDOM);
     }
 
     public void RemoveBall(string name)
@@ -250,5 +243,14 @@ public class BallManager : MonoBehaviour
         {
             AddBot();
         }
+    }
+
+    public void EquipImageMaterial(string path, GameObject ball)
+    {
+        MeshRenderer mr = ball.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<MeshRenderer>();
+        Debug.Log(mr);
+        Debug.Log(mr.material);
+
+        mr.material = Resources.Load(path) as Material;
     }
 }
