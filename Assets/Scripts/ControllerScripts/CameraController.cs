@@ -144,4 +144,10 @@ public class CameraController : MonoBehaviour
         //Apply to euler
         eulerRotation = transform.rotation.eulerAngles;
     }
+
+    private void OnDestroy()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 }

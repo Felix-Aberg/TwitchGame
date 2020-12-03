@@ -110,6 +110,8 @@ public class ChatInputHandler : MonoBehaviour
         {
             GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
             //BallCommand cmd = ball.GetComponent<BallCommand>();
+
+
             BallCommand cmd = ball.GetComponent<BallCmdCrit>();
             if (cmd == null)
             {
