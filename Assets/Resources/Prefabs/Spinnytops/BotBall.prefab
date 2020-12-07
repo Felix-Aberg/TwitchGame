@@ -1331,7 +1331,6 @@ GameObject:
   - component: {fileID: 7754954812749731467}
   - component: {fileID: 3514376136813379737}
   - component: {fileID: 6971810729439251789}
-  - component: {fileID: 8848924076506758001}
   - component: {fileID: 2539757384918739100}
   - component: {fileID: 5572630538943148861}
   m_Layer: 8
@@ -1500,21 +1499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RPM: 5000
-  variableDrag: 0.51
-  constantDrag: 15
---- !u!114 &8848924076506758001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8870720653030784379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c99a01a3993a85941b7f2f5b1813cac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballDurability: 0
 --- !u!114 &2539757384918739100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,6 +1515,8 @@ MonoBehaviour:
     type: 3}
   nameplate: {fileID: 0}
   offset: {x: 0, y: 1, z: 0}
+  maxHealthColor: {r: 1, g: 1, b: 1, a: 1}
+  minHealthColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!82 &5572630538943148861
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    public void LevelOne()
+    public void SelectLevelByIndex(int index)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + index);
+    }
+
+    /*public void LevelOne()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -37,4 +42,8 @@ public class LevelSelect : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 8);
     }
+    public void LevelNine()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 9);
+    }*/
 }

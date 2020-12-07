@@ -26,14 +26,11 @@ public class BallConfig : ScriptableObject
     public float RNGMinMultiplier;
     public float RNGMaxMultiplier;
 
-
     [Header("Damage values")]
 
-    public float RPMMinDamageOnHit;
-    public float RPMMaxDamageOnHit;
-    public float RPMOnKill;
-    public float HPDamageOnHit; //not yet used, to be used for durability
-
+    public float DurMinDamageOnHit;
+    public float DurMaxDamageOnHit;
+    public float DurOnKill;
 
     [Header("Crits")]
 
@@ -59,7 +56,7 @@ public class BallConfig : ScriptableObject
 
     [Header("Initial Values")]
 
-    public float initRPM;
+    public float initDur;
     public float initCritMultiplier;
 
 

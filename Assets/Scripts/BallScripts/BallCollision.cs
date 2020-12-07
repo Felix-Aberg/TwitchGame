@@ -6,11 +6,13 @@ public class BallCollision : MonoBehaviour
     public BallConfig ballConfig;
 
     Rigidbody rb;
-    BallRPM ballRPM;
     BallDurability ballDur;
     BallPhysics ballPhysics;
+    NameplateDisplay nameplate;
+    
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
+
 
     public AudioSource audioSource;
 
@@ -42,9 +44,9 @@ public class BallCollision : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        ballRPM = GetComponent<BallRPM>();
         ballDur = GetComponent<BallDurability>();
         ballPhysics = GetComponent<BallPhysics>();
+        nameplate = GetComponent<NameplateDisplay>();
 
         //Initialise ballConfig values
     }
@@ -56,7 +58,7 @@ public class BallCollision : MonoBehaviour
             Debug.Break();
             Debug.LogError("ERROR! Ballconfig is missing!");
         }
-        GetComponent<BallRPM>().RPM = ballConfig.initRPM;
+        GetComponent<BallDurability>().RPM = ballConfig.initDur;
         critMultiplier = ballConfig.initCritMultiplier;
     }
 
@@ -80,16 +82,18 @@ public class BallCollision : MonoBehaviour
         {
             lastHitByName = collision.transform.parent.name;
             lastHitByGameObject = collision.gameObject;
-        }
-
-        if (collision.gameObject.tag == "Ball")
-        {
             doCrit = RollCrit();
+
             HitEnemy(collision);
         }
         else if (collision.gameObject.tag == "Obstacle")
         {
             HitEnemy(collision);
+        }
+
+        if (gameObject.tag == "Ball")
+        {
+            nameplate.ColorName(ballDur.RPM);
         }
     }
 
@@ -100,10 +104,10 @@ public class BallCollision : MonoBehaviour
 
         RNG_multiplier = UnityEngine.Random.Range(ballConfig.RNGMinMultiplier, ballConfig.RNGMaxMultiplier);
 
-        float RPM = Mathf.Clamp(ballRPM.RPM, 0, ballConfig.maxRPM);
+        float RPM = Mathf.Clamp(ballDur.RPM, 0, ballConfig.maxRPM);
 
         //Magnitude formula
-        magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + RPM * ballConfig.RPMMultiplier)
+        magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + 1200 * ballConfig.RPMMultiplier)
             * RNG_multiplier;
 
         if (audioSource != null)
@@ -144,8 +148,8 @@ public class BallCollision : MonoBehaviour
 
         collision.rigidbody.AddForce(finalForce);
 
-        ballRPM.RPM -= UnityEngine.Random.Range(ballConfig.RPMMinDamageOnHit, ballConfig.RPMMaxDamageOnHit);
-        //TODO: Reduce self HP;
+
+        ballDur.RPM -= UnityEngine.Random.Range(ballConfig.DurMinDamageOnHit, ballConfig.DurMaxDamageOnHit);
     }
 
     bool RollCrit()
