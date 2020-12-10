@@ -120,12 +120,12 @@ public class ChatInputHandler : MonoBehaviour
             //BallCommand cmd = ball.GetComponent<BallCommand>();
 
 
-            BallCommand cmd = ball.GetComponent<BallCmdCrit>();
-            if (cmd == null)
+            Ball ballScript = ball.GetComponent<Ball>();
+            if (!ballScript.abilityActive && ballScript.abilityCharges > 0)
             {
                 Debug.Log("Didn't have a BallCommand component!");
                 //cmd = ball.AddComponent(typeof(BallCmdCrit)) as BallCommand;
-                cmd = ball.AddComponent<BallCmdCrit>();
+                BallCommand cmd = ball.AddComponent<BallCmdCrit>();
                 cmd.ActivateCommand();
                 killFeed.PostText(username + " activated their crit ability!");
             }
@@ -141,12 +141,14 @@ public class ChatInputHandler : MonoBehaviour
         {
             GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
             //BallCommand cmd = ball.GetComponent<BallCommand>();
-            BallCommand cmd = ball.GetComponent<BallCmdGhost>();
-            if (cmd == null)
+
+
+            Ball ballScript = ball.GetComponent<Ball>();
+            if (!ballScript.abilityActive && ballScript.abilityCharges > 0)
             {
                 Debug.Log("Didn't have a BallCommand component!");
-                //cmd = ball.AddComponent(typeof(BallCmdGhost)) as BallCommand;
-                cmd = ball.AddComponent<BallCmdGhost>();
+                //cmd = ball.AddComponent(typeof(BallCmdCrit)) as BallCommand;
+                BallCommand cmd = ball.AddComponent<BallCmdGhost>();
                 cmd.ActivateCommand();
                 killFeed.PostText(username + " activated their ghost ability!");
             }
