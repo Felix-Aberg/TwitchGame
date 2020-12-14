@@ -33,7 +33,6 @@ public class BallCmdGhost : BallCommand
     {
 
         ballCollision.critChance += ghostExitCritChance;
-        ToggleIcon(false);
 
         setAlpha(1f);
 
@@ -47,6 +46,8 @@ public class BallCmdGhost : BallCommand
     private void DisableCrits()
     {
         ballCollision.critChance -= ghostExitCritChance;
+
+        SelfDestruct();
     }
 
     public void setAlpha(float alpha)

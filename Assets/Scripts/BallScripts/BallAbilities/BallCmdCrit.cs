@@ -26,7 +26,7 @@ public class BallCmdCrit : BallCommand
             && ballCollision != null 
             && ballCollision.critChance < critChanceIncrement)
         {
-            ToggleIcon(false);
+            SelfDestruct();
         }
     }
 }

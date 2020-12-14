@@ -22,7 +22,7 @@ MonoBehaviour:
   RNGMinMultiplier: 0.8
   RNGMaxMultiplier: 1.15
   DurMinDamageOnHit: 1
-  DurMaxDamageOnHit: 2
+  DurMaxDamageOnHit: 1
   DurOnKill: 5
   critChanceIncrement: 0.01
   minimumCritChance: 0.01

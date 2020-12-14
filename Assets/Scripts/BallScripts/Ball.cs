@@ -13,6 +13,9 @@ public class Ball : MonoBehaviour
     public float minimumRPM;
     public GameObject deathParticles;
 
+    public float abilityCharges = 3; //set to 2 later
+    public bool abilityActive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +28,19 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < -50f)
+        
         {
-            SelfDestruct();
+            if (transform.position.y < -50f)
+            {
+                SelfDestruct();
+            }
+
+            if (ballDur.RPM < minimumRPM)
+            {
+                SelfDestruct();
+            }
         }
-
-        if (ballDur.RPM < minimumRPM)
-        {
-            SelfDestruct();
-        }
-
-
+        
     }
 
     public void SelfDestruct()

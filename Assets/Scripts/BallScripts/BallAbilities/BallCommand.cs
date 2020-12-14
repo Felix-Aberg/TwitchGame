@@ -9,6 +9,8 @@ public abstract class BallCommand : MonoBehaviour
     public bool iconDisabled;
 
     public Sprite sprite;
+    public Image image;
+    public Ball ball;
 
     //Init checklist
     //-Load sprite
@@ -17,6 +19,8 @@ public abstract class BallCommand : MonoBehaviour
 
     public virtual void ActivateCommand()
     {
+        ball = GetComponent<Ball>();
+        ball.abilityActive = true;
         Init();
         if (sprite == null)
         {
@@ -24,8 +28,9 @@ public abstract class BallCommand : MonoBehaviour
         }
         else
         {
-            GetComponent<NameplateDisplay>().nameplate.GetComponentInChildren<Image>(true).sprite = sprite;
-            ToggleIcon(true);
+            image = GetComponent<NameplateDisplay>().nameplate.GetComponentInChildren<Image>(true);
+            image.sprite = sprite;
+            image.enabled = true;
         }
 
         DoAbility();
@@ -33,17 +38,12 @@ public abstract class BallCommand : MonoBehaviour
         used = true;
     }
 
-    public void ToggleIcon(bool enable)
-    {
-        GetComponent<NameplateDisplay>().nameplate.GetComponentInChildren<Image>(true).enabled = enable;
-    }
-
-    /// <summary>
-    /// Don't call this
-    /// </summary>
     public virtual void SelfDestruct()
     {
-        ToggleIcon(false);
+        GetComponent<NameplateDisplay>().nameplate.GetComponentInChildren<Image>(true).enabled = false;
+        image.enabled = false;
+        ball.abilityActive = false;
+        ball.abilityCharges--;
         Destroy(this);
     }
 }
