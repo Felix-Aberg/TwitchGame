@@ -21,10 +21,10 @@ public class LazorProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        Instantiate(lazorExplotion, transform);
+        Instantiate(lazorExplotion, transform.position, transform.rotation);
         
         Debug.Log("hit");
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
     
 }

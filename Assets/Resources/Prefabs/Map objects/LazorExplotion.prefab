@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d23662497adab47baeb2cf75ece650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 2
+  timer: 0.3
   myowntime: 1
   hasParticle: 0
   Particle: {fileID: 0}
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27c83f2a85ccac4b93801101a9fcde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
-  force: 700
+  radius: 35
+  force: 900
 --- !u!114 &7992993665409303371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,4 +139,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shpere: {fileID: 7992993665409303370}
-  scaleChange: {x: 0.05, y: 0.05, z: 0.05}
+  scaleChange: {x: 0.5, y: 0.5, z: 0.5}

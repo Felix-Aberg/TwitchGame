@@ -10,7 +10,7 @@ public class Expanding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.parent = null;
+        gameObject.transform.parent = null;
     }
 
     // Update is called once per frame
