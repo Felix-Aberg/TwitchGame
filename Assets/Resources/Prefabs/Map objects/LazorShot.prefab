@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a75ad3951f18f40805bb4e525ebee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 100
   lazorExplotion: {fileID: 7992993665409303370, guid: c81259a5b70c8ca4c8c4c6712e008c50,
     type: 3}
 --- !u!136 &1678503104553033840
@@ -60,9 +60,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.32119513
-  m_Height: 4.0451016
+  m_Height: 1.6469924
   m_Direction: 0
-  m_Center: {x: -1.3, y: 0, z: 0}
+  m_Center: {x: 0.3306054, y: 0, z: 0}
 --- !u!54 &8361933478783621119
 Rigidbody:
   m_ObjectHideFlags: 0

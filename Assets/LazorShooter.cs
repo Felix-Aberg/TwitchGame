@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LazorShooter : MonoBehaviour
 {
+    public AudioSource pew;
 
     public GameObject beam;
     public Transform shootPoint;
@@ -27,6 +28,7 @@ public class LazorShooter : MonoBehaviour
 
         if(timer <= 0)
         {
+            pew.Play();
             Instantiate(beam, shootPoint.position, transform.rotation);
             timer = Random.Range(minTimer, maxTimer);
         }

@@ -10,6 +10,10 @@ public class FlyAway : MonoBehaviour
     {
         Explode();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Explode();
+    }
     void Explode()
     {
         Collider[] colids = Physics.OverlapSphere(transform.position, radius);
