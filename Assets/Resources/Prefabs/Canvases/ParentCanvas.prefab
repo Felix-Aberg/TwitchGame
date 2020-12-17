@@ -900,9 +900,7 @@ MonoBehaviour:
 
     !Crit
 
-    !Ghost
-
-    !Bomb'
+    !Ghost'
 --- !u!114 &3392135900530858155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,7 +2143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1033051558307674361
 RectTransform:
   m_ObjectHideFlags: 0
