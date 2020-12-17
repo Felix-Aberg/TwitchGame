@@ -119,6 +119,9 @@ public class BallBomb : MonoBehaviour
 
     void OnDestroy()
     {
-        Destroy(timerText.transform.parent.gameObject);
+        if (explosionTimer < 0f)
+        {
+            Destroy(timerText.transform.parent.gameObject);
+        }
     }
 }
