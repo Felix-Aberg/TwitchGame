@@ -100,6 +100,11 @@ public class Ball : MonoBehaviour
             Destroy(nameplateDisplay.nameplate);
         }
 
+        if (TryGetComponent<BallBomb>(out var bomb))
+        {
+            Destroy(bomb.timerText.transform.parent.gameObject);
+        }
+
         Destroy(transform.parent.gameObject);
     }
 }

@@ -16,7 +16,7 @@ public class BallBomb : MonoBehaviour
     Vector3 worldOffset;
     Vector3 canvasOffset;
 
-    float explosionDamage = 1f;
+    float explosionDamage = 75f;
     float explosionRange = 1f;
     public float maxCooldown = 0.1f;
     
@@ -43,6 +43,17 @@ public class BallBomb : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //this might break everything
+        //this might break everything
+        //this might break everything
+        //this might break everything
+        //this might break everything
+        //this might break everything
+        if (timerText == null)
+        {
+            Destroy(this);
+        }
+
         // Reduce timers
         explosionTimer -= Time.fixedDeltaTime;
         cooldown -= Time.fixedDeltaTime;
@@ -79,7 +90,11 @@ public class BallBomb : MonoBehaviour
     {
         GetComponent<BallCollision>().lastHitByName = originPlayer;
         Debug.Log("origin: " + originPlayer);
-        GetComponent<Ball>().SelfDestruct();
+
+        GetComponent<BallDurability>().RPM -= explosionDamage;
+
+        // Suicide
+        //GetComponent<Ball>().SelfDestruct();
     }
 
     void Start()
@@ -95,10 +110,5 @@ public class BallBomb : MonoBehaviour
     void OnDestroy()
     {
         ballCollision.hasBomb = false;
-
-        if(explosionTimer < 0f)
-        {
-            Destroy(timerText.transform.parent.gameObject);
-        }
     }
 }

@@ -164,6 +164,10 @@ public class ChatInputHandler : MonoBehaviour
             GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
             //BallCommand cmd = ball.GetComponent<BallCommand>();
 
+            if (GetComponent<BallBomb>() != null)
+            {
+                return;
+            }
 
             Ball ballScript = ball.GetComponent<Ball>();
             if (!ballScript.abilityActive && ballScript.abilityCharges > 0)
