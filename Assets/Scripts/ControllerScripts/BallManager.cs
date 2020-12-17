@@ -154,6 +154,10 @@ public class BallManager : MonoBehaviour
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialJellyFranky", ball);
             }
+            else if (name == "Lofi_lime")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialLofi_Lime", ball);
+            }
 
             return ball;
         }

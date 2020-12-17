@@ -77,6 +77,13 @@ public class KillFeed : MonoBehaviour
             defaultKill = false;
         }
 
+        //Return if player killed itself (with bomb, for example)
+        if (killer == killed)
+        {
+            killFeed.text = killFeed.text + killed + " " + selfDestruct;
+            return;
+        }
+
         if (defaultKill && playerCount.alivePlayers > 1)
         {
             tempScoreDisplay.AddScore(killer, ScoreEvent.KILL);
@@ -93,6 +100,7 @@ public class KillFeed : MonoBehaviour
             killFeed.text = killFeed.text + killed + " " + selfDestruct;
             return;
         }
+
 
         killFeed.text = killFeed.text + killer + " " + killArrow + " " + killed;
 
