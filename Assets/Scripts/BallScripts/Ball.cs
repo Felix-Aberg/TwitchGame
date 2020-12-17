@@ -28,7 +28,7 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         {
             if (transform.position.y < -50f)
             {
@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
                 SelfDestruct();
             }
         }
-        */
+        
     }
 
     public void SelfDestruct()

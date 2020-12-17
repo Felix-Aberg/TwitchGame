@@ -9,6 +9,7 @@ TagManager:
   - NameplateCanvas
   - Obstacle
   - ParentCanvas
+  - PowerupCanvas
   layers:
   - Default
   - TransparentFX

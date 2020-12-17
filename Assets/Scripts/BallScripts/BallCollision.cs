@@ -12,7 +12,7 @@ public class BallCollision : MonoBehaviour
     
     public ParticleSystem sparks;
     public ParticleSystem critSparks;
-
+    public bool hasBomb;
 
     public AudioSource audioSource;
 
@@ -83,6 +83,23 @@ public class BallCollision : MonoBehaviour
             lastHitByName = collision.transform.parent.name;
             lastHitByGameObject = collision.gameObject;
             doCrit = RollCrit();
+
+            //Bomb check
+            if (hasBomb)
+            {
+                BallBomb oldBomb = GetComponent<BallBomb>();
+
+                if (oldBomb.cooldown < 0 && collision.gameObject.GetComponent<BallBomb>() == null)
+                {
+                    if(gameObject.TryGetComponent<BallCmdBomb>(out var component))
+                    {
+                        component.SelfDestruct();
+                    }
+                    BallBomb newBomb = collision.gameObject.AddComponent<BallBomb>();
+                    newBomb.PassValues(oldBomb.explosionTimer, oldBomb.originPlayer, oldBomb.timerText);
+                    Destroy(oldBomb);
+                }
+            }
 
             HitEnemy(collision);
         }

@@ -157,5 +157,27 @@ public class ChatInputHandler : MonoBehaviour
                 Debug.Log("Player did have a BallCommand component!");
             }
         }
+
+        //Ghost
+        if (message.StartsWith("bomb"))
+        {
+            GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
+            //BallCommand cmd = ball.GetComponent<BallCommand>();
+
+
+            Ball ballScript = ball.GetComponent<Ball>();
+            if (!ballScript.abilityActive && ballScript.abilityCharges > 0)
+            {
+                Debug.Log("Didn't have a BallCommand component!");
+                //cmd = ball.AddComponent(typeof(BallCmdCrit)) as BallCommand;
+                BallCommand cmd = ball.AddComponent<BallCmdBomb>();
+                cmd.ActivateCommand();
+                killFeed.PostText(username + " activated their bomb ability!");
+            }
+            else
+            {
+                Debug.Log("Player did have a BallCommand component!");
+            }
+        }
     }
 }
