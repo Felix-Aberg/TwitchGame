@@ -123,5 +123,6 @@ public class BallBomb : MonoBehaviour
         {
             Destroy(timerText.transform.parent.gameObject);
         }
+        ballCollision.hasBomb = false;
     }
 }
