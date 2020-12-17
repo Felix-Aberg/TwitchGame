@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 404533198019347862}
   - component: {fileID: 3255031283572762015}
   m_Layer: 0
-  m_Name: Bomb Explotion
+  m_Name: Bomb Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5577456928450954301}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.00011493264}
-  m_LocalPosition: {x: 0, y: 0.69, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1.8971, y: 1.8971, z: 1.8971}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

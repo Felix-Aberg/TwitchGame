@@ -93,8 +93,10 @@ public class BallCollision : MonoBehaviour
                 {
                     if(gameObject.TryGetComponent<BallCmdBomb>(out var component))
                     {
+                        Debug.Log("Destroyed bomb command!");
                         component.SelfDestruct();
                     }
+
                     BallBomb newBomb = collision.gameObject.AddComponent<BallBomb>();
                     newBomb.PassValues(oldBomb.explosionTimer, oldBomb.originPlayer, oldBomb.timerText);
                     Destroy(oldBomb);
