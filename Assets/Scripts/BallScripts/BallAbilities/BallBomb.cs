@@ -93,6 +93,16 @@ public class BallBomb : MonoBehaviour
 
         GetComponent<BallDurability>().RPM -= explosionDamage;
 
+        //destroy bomb command component if it exists
+        if (gameObject.TryGetComponent<BallCmdBomb>(out var component))
+        {
+            Debug.Log("Destroyed bomb command!");
+            component.SelfDestruct();
+            Destroy(this);
+        }
+
+        Instantiate(
+            Resources.Load("ParticleEffects/Command Particles/Bomb Explosion"));
         // Suicide
         //GetComponent<Ball>().SelfDestruct();
     }
@@ -109,6 +119,6 @@ public class BallBomb : MonoBehaviour
 
     void OnDestroy()
     {
-        ballCollision.hasBomb = false;
+        Destroy(timerText.transform.parent.gameObject);
     }
 }
