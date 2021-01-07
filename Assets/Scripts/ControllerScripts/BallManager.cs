@@ -162,6 +162,22 @@ public class BallManager : MonoBehaviour
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialKsmoonblast", ball);
             }
+            else if (name == "Scoutovich")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialScoutovich", ball);
+            }
+            else if (name == "StreamSpinners")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialStreamSpinners", ball);
+            }
+            else if (name == "Felix_Time")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialFelix_Time", ball);
+            }
+            else if (name == "Droopygoop")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialDroopygoop", ball);
+            }
 
             return ball;
         }
