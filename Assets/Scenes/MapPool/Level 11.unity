@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1040224023}
-  m_IndirectSpecularColor: {r: 0.009786322, g: 0.05188985, b: 0.15229288, a: 1}
+  m_IndirectSpecularColor: {r: 0.009782872, g: 0.051867522, b: 0.15223652, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -204,6 +204,7 @@ MonoBehaviour:
   sparks: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
   critSparks: {fileID: 2922399195984541205, guid: 8cf6f31f32579324d8d2aa5111eaa8c5,
     type: 3}
+  hasBomb: 0
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
@@ -1444,6 +1445,7 @@ MonoBehaviour:
   sparks: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
   critSparks: {fileID: 2922399195984541205, guid: 8cf6f31f32579324d8d2aa5111eaa8c5,
     type: 3}
+  hasBomb: 0
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
@@ -1604,6 +1606,7 @@ MonoBehaviour:
   sparks: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
   critSparks: {fileID: 2922399195984541205, guid: 8cf6f31f32579324d8d2aa5111eaa8c5,
     type: 3}
+  hasBomb: 0
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
@@ -2469,7 +2472,47 @@ PrefabInstance:
     - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.79
+      value: 41.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9828011
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.007006987
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 179.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 41.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0013156246
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.18452977
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -21.266
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153492257009606207, guid: 08f4017bc82eb0e46ba8a8c36c5a4911,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.31800002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f4017bc82eb0e46ba8a8c36c5a4911, type: 3}
@@ -2807,6 +2850,7 @@ MonoBehaviour:
   sparks: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
   critSparks: {fileID: 2922399195984541205, guid: 8cf6f31f32579324d8d2aa5111eaa8c5,
     type: 3}
+  hasBomb: 0
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
@@ -3812,6 +3856,7 @@ MonoBehaviour:
   sparks: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
   critSparks: {fileID: 2922399195984541205, guid: 8cf6f31f32579324d8d2aa5111eaa8c5,
     type: 3}
+  hasBomb: 0
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
@@ -4213,6 +4258,7 @@ MonoBehaviour:
   sparks: {fileID: 2922399195984541205, guid: 73cdc5b67c718cd4f8522ea10803f7ed, type: 3}
   critSparks: {fileID: 2922399195984541205, guid: 8cf6f31f32579324d8d2aa5111eaa8c5,
     type: 3}
+  hasBomb: 0
   audioSource: {fileID: 454527313}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}

@@ -166,11 +166,11 @@ public class BallManager : MonoBehaviour
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialScoutovich", ball);
             }
-            else if (name == "StreamSpinners")
+            else if (name == "Streamspinners")
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialStreamSpinners", ball);
             }
-            else if (name == "Felix_Time")
+            else if (name == "Felix_time")
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialFelix_Time", ball);
             }
