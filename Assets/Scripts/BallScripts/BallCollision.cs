@@ -15,6 +15,8 @@ public class BallCollision : MonoBehaviour
     public bool hasBomb;
 
     public AudioSource audioSource;
+    public AudioClip audioHit;
+    public AudioClip audioCrit;
 
     public string lastHitByName; //Used to determine killfeeds
     public GameObject lastHitByGameObject; //Used to give RPM
@@ -129,11 +131,7 @@ public class BallCollision : MonoBehaviour
         magnitude = (rb.velocity.magnitude * ballConfig.velocityMultiplier + 1200 * ballConfig.RPMMultiplier)
             * RNG_multiplier;
 
-        if (audioSource != null)
-        {
-            audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
-            audioSource.Play();
-        }
+      
 
         if (doCrit)
         {
@@ -142,11 +140,22 @@ public class BallCollision : MonoBehaviour
             if (critSparks != null)
                 critSparks.Play();
 
+            audioSource.clip = audioCrit;
+            audioSource.pitch = 1.0f;
         }
         else
         {
             if (sparks != null)
                 sparks.Play();
+
+            audioSource.clip = audioHit;
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 2.0f);
+        }
+
+        if (audioSource != null)
+        {
+            
+            audioSource.Play();
         }
 
         if (magnitude > debugForceLimit)
@@ -167,8 +176,8 @@ public class BallCollision : MonoBehaviour
 
         collision.rigidbody.AddForce(finalForce);
 
-
-        ballDur.RPM -= UnityEngine.Random.Range(ballConfig.DurMinDamageOnHit, ballConfig.DurMaxDamageOnHit);
+        if (gameObject.layer != 13)
+            ballDur.RPM -= UnityEngine.Random.Range(ballConfig.DurMinDamageOnHit, ballConfig.DurMaxDamageOnHit);
     }
 
     bool RollCrit()

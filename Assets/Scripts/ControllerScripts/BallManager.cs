@@ -178,7 +178,10 @@ public class BallManager : MonoBehaviour
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialDroopygoop", ball);
             }
-
+            else if (name == "Swarmsurvivor")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialSwarmsurvivor", ball);
+            }
             return ball;
         }
         else

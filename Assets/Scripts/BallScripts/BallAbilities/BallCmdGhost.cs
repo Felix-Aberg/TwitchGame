@@ -7,7 +7,7 @@ public class BallCmdGhost : BallCommand
     
     public float transparency = 0.2f;
     public bool ghostActive;
-    private float timer = 6f;
+    private float timer = 7f;
     private float critTimer = 0.05f;
     private float ghostExitCritChance = 1f;
 
