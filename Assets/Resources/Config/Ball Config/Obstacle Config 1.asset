@@ -33,4 +33,4 @@ MonoBehaviour:
   circleForce: 0
   decaySpeed: 0
   initDur: 0
-  initCritMultiplier: 2
+  initCritMultiplier: 0

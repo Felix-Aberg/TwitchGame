@@ -158,7 +158,7 @@ public class ChatInputHandler : MonoBehaviour
             }
         }
 
-        //Ghost
+        //Bomb?
         if (message.StartsWith("asdasdasd - "))
         {
             GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
@@ -177,6 +177,27 @@ public class ChatInputHandler : MonoBehaviour
                 BallCommand cmd = ball.AddComponent<BallCmdBomb>();
                 cmd.ActivateCommand();
                 killFeed.PostText(username + " activated their bomb ability!");
+            }
+            else
+            {
+                Debug.Log("Player did have a BallCommand component!");
+            }
+        }
+        //Grow
+        if (message.StartsWith("grow"))
+        {
+            GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
+            //BallCommand cmd = ball.GetComponent<BallCommand>();
+
+
+            Ball ballScript = ball.GetComponent<Ball>();
+            if (!ballScript.abilityActive && ballScript.abilityCharges > 0)
+            {
+                Debug.Log("Didn't have a BallCommand component!");
+                //cmd = ball.AddComponent(typeof(BallCmdCrit)) as BallCommand;
+                BallCommand cmd = ball.AddComponent<BallCmdGrow>();
+                cmd.ActivateCommand();
+                killFeed.PostText(username + " activated their grow ability!");
             }
             else
             {

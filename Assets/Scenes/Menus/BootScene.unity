@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadInstantly: 1
-  instantLoadIndex: 1
+  instantLoadIndex: 2
 --- !u!1001 &1964131994
 PrefabInstance:
   m_ObjectHideFlags: 0

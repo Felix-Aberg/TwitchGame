@@ -388,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3937297672603870598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.376, z: 0}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 132230859505923971}
@@ -1415,7 +1415,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.71956503
+  m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &324614297789355159
 MonoBehaviour:
@@ -1434,6 +1434,8 @@ MonoBehaviour:
   minimumRPM: 30
   deathParticles: {fileID: 5577456928450954301, guid: df07eabe33f42574da574a62a9f1d305,
     type: 3}
+  abilityCharges: 2
+  abilityActive: 0
 --- !u!114 &4812886914611054318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,7 +1451,10 @@ MonoBehaviour:
   ballConfig: {fileID: 11400000, guid: 58298e64a5983fd4c9e0b72560c9108d, type: 2}
   sparks: {fileID: 8405818567729215291}
   critSparks: {fileID: 4837206936041972147}
+  hasBomb: 0
   audioSource: {fileID: 5572630538943148861}
+  audioHit: {fileID: 8300000, guid: 2fe94650c476bd544bba5bfc91694bf1, type: 3}
+  audioCrit: {fileID: 8300000, guid: 14d497f9eedbad04fa0c882a4e33d6e2, type: 3}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
   critChance: 0
