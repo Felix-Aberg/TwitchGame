@@ -1092,6 +1092,7 @@ MonoBehaviour:
   audioCrit: {fileID: 8300000, guid: 14d497f9eedbad04fa0c882a4e33d6e2, type: 3}
   lastHitByName: 
   lastHitByGameObject: {fileID: 0}
+  superCritEnabled: 0
   critChance: 0
   debugForceLimit: 1000
 --- !u!54 &5686883748924197162

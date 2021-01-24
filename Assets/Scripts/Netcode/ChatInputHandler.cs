@@ -158,8 +158,8 @@ public class ChatInputHandler : MonoBehaviour
             }
         }
 
-        //Bomb?
-        if (message.StartsWith("asdasdasd - "))
+        //Ghost
+        if (false)
         {
             GameObject ball = ballManager.ballDictionary[username].transform.GetChild(0).gameObject;
             //BallCommand cmd = ball.GetComponent<BallCommand>();

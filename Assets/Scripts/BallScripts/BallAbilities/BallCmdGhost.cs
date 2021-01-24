@@ -11,6 +11,8 @@ public class BallCmdGhost : BallCommand
     private float critTimer = 0.05f;
     private float ghostExitCritChance = 1f;
 
+    private float previousCritChance;
+
     BallCollision ballCollision;
 
     public override void Init()
@@ -32,7 +34,9 @@ public class BallCmdGhost : BallCommand
     private void DisableGhost()
     {
 
+        previousCritChance = ballCollision.critChance;
         ballCollision.critChance += ghostExitCritChance;
+        ballCollision.superCritEnabled = true;
 
         setAlpha(1f);
 
@@ -45,7 +49,8 @@ public class BallCmdGhost : BallCommand
 
     private void DisableCrits()
     {
-        ballCollision.critChance -= ghostExitCritChance;
+        ballCollision.critChance = previousCritChance;
+        ballCollision.superCritEnabled = false;
 
         SelfDestruct();
     }
