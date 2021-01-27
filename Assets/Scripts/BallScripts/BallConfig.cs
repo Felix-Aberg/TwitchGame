@@ -43,6 +43,11 @@ public class BallConfig : ScriptableObject
     [Tooltip("Increase crit chance (from 0.0 to 1.0) against consecutively hit target")]
     public float nemesisCritChanceIncrement;
 
+    [Tooltip("Damage multiplier when hitting with super crits. Replaces normal crit multiplier.")]
+    public float superCritMultiplier;
+
+
+
     [Header("Circular Movement")]
 
     [Tooltip("Minimum speed a ball will spin around in")]

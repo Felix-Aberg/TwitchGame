@@ -22,7 +22,6 @@ public class BallCmdBomb : BallCommand
 
     }
 
-
     // Things I need:
     // Bomb itself
     // UI icon

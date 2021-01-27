@@ -28,6 +28,7 @@ MonoBehaviour:
   minimumCritChance: 0.01
   critMultiplierIncrement: 0.8
   nemesisCritChanceIncrement: 0
+  superCritMultiplier: 10
   minCircleSpeed: 40
   maxCircleSpeed: 150
   circleForce: 200

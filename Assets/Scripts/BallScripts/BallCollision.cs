@@ -27,6 +27,8 @@ public class BallCollision : MonoBehaviour
     float magnitude;
     float RNG_multiplier;
 
+    public bool superCritEnabled;
+
     /* Most variables are stored in BallConfig ScriptableObject
      * Which BallConfig file that is used is decided by the BallManager's GameController
      * 
@@ -109,6 +111,7 @@ public class BallCollision : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Obstacle")
         {
+            doCrit = false;
             HitEnemy(collision);
         }
 
@@ -135,7 +138,14 @@ public class BallCollision : MonoBehaviour
 
         if (doCrit)
         {
-            magnitude *= critMultiplier;
+            if (superCritEnabled)
+            {
+                magnitude *= ballConfig.superCritMultiplier;
+            }
+            else
+            {
+                magnitude *= critMultiplier;
+            }
 
             if (critSparks != null)
                 critSparks.Play();
