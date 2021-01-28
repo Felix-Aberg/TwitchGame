@@ -186,7 +186,7 @@ public class BallCollision : MonoBehaviour
 
         collision.rigidbody.AddForce(finalForce);
 
-        if (gameObject.layer != 13)
+        if (gameObject.layer != 13) //layer 13 "Invulnerable", used for !grow
             ballDur.RPM -= UnityEngine.Random.Range(ballConfig.DurMinDamageOnHit, ballConfig.DurMaxDamageOnHit);
     }
 
