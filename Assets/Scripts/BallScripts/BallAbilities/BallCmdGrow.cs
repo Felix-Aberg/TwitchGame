@@ -8,9 +8,6 @@ public class BallCmdGrow : BallCommand
     public float scaleX = 0.8f;
     public float scaleY = 0.8f;
     public float scaleZ = 0.8f;
-    public float reScaleX = -0.8f;
-    public float reScaleY = -0.8f;
-    public float reScaleZ = -0.8f;
 
     public float mass;
     public float drag;
@@ -47,7 +44,7 @@ public class BallCmdGrow : BallCommand
 
     private void DisableGrow()
     {
-        gameObject.transform.localScale += new Vector3(reScaleX, reScaleX, reScaleX);
+        gameObject.transform.localScale -= new Vector3(scaleX, scaleX, scaleX);
 
         rb = GetComponent<Rigidbody>();
         rb.mass = 1f;
