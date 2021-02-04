@@ -182,6 +182,10 @@ public class BallManager : MonoBehaviour
             {
                 EquipImageMaterial("Materials/BallIcons/BallMaterialSwarmsurvivor", ball);
             }
+            else if (name == "Mariliez")
+            {
+                EquipImageMaterial("Materials/BallIcons/BallMaterialMariliez", ball);
+            }
             return ball;
         }
         else
